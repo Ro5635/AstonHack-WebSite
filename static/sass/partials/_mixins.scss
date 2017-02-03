@@ -1,0 +1,169 @@
+//Mixins are the esoteric name for functions in SASS!
+
+
+//Cross browser compatible transition:
+@mixin transition($args...) {
+	transition: $args;
+	-webkit-transition: $args;
+	-moz-transition: $args;
+	-ms-transition: $args;
+	-o-transition: $args;
+}
+
+
+//Mixin for cross browser opacity from: http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/ 
+@mixin opacity($opacity) {
+	opacity: $opacity;
+	$opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie); //IE8
+}
+
+
+//Homemade mixin for animation delay:
+@mixin animationDelay($argument){
+	-webkit-animation-delay: $argument;
+	animation-delay: $argument;
+}
+
+//Anouther homemade mixin, this one is for a drop shaddow. The defulat is a top down shaddow.
+@mixin dropShaddowBellow($size : 0 8px 6px -6px , $Color: black){
+	-webkit-box-shadow: $size $Color;
+	-moz-box-shadow: $size $Color;
+	box-shadow: $size $Color;
+}
+
+//This mixin stops the user from being able to select the text, handy for buttons and alike:
+@mixin noTextSelect(){
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none; 
+}
+
+
+
+
+//Source of MixIn: http://hackingui.com/front-end/10-best-scss-utilities/
+
+@mixin hui_tooltip($content: attr(data-tooltip), $direction: top) {
+	position: relative;
+	&:before, &:after {
+		display: none;
+		z-index: 98;
+	}
+	&:hover {
+    &:after { // for text bubble
+    	content: $content;
+    	display: block;
+    	position: absolute;
+      height: 24px; // (makes total height including padding 22px)
+      padding: 6px;
+      padding-bottom: 6px;
+      font-size: 12px;
+      white-space: nowrap;
+      color: #fff;
+      @include text-shadow(1px 1px #000);
+      background-color: $ToolTipColour;
+      @include border-radius(5px);
+  }
+  @if ($direction == 'top'){
+  	&:before {
+  		@include triangle(down, 6px, $ToolTipColour);
+  		top: -6px; margin-top: 0;
+  		left: 47%;
+  	}
+  	&:after {
+  		top: -28px;
+  		left: 47%; margin-left: -20px;
+  	}
+  }
+  @else if ($direction == 'bottom'){
+  	&:before {
+  		@include triangle(up, 6px, $ToolTipColour);
+  		top: auto; margin-top: 0;
+  		bottom: -6px;
+  		left: 47%;
+  	}
+  	&:after {
+  		bottom: -28px;
+  		left: 47%; margin-left: -20px;
+
+  	}
+  }
+}
+}
+
+
+
+/* 
+//Source of MixIn: http://hackingui.com/front-end/10-best-scss-utilities/
+* @include triangle within a pseudo element and add positioning properties (ie. top, left)
+* $direction: up, down, left, right
+*/
+@mixin triangle($direction, $size: 6px, $color: #222){
+	content: '';
+	display: block;
+	position: absolute;
+	height: 0; width: 0;
+	@if ($direction == 'up'){
+		border-bottom: $size solid $color;
+		border-left: 1/2*$size solid transparent;
+		border-right: 1/2*$size solid transparent;
+	}
+	@else if ($direction == 'down'){
+		border-top: $size solid $color;
+		border-left: 1/2*$size solid transparent;
+		border-right: 1/2*$size solid transparent;
+	}
+	@else if ($direction == 'left'){
+		border-top: 1/2*$size solid transparent;
+		border-bottom: 1/2*$size solid transparent;
+		border-right: $size solid $color;
+	}
+	@else if ($direction == 'right'){
+		border-top: 1/2*$size solid transparent;
+		border-bottom: 1/2*$size solid transparent;
+		border-left: $size solid $color;
+	}
+}
+
+
+// //A reworking of a few differnt mixins for media querys to get waht I want:
+// @mixin respond-to($breakpoint) {
+// 	//A simple switch statment to generrate the appropiate statment:
+
+
+
+// }
+
+// $breakpoints: (
+//   'mobile': (max-width:  565px ),
+//   'small':  ( min-width:  567px ),
+//   'medium': ( min-width:  942px ),
+//   'large':  ( min-width: 1200px )
+// ) !default;
+
+
+
+
+/// Mixin to manage responsive breakpoints
+/// @author Hugo Giraudel
+/// @param {String} $breakpoint - Breakpoint name
+/// @require $breakpoints
+@mixin respond-to($breakpoint) {
+  // If the key exists in the map
+  @if map-has-key($breakpoints, $breakpoint) {
+    // Prints a media query based on the value
+    @media #{inspect(map-get($breakpoints, $breakpoint))} {
+      @content;
+    }
+  }
+ 
+  // If the key doesn't exist in the map
+  @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Available breakpoints are: #{map-keys($breakpoints)}.";
+  }
+}

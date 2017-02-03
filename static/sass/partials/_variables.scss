@@ -1,0 +1,20 @@
+//Contains the 'global' variables used in this SASS project 
+
+$backgroundColour: #FAFFFD;// #FFFFFF;
+$HighLightColour: #FF3366;
+$Colour1:  #2EC4B6;
+$Colour2: #B3A394;
+$Colour3: #102542;
+//The colour used on the tooltips:
+$ToolTipColour: #38B499;
+
+
+//Media Querys Points of scale:
+
+$breakpoints: (
+  'mobile': ( max-width:  565px ),
+  'small':  ( min-width:  567px ),
+  'medium': ( min-width:  942px ),
+  'large':  ( min-width: 1200px )
+) !default;
+

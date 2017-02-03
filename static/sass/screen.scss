@@ -1,0 +1,180 @@
+@import "compass";
+@import "partials/variables";
+@import "partials/normalize";
+@import "partials/mixins";
+@import "partials/base";
+@import "compass/css3";
+
+
+
+
+body, html {
+    height: 100%;
+    font-family: 'Lato', sans-serif;
+ 
+}
+
+#page{
+
+	display: inline-block;
+
+    @include dropShaddowBellow(0 40px 50px -12px);
+
+}
+
+.pageStdVSpace{
+	display: block;
+	width: 100%;
+	height: 20%;
+
+}
+
+.standardVSpace{
+    display: block;
+    height: 25%;
+}
+
+/*
+	Add an additional text size
+ */
+.display-5{
+	font-size: 2.6rem;
+    font-weight: 300;
+}
+
+.parallax { 
+    /* The image used */
+    background-image: url("/media/bg.jpg");
+
+    /* Full height */
+    height: 70%; 
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+#angularTransitionBorder{
+
+
+
+background: -moz-linear-gradient(5deg, rgba(255, 255, 255, 1) 81%,rgba(27,39,91,0) 81%); /* FF3.6-15 */
+background: -webkit-linear-gradient(5deg, rgba(255, 255, 255, 1) 81%,rgba(27,39,91,0) 81%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(5deg, rgba(255, 255, 255, 1) 81%,rgba(27,39,91,0) 81%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+
+
+
+display: block;
+width: 100%;
+height: 200px;
+z-index: 2;
+
+}
+
+
+#astonTriangle{
+    /*margin: auto;*/
+    /*display: block;*/
+    max-width: 30%;
+    /*bottom: 0;*/
+    /*text-align: center;*/
+
+
+    /*@include transform(translate(-50%, -50%));*/
+     -moz-transform: translate(-50%, -50%);
+         -o-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-30%, -30%) ;
+
+
+    display: inline-block;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    
+
+    
+    
+    z-index: 3;
+
+
+}
+
+#imageSpacer{
+
+    height: 90%;
+    width: 100%;
+    display: block;
+
+}
+
+// .carousel-item img{
+//     height: 10%;
+// }
+
+#latestInfoPane{
+
+    height: 40%;
+    width: 99%;
+    display: inline-table;
+
+}
+
+#fbIframe iframe{
+
+    width: 100%;
+}
+
+
+#pageFloor{
+    width: 100%;
+    height: 250px;
+    display: block;
+    background-image: url("/media/bg.jpg");
+    
+        /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    @include dropShaddowBellow(0 40px 50px -12px);
+
+}
+
+footer{
+
+	height: 15%;
+	width: 100%;
+	margin-top: 5%;
+	background-color: #0e100c;;
+	text-align: center;
+	padding-top: 2%;
+	color: white;
+
+    //nudge the image down a little, centre verticaly if desired later
+	img{
+
+	   padding-top: 1%;
+	
+	
+	}
+
+	a address{
+		//Get rid of margin-bottom which will skrew up bg style
+		margin-bottom: 0;
+		font-size: 0.9em;
+		margin: 0 auto;
+        text-decoration: none;
+        color: white;
+
+
+	}
+
+}
+
