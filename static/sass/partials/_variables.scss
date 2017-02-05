@@ -10,11 +10,12 @@ $ToolTipColour: #38B499;
 
 
 //Media Querys Points of scale:
+//Edited to match bootstrap
 
 $breakpoints: (
-  'mobile': ( max-width:  565px ),
-  'small':  ( min-width:  567px ),
-  'medium': ( min-width:  942px ),
+  'mobile': ( max-width:  576px ),
+  'small':  ( min-width:  576px ),
+  'medium': ( min-width:  992px ),
   'large':  ( min-width: 1200px )
 ) !default;
 

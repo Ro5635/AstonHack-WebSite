@@ -9,153 +9,96 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 
-		<script type="text/javascript">
+		<script src="/JS/js.js"></script>
 
 
-		$(document).ready(function(){ 
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="/stylesheets/screen.css">
+		<link rel="stylesheet" type="text/css" href="/css/animate.css">
+		<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 
+		<title>ACSS</title> 
 
-			//Enable footer address map tool tip
-			$('a[rel="mapTip"]').tooltip();
+	</head>
+	<body>
 
+		<div id="page">
 
-
-
-			var onePercentHeadScrolled = parseInt( $("#astonTriangle").css('top') , 10) / 100;
-			var startLeft = parseInt( $("#astonTriangle").css('left') , 10);
-			var beenScrolled = false;
-
-			$(window).scroll(function() {
-
-
-				var scroll = $(window).scrollTop();
-
-
-				var percentScrolled = scroll / onePercentHeadScrolled;
-
-				var newLeftPosPercent = ( percentScrolled / 100 ) * startLeft 
-
-				$("#astonTriangle").css("transform","translate(" + -newLeftPosPercent +  "px , "  + ( scroll * -0.7)  + "px)");
+			<div id="fb-root"></div>
+			<script>(function(d, s, id) {
+				var js, fjs = d.getElementsByTagName(s)[0];
+				if (d.getElementById(id)) return;
+				js = d.createElement(s); js.id = id;
+				js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.8";
+				fjs.parentNode.insertBefore(js, fjs);
+			}(document, 'script', 'facebook-jssdk'));</script>
 
 
 
-				if(percentScrolled < 1 && beenScrolled){
-
-							//Remove the login form
-							$('#astonTriangle').removeClass('animated');
-							$('#astonTriangle').removeClass('pulse');
-							$('#astonTriangle').addClass('animated');
-							$('#astonTriangle').addClass('pulse');
-
-							beenScrolled = false;
-
-						} else if(percentScrolled > 150){
-							
-							beenScrolled = true;
-
-						}
-
-
-					});
-
-
-		}); 
-
-
-
-</script>
-
-<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" cossorigin="anonymous"> -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-<link rel="stylesheet" type="text/css" href="/stylesheets/screen.css">
-<link rel="stylesheet" type="text/css" href="/css/animate.css">
-<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-<title>TITLE</title> 
-
-
-
-</head>
-<body>
-
-	<div id="page">
-
-		<div id="fb-root"></div>
-		<script>(function(d, s, id) {
-			var js, fjs = d.getElementsByTagName(s)[0];
-			if (d.getElementById(id)) return;
-			js = d.createElement(s); js.id = id;
-			js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.8";
-			fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk'));</script>
-
-
-
-		<img id="astonTriangle" class="" alt="Aston University Triangle" src="/media/AstonTriangle.png">
+			<img id="astonTriangle" class="" alt="Aston University Triangle" src="/media/AstonTriangle.png">
 
 
 
 
-		<div class="parallax" >
+			<div class="parallax">
+
+
+				<div id="imageSpacer"></div>
+
+				<div id="angularTransitionBorder"></div>
+
+			</div>
+
+			<div class="container-fluid"><!-- Container element -->
+
+
+				<div id="latestInfoPane">
+
+
+					<!-- <div class="container"> -->
 
 
 
-
-			<div id="imageSpacer"></div>
-
-			<div id="angularTransitionBorder"></div>
-
-		</div>
-
-		<div class="container-fluid"><!-- Container element -->
+					<!-- Add some v space -->
+					<div class="form-group">
+						&nbsp;
+					</div>
 
 
-			<div id="latestInfoPane">
+					<div class="row">
+						<div class="col-sm-1 col-md-1"></div>
+						<div class="col-sm-7 col-md-5">
+							<img src="/media/acss-logo.png" class="img-fluid" alt="Aston Computer Science Society Logo">
+
+						</div>
+
+						<div class="col-sm-4 col-md-6"></div>
+					</div>
+
+					<!-- Add some v space -->
+					<div class="form-group ">
+						&nbsp;
+					</div>
 
 
-				<!-- <div class="container"> -->
 
+					<div class="row">
 
+						<div class="col-sm-1 col-md-1 col-lg-2"></div>
 
-				<!-- Add some v space -->
-				<div class="form-group">
-					&nbsp;
-				</div>
+						<div class="col-sm-10 col-md-10 col-lg-8">
+							<p class="lead">
+								<span class="font-weight-bold display-5">Aston Universities </span> student <!-- lead  -->society dedicated to the research in the human capacity for parallel consumption of <span class="display-5">🍕</span> and <span class="display-5">☕</span> . We spearhead termly revision sessions and host a mix of employer and tech events along with our renowned gaming nights.
 
+							</p>
+						</div>
 
-				<div class="row">
-					<div class="col-sm-1"></div>
-					<div class="col-sm-5">
-						<img src="/media/acss-logo.png" class="img-fluid" alt="Aston Computer Science Society Logo">
+						<div class="col-sm-1 col-md-1 col-lg-2"></div>
 
 					</div>
 
-					<div class="col-sm-6"></div>
-				</div>
 
-				<!-- Add some v space -->
-				<div class="form-group ">
-					&nbsp;
-				</div>
-
-
-
-				<div class="row">
-
-					<div class="col-sm-2"></div>
-
-					<div class="col-sm-8">
-						<p class="lead">
-							<span class="font-weight-bold display-5">Aston Universities </span> student <!-- lead  -->society dedicated to the research in the human capacity for parallel consumption of <span class="display-5">🍕</span> and <span class="display-5">☕</span> . We spearhead termly revision sessions and host a mix of employer and tech events along with our renowned gaming nights.
-
-						</p>
-					</div>
-
-					<div class="col-sm-2"></div>
-
-				</div>
-
-
-				<!-- <img src="/images/pathToYourImage.png" class="img-fluid" alt="Responsive image"> -->
+					<!-- <img src="/images/pathToYourImage.png" class="img-fluid" alt="Responsive image"> -->
 
 
 
@@ -164,7 +107,7 @@
 
 
 
-				<div class="row">
+<!-- 				<div class="row">
 					<div class="col-md-2 col-lg-2"></div>
 					<div class="col-md-8 col-lg-4 ">
 
@@ -248,11 +191,11 @@
 					</div>
 					<div class="col-md-2 col-lg-6 "></div>
 
-				</div><!-- EndRow -->
+				</div><!-- EndRow --> 
 
 
 
-
+<!-- 
 				<div class="row">
 					<div class="col-sm-6"></div>
 					<div class="hidden-md-down col-sm-4">
@@ -324,7 +267,7 @@
 					</div>
 					<div class="col-sm-2"></div>
 
-				</div><!-- EndRow -->
+				</div><!-- EndRow --> 
 
 
 
@@ -337,9 +280,9 @@
 
 
 				<div class="row">
-					<div class="col-sm-2"></div>
-					<div class="col-sm-10">
-						<span class="display-4 font-weight-bold ">What are we doing:</span>
+					<div class="col-sm-1 col-md-2"></div>
+					<div class="col-sm-10 col-md-10">
+						<span class="display-4 font-weight-bold">What are we doing:</span>
 					</div>
 
 
@@ -351,51 +294,60 @@
 				</div>
 
 
+
 				<div class="row">
-
-					<div class="col-sm-2 col-xl-3"></div>
-
-					<div class="col-sm-8 col-xl-6">
-
-						<div class="card-deck">
-							<div class="card">
-								<div class="card-block">
-									<h4 class="card-title">Twitter Feed</h4>
-
-									<a class="twitter-timeline" href="https://twitter.com/AstonCSS" data-height="550" >Tweets by AstonCSS</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+					<div class="col-sm-1 col-md-1 col-lg-2"></div>
 
 
-								</div>
-							</div>
 
-							<div class="card">
-								<div class="card-block">
-									<h4 class="card-title">FaceBook Group</h4>
+					<div class="col-sm-10 col-md-5 col-lg-4">
 
-									<div id="fbIframe">
+						<div class="card">
+							<div class="card-block">
+								<h4 class="card-title">Twitter Feed</h4>
 
-										<iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FAstonCSS&tabs=timeline&width=440&height=500&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="340" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+								<a class="twitter-timeline" href="https://twitter.com/AstonCSS" data-height="550" >Tweets by AstonCSS</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
-									</div>
-
-								</div>
 							</div>
 						</div>
 
 
 					</div>
 
-					<div class=" col-sm-2 col-xl-3"></div>
 
-				</div>
+					<div class="col-sm-1 hidden-md-up"></div>
+
+					<div class="hidden-md-up buttonSpacer"></div>
+
+					<div class="col-sm-1 hidden-md-up"></div>
+
+					<div class="col-sm-10  col-md-5 col-lg-4">
+
+						<div class="card">
+							<div class="card-block">
+								<h4 class="card-title">FaceBook Group</h4>
+
+								<div id="fbIframe">
+
+									<iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FAstonCSS&tabs=timeline&width=440&height=500&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="340" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+
+
+								</div>
+							</div>
+						</div>
+					</div>
 
 
 
+					<div class="col-sm-1 col-md-1 col-lg-2"></div>
+
+
+				</div><!-- CLOSE ROW -->
 
 
 
-				</div>
+				<!-- </div> -->
 
 
 
@@ -419,12 +371,13 @@
 
 		<footer>
 
-
 			<div class="row">
 
-				<div class="col-sm-4">
+
+				<div class="col-md-12 col-lg-5">
 
 					<div class="row">
+
 						<div class="col-sm-1"></div>
 						<div class="col-sm-4">
 							<a href="https://www.aston.ac.uk" target="_blank" ><img src="/media/AstonUniversityLogo.png" class="img-fluid" alt="An Imposter Posing As The Aston University Logo"></a>
@@ -433,28 +386,36 @@
 
 							<a data-toggle="tooltip" rel="mapTip" data-placement="top" title="Hit to see in 3D!" href="https://www.google.co.uk/maps/@52.4829266,-1.8849662,222a,20y,322.17h,71.7t/data=!3m1!1e3" target="_blank"><address>Aston Computer Science Society<br>Aston University <br>Birmingham<br>B4 7ET</address></a>
 						</div>
+
 					</div><!-- EndRow -->
 
 				</div>
 
-				<div class="col-sm-7">
-					
-					<button type="button" class="btn btn-outline-secondary">Link</button><br>
-					<br>
-					<a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" ><button type="button" class="btn btn-outline-secondary">Cookie Policy</button></a>
+				<div class="hidden-lg-up buttonSpacer">
 
 				</div>
 
-				<div class="col-sm-1"></div>
+				<div class="col-md-11 col-lg-6">
+					
+					<div class="row">
 
+						<div class="col">
+							<button type="button" class="btn btn-outline-secondary">Link</button>
+						</div>
 
+						<div class="col">
+							<a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" ><button type="button" class="btn btn-outline-secondary">Cookie Policy</button></a>
+						</div>
 
+					</div><!-- EndRow -->
 
+				</div>
+
+				<div class="hidden-lg-up buttonSpacer"></div>
+				
+				<div class="col-sm-1 col-lg-1"></div>
 
 			</div><!-- Close Row -->
-
-
-
 
 		</footer>
 

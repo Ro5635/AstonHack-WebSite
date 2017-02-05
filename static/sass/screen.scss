@@ -11,7 +11,7 @@
 body, html {
     height: 100%;
     font-family: 'Lato', sans-serif;
- 
+
 }
 
 #page{
@@ -37,9 +37,9 @@ body, html {
 /*
 	Add an additional text size
  */
-.display-5{
-	font-size: 2.6rem;
-    font-weight: 300;
+ .display-5{
+   font-size: 2.6rem;
+   font-weight: 300;
 }
 
 .parallax { 
@@ -61,21 +61,25 @@ body, html {
 
 
 
-background: -moz-linear-gradient(5deg, rgba(255, 255, 255, 1) 81%,rgba(27,39,91,0) 81%); /* FF3.6-15 */
-background: -webkit-linear-gradient(5deg, rgba(255, 255, 255, 1) 81%,rgba(27,39,91,0) 81%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(5deg, rgba(255, 255, 255, 1) 81%,rgba(27,39,91,0) 81%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    background: -moz-linear-gradient(5deg, rgba(255, 255, 255, 1) 81%,rgba(27,39,91,0) 81%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(5deg, rgba(255, 255, 255, 1) 81%,rgba(27,39,91,0) 81%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(5deg, rgba(255, 255, 255, 1) 81%,rgba(27,39,91,0) 81%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 
 
 
-display: block;
-width: 100%;
-height: 200px;
-z-index: 2;
+    display: block;
+    width: 100%;
+    height: 200px;
+    z-index: 2;
 
 }
 
 
-#astonTriangle{
+/*
+    Positioning for the aston triangel at the top of the page, JS scripts takes
+    care of the movment
+ */
+ #astonTriangle{
     /*margin: auto;*/
     /*display: block;*/
     max-width: 30%;
@@ -83,17 +87,44 @@ z-index: 2;
     /*text-align: center;*/
 
 
-    /*@include transform(translate(-50%, -50%));*/
-     -moz-transform: translate(-50%, -50%);
-         -o-transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%);
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-30%, -30%) ;
+    @include transform(translate(-30%, -30%));
+
+    //  -moz-transform: translate(-30%, -30%);
+    //      -o-transform: translate(-30%, -30%);
+    //     -ms-transform: translate(-30%, -30%);
+    // -webkit-transform: translate(-30%, -30%);
+    // transform: translate(-30%, -30%) ;
 
 
     display: inline-block;
     text-align: center;
     position: absolute;
+
+    @include respond-to('mobile') {
+
+        top: 63%;
+
+    }
+
+    @include respond-to('small') {
+
+        top: 60%;
+
+    }
+
+    @include respond-to('medium') {
+
+        top: 50%;
+
+    }
+
+    @include respond-to('large') {
+
+        top: 50%;
+
+    }
+
+
     top: 50%;
     left: 50%;
     
@@ -138,34 +169,60 @@ z-index: 2;
     background-image: url("/media/bg.jpg");
     
         /* Create the parallax scrolling effect */
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
 
-    @include dropShaddowBellow(0 40px 50px -12px);
+        @include dropShaddowBellow(0 40px 50px -12px);
 
-}
+    }
 
-footer{
+    .buttonSpacer{
+        height: 5%;
+        display: block;
+        width: 100%;
+    }
 
-	height: 15%;
-	width: 100%;
-	margin-top: 5%;
-	background-color: #0e100c;;
-	text-align: center;
-	padding-top: 2%;
-	color: white;
+
+    footer{
+
+
+       width: 100%;
+       margin-top: 5%;
+       padding-top: 2%;
+       padding-bottom: 2%;
+       background-color: #0e100c;;
+       text-align: center;
+       color: white;
 
     //nudge the image down a little, centre verticaly if desired later
-	img{
+    img{
 
-	   padding-top: 1%;
-	
-	
-	}
 
-	a address{
+        @include respond-to('mobile') {
+
+            width: 65%;
+            margin-top: 5%; 
+            margin-bottom: 5%; 
+
+        }
+
+        @include respond-to('small') {
+
+            width: 65%;
+            margin-top: 5%; 
+            margin-bottom: 5%; 
+
+        }
+
+
+        padding-top: 1%;
+
+
+    }
+
+    a address{
 		//Get rid of margin-bottom which will skrew up bg style
 		margin-bottom: 0;
 		font-size: 0.9em;
@@ -174,7 +231,7 @@ footer{
         color: white;
 
 
-	}
+    }
 
 }
 
