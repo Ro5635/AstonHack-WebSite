@@ -11,20 +11,11 @@ app.secret_key = "super secret key"
 # Run in debugging mode
 app.debug = True
 
-# @app.route("/")
-# def home():
 
+@app.route("/")
+def home():
 
-@app.route("/parallax/")
-def parallax():
-
-
-	return	app.send_static_file('parrallax.html')
-	
-
-
-
-
+	return	app.send_static_file('acss.html')
 
 
 if __name__ == "__main__":
