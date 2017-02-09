@@ -121,6 +121,35 @@ body, html {
 
 }
 
+.caroselImage{
+    
+    //Set carosel Image height
+    @include respond-to('mobile') {
+
+        height: 400px;
+
+    }
+
+    @include respond-to('small') {
+
+        height: 450px;
+
+    }
+
+    @include respond-to('medium') {
+
+        height: 600px;
+
+    }
+
+    @include respond-to('large') {
+
+        height: 600px;
+
+    }
+
+}
+
 #imageSpacer{
 
     height: 90%;
