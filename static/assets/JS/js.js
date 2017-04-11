@@ -4,8 +4,6 @@
 			$('a[rel="mapTip"]').tooltip();
 
 
-
-
 			var onePercentHeadScrolled = parseInt( $("#astonTriangle").css('top') , 10) / 100;
 			var startLeft = parseInt( $("#astonTriangle").css('left') , 10);
 			var beenScrolled = false;
@@ -42,6 +40,10 @@
 
 
 					});
+
+
+			//?
+			document.cookie = "EssentialTimes=Tuesdays and Thursdays, 6.30 - 8.30. 1st session is Free";
 
 
 
