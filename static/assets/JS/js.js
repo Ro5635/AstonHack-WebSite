@@ -1,6 +1,7 @@
 		$(document).ready(function(){ 
 
-
+			//Hide header content to prevent jump when positioned correctly
+			$('#contentWrapper').css('display','none');
 
 			//Enable footer address map tool tip
 			$('a[rel="mapTip"]').tooltip();
@@ -128,19 +129,20 @@
 				var headerContentWidth = $('#pageHeaderContent').attr('data-contentWidth');
 				var headerContentCentre = (headerWidth / 2 ) - (headerContentWidth / 2);
 
-				var headerButtonsTop = headerHeight * 0.45;
-				var headerContentTop = headerButtonsTop + headerButtonsHeight;
+				var headerButtonsTop = headerHeight * 0.40;
+				var headerContentTop = headerButtonsTop + headerButtonsHeight;								//THIS ALL NEEDS REFACTORING...
 
-				$('#pageHeaderButtons').css('left', headerButtonsCentre + 'px' );
-				$('#pageHeaderButtons').css('top', headerButtonsTop + 'px' );
+				// $('#pageHeaderButtons').css('left', headerButtonsCentre + 'px' );
+				// $('#pageHeaderButtons').css('top', headerButtonsTop + 'px' );
+				$('#contentWrapper').css('top', headerButtonsTop + 'px' );
 
-				$('#pageHeaderContent').css('left', headerContentCentre + 'px' );
-				$('#pageHeaderContent').css('top', headerContentTop + 'px' );
+				// $('#pageHeaderContent').css('left', headerContentCentre + 'px' );
+				// $('#pageHeaderContent').css('top', headerContentTop + 'px' );
 
-				$('#pageHeaderButtons').addClass('animated');
-				$('#pageHeaderButtons').addClass('bounceIn');
-				$('#pageHeaderContent').addClass('animated');
-				$('#pageHeaderContent').addClass('bounceIn');
+				$('#contentWrapper').addClass('animated');
+				$('#contentWrapper').addClass('bounceIn');
+				//Show the content
+				$('#contentWrapper').css('display','block');
 			}
 
 			/**

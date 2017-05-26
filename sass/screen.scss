@@ -94,14 +94,14 @@ body, html {
 
 /*
 	Add an additional text size
- */
- .display-5{
-     font-size: 2.6rem;
-     font-weight: 300;
- }
+   */
+   .display-5{
+       font-size: 2.6rem;
+       font-weight: 300;
+   }
 
 
- #imageSpacer{
+   #imageSpacer{
 
     width: 100%;
     display: block;
@@ -115,25 +115,131 @@ body, html {
 
 #pageHeader{
 
-    #pageHeaderButtons{
+    z-index: 1;
+
+    //The aston hack logo
+    #pageHeaderContentWrapper{
+
+        margin-top: 2%;
+
+        @include respond-to('mobile') {
+            // background-color: green;
+            margin-top: 4%;
+        }
+
+        @include respond-to('small') {
+            // background-color: yellow;
+        }
+
+        @include respond-to('medium') {
+            // background-color: blue;
+        }
+
+        @include respond-to('large') {
+            // background-color: red;
+            margin-top: 1%;
+        }
+
+
+        
+
+        /* center the element */
+        text-align: center;
+        right: 0;
+        left: 0;
+        margin-right: auto;
+        margin-left: auto;
         position: fixed;
+        width: 100%;
+        height: 40%;
+
+        img{
+            //Aston hack logo
+            width: 30%;
+
+            @include respond-to('mobile') {
+                width: 30%;
+            }
+
+            @include respond-to('small') {
+                width: 30%;
+            }
+
+            @include respond-to('medium') {
+                width: 25%;
+            }
+
+            @include respond-to('large') {
+                width: 15%;
+            }
+        }
+
+
+    }
+
+    //Contains all of the buttons and text that makes up the main section of the 
+    //header
+    #contentWrapper{
+        position: absolute;
+
+        /* center the element */
+        right: 0;
+        left: 0;
+        margin-right: auto;
+        margin-left: auto;
+        width: 60%;
+        bottom: 0;
+    }
+
+    #pageHeaderButtons{
+        // position: absolute;
+
         
         text-align: center;
         color: white;
-        //Hidden at first to allow for calculation of positioning
-        display: none;
+
+        //Both margins are done on this element to centralise it better for media queieres
+        margin-bottom: 5%;
+        margin-top: 5%;
+
+        @include respond-to('mobile') {
+            margin-bottom: 5%;
+            margin-top: 5%;
+        }
+
+        @include respond-to('small') {
+            margin-bottom: 5%;
+            margin-top: 5%;
+        }
+
+        @include respond-to('medium') {
+            margin-bottom: 4%;
+            margin-top: 4%;
+        }
+
+        @include respond-to('large') {
+            margin-bottom: 2%;
+            margin-top: 2%;
+        }
+        
+        display: block;
 
         font-size: 1em;
 
     }
 
     #pageHeaderContent{
-        position: fixed;
+        // position: absolute;
         z-index: 0;
         text-align: center;
+        right: 0;
+        left: 0;
+        margin-right: auto;
+        margin-left: auto;
+        
         color: white;
-        //Hidden at first to allow for calculation of positioning
-        display: none;
+
+        display: block;
         font-size: 1em;
 
         h1{
@@ -175,14 +281,14 @@ body, html {
     background-color: $plainBackground2;
     overflow: hidden;
     
-    background-image: url('/assets/media/astonhack-logo.svg');
+    // background-image: url('/assets/media/astonhack-logo.svg');
 
-    background-attachment: fixed;
+    // background-attachment: fixed;
 
-    background-size: 15%;
-    background-position-x: center;
-    background-position-y: 5%;
-    background-repeat: no-repeat;
+    // background-size: 15%;
+    // background-position-x: center;
+    // background-position-y: 5%;
+    // background-repeat: no-repeat;
 
 
 
@@ -240,7 +346,7 @@ body, html {
 
 .navbar-brand{
 
- img{
+   img{
 
     transition: background 1.2s ease;
 
@@ -291,6 +397,9 @@ body, html {
     z-index: 1;
     padding: 0px 0px;
 
+    // Add the drop shadow that falls over the footer
+    @include dropShaddowBellow(0 0px 50px 20px);
+
 
 }
 
@@ -319,18 +428,17 @@ body, html {
 
 
 //Add a short wxtension onto the page to give the drop shaddow effect 
- #pageEnd{
+#pageEnd{
 
     display: block;
     height: 45%;
     @include dropShaddowBellow(0 40px 50px -12px);
- }
+}
 
-//Add a drop shadow to the end of the page over the footer to add depth
- #pageFootDropShadowSource{
-    @include dropShaddowBellow(0 0px 50px 20px);
 
- }
+////////////*/
+//              Footer Styles
+////////////*/
 
 footer{
 
@@ -343,37 +451,37 @@ footer{
 
     position: fixed;
     bottom: 0;
-    z-index: -2;
+    z-index: 0;
 
- #primFooterLogo{
+    #primFooterLogo{
 
-    max-width: 45%;
+        max-width: 45%;
 
-    @include respond-to('mobile') {
-        max-width: 50%;
+        @include respond-to('mobile') {
+            max-width: 50%;
 
+        }
+
+        @include respond-to('small') {
+            max-width: 40%;
+
+        }
+
+        @include respond-to('medium') {
+            max-width: 30%;
+
+        }
+
+        @include respond-to('large') {
+            max-width: 20%;
+
+        }
     }
-
-    @include respond-to('small') {
-        max-width: 40%;
-
-    }
-
-    @include respond-to('medium') {
-        max-width: 30%;
-
-    }
-
-    @include respond-to('large') {
-        max-width: 20%;
-
-    }
-}
 
     #astonULogo{
         //Nudge the Aston uni logo down a bit so it lines up better with the wierd SU logo
         margin-top: 5%;
-    
+
         @include respond-to('mobile') {
             margin-top: 5%;
 
