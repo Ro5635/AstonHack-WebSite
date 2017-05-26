@@ -1,7 +1,12 @@
+		
+		//Hide header content to prevent jump when positioned correctly
+		//This is execute before the page is ready
+		document.getElementById("contentWrapper").style.display = "none";
+		// $('#contentWrapper').css('display','none');
+
 		$(document).ready(function(){ 
 
-			//Hide header content to prevent jump when positioned correctly
-			$('#contentWrapper').css('display','none');
+
 
 			//Enable footer address map tool tip
 			$('a[rel="mapTip"]').tooltip();
@@ -130,14 +135,14 @@
 				var headerContentCentre = (headerWidth / 2 ) - (headerContentWidth / 2);
 
 				var headerButtonsTop = headerHeight * 0.40;
-				var headerContentTop = headerButtonsTop + headerButtonsHeight;								//THIS ALL NEEDS REFACTORING...
+				var headerContentTop = headerButtonsTop + headerButtonsHeight + (headerHeight * 0.04) ;								//THIS ALL NEEDS REFACTORING...
 
 				// $('#pageHeaderButtons').css('left', headerButtonsCentre + 'px' );
 				// $('#pageHeaderButtons').css('top', headerButtonsTop + 'px' );
 				$('#contentWrapper').css('top', headerButtonsTop + 'px' );
 
 				// $('#pageHeaderContent').css('left', headerContentCentre + 'px' );
-				// $('#pageHeaderContent').css('top', headerContentTop + 'px' );
+				$('#pageHeaderContent').css('top', headerContentTop + 'px' );
 
 				$('#contentWrapper').addClass('animated');
 				$('#contentWrapper').addClass('bounceIn');
@@ -163,10 +168,10 @@
 				
 				if(scroll > hideHeaderButtScrollPos){
 					//show
-					$('#pageHeaderButtons').css('z-index', 0);
+					$('#astonmb').css('z-index', 3);
 				}else{
 					//move z-index so building will slide overtop
-					$('#pageHeaderButtons').css('z-index', 1);
+					$('#astonmb').css('z-index', -1);
 				}
 
 				if(scroll > pageHeaderHeight && buttonsVisible){

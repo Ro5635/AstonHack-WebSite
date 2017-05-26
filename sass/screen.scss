@@ -229,8 +229,8 @@ body, html {
     }
 
     #pageHeaderContent{
-        // position: absolute;
-        z-index: 0;
+        position: fixed;
+        z-index: -5;
         text-align: center;
         right: 0;
         left: 0;
@@ -301,6 +301,8 @@ body, html {
 
     max-width: 100%;
     position: absolute;
+    //Make the building unselectable so it doesnt block the buttons
+    z-index: -2;
 
 
     @include respond-to('mobile') {
