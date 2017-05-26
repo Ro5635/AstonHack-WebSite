@@ -295,57 +295,6 @@ body, html {
 }
 
 
-@include respond-to('mobile') {
-
-        // background-color: $plainBackground1;
-
-
-        height: 30%;
-
-        #imageSpacer{
-
-            height: 50%;
-
-        }
-
-
-    }
-
-    @include respond-to('small') {
-        height: 25%;
-
-        #imageSpacer{
-            height: 50%;
-
-        }
-
-    }
-
-    @include respond-to('medium') {
-        height: 70%;
-
-        #imageSpacer{
-            height: 90%;
-
-        }
-
-    }
-
-    @include respond-to('large') {
-        height: 70%;
-
-        #imageSpacer{
-            height: 90%;
-
-        }
-
-    }
-    //Else
-    //Full height
-    height: 70%;
-}
-
-
 ////////////*/
 //              FAQs Styles
 ////////////*/
