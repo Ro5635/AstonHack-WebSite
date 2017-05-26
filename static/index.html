@@ -1,10 +1,10 @@
-<DOCTYPE html>
-	<html>
-	<head>
-		<!-- Content Security Policy -->
+<!doctype html>
+<html lang="en">
+<head>
+	<!-- Content Security Policy -->
 
-		<!-- This is not working, always done this with a header before. Searching Google has been fruitless; good luck!  -->
-		<!-- Intresting addition: The CSP works On Ipads... but not Macs... Confused. -->
+	<!-- This is not working, always done this with a header before. Searching Google has been fruitless; good luck!  -->
+	<!-- Intresting addition: The CSP works On Ipads... but not Macs... Confused. -->
 
 	<!-- 	 <meta http-equiv="Content-Security-Policy" content="
 		 	
@@ -24,323 +24,357 @@
 		 		;
 
 
-		 	"> -->
+		 		"> -->
 
 
-		<!-- End CSP -->
+		 		<!-- End CSP -->
 
 
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta charset="UTF-8">
+		 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		 		<meta charset="UTF-8">
 
-		<meta description="Aston University Computer Science Society">
+		 		<meta description="Aston University Computer Science Society">
 
 
 
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+		 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 
-		<link rel="stylesheet" type="text/css" href="assets/stylesheets/screen.css">
-		<link rel="stylesheet" type="text/css" href="assets/stylesheets/3rdParty/animate.min.css">
-		<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-		<link rel="shortcut icon" type="image/png" href="/favicon.ico"/>
+		 		<link rel="stylesheet" type="text/css" href="assets/stylesheets/screen.css">
+		 		<link rel="stylesheet" type="text/css" href="assets/stylesheets/3rdParty/animate.min.css">
+		 		<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+		 		<link href="https://fonts.googleapis.com/css?family=Playfair+Display|Raleway" rel="stylesheet">
+		 		<link rel="shortcut icon" type="image/png" href="favicon.ico"/>
 
-		<title>ACSS</title> 
+		 		<title>Aston Hack</title> 
 
-	</head>
-	<body>
+		 	</head>
+		 	<body>
 
-		<div id="page">
+		 		<div id="page">
 
-			<div id="fb-root"></div>
-			<script>(function(d, s, id) {
-				var js, fjs = d.getElementsByTagName(s)[0];
-				if (d.getElementById(id)) return;
-				js = d.createElement(s); js.id = id;
-				js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.8";
-				fjs.parentNode.insertBefore(js, fjs);
-			}(document, 'script', 'facebook-jssdk'));</script>
+		 			<div id="pageHeader" class="container-fluid"><!-- Container element -->
 
+		 				<div id="pageHeaderButtons">
 
+		 					<button type="button" class="btn btn-secondary btn-lg">Register For Updates</button>
 
-			<img id="astonTriangle" class="" alt="Aston University Triangle" src="/assets/media/AstonTriangle.svg">
 
 
+		 				</div>
 
-			<div class="parallax">
+		 				<div id="pageHeaderContent">
+		 					<h1>Xth &amp; Yth November 2017</h1>
+		 				</div>
+		 				
 
 
-				<div id="imageSpacer"></div>
+		 				<img id="astonmb" class="animated fadeInUp" src="/assets/media/aston-mb-cut5.png">
 
-				<div id="angularTransitionBorder"></div>
 
-			</div>
 
-			<div class="container-fluid"><!-- Container element -->
+		 			</div>
 
 
-				<div id="latestInfoPane">
+		 			<nav class="mainNavBar navbar navbar-toggleable-md navbar-light bg-faded">
+		 				<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		 					<span class="navbar-toggler-icon"></span>
+		 				</button>
+		 				<a class="navbar-brand" href="#"> <img src='/assets/media/astonhack-logo.svg'> </a>
 
+		 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		 					<ul class="mainNavLinks navbar-nav mr-auto">
+		 						<li class="nav-item active">
+		 							<a class="nav-link" href="#about">About <span class="sr-only">(current)</span></a>
+		 						</li>
+		 						<li class="nav-item">
+		 							<a class="nav-link" href="#oursponsors">Sponsors</a>
+		 						</li>
+		 						<li class="nav-item">
+		 							<a class="nav-link disabled" href="#">Schedule</a>
+		 						</li>
+		 					</ul>
 
-					<!-- <div class="container"> -->
+		 				</div>
+		 			</nav>
 
 
 
-					<!-- Add some v space -->
-					<div class="form-group">
-						&nbsp;
-					</div>
 
 
-					<div class="row">
-						<div class="col-sm-1 col-md-1"></div>
-						<div class="col-sm-7 col-md-5">
-							<img src="/assets/media/acss-logo.png" class="img-fluid" alt="Aston Computer Science Society Logo">
+		 			<div class="pageContentSection container-fluid"><!-- Container element -->
 
-						</div>
 
-						<div class="col-sm-4 col-md-6"></div>
-					</div>
+		 				<div class="pageContentSection" id="latestInfoPane">
 
-					<!-- Add some v space -->
-					<div class="form-group ">
-						&nbsp;
-					</div>
 
+		 					<!-- <div class="container"> -->
 
 
-					<div class="row">
 
-						<div class="col-sm-1 col-md-1 col-lg-2"></div>
+		 					<!-- Add some v space -->
+		 					<div class="form-group">
+		 						&nbsp;
 
-						<div class="col-sm-10 col-md-10 col-lg-8">
-							<p class="lead">
-								<span class="font-weight-bold display-5">Aston Universities </span> student <!-- lead  -->society dedicated to the research in the human capacity for the consumption of pizza. We spearhead termly revision sessions and host a mix of employer and tech events along with our renowned gaming nights.
+		 					</div>
 
-							</p>
-						</div>
 
-						<div class="col-sm-1 col-md-1 col-lg-2"></div>
+		 					<div class="row">
+		 						<div class="col-sm-1 col-md-2"></div>
+		 						<div class="col-sm-10 col-md-9">
+		 							<a name="about"><h1 class="display-1 AHTitle">Aston Hack 2017</h1></a>
 
-					</div>
+		 							<p class="lead">
+		 								<!-- Aston Hack is happaning again!<br> -->
+		 								&nbsp;&nbsp;&nbsp;&nbsp;Were inviting student hackers to join us for a frenzied 24 hours of designing, coding and making, whether this will be your first hackathon or your 20th come join us and build something amazing!
+		 							</p>
+		 							<br>
 
+		 							
 
+		 						</div>
 
-					<!-- Add some v space -->
-					<div class="form-group standardVSpace">
-						&nbsp;
-					</div>
+		 						<div class="col-sm-1 col-md-2"></div>
+		 					</div>
 
 
 
-					<div class="row">
-						<div class="col-sm-0 col-md-1 col-lg-1"></div>
-						<div class="col-sm-12 col-md-10 col-lg-10">
 
+		 					<div class="row">
 
-							<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-								<ol class="carousel-indicators">
-									<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-									<li data-target="#carouselExampleIndicators" data-slide-to="1" class=""></li>
-									<li data-target="#carouselExampleIndicators" data-slide-to="2" class=""></li>
-									<li data-target="#carouselExampleIndicators" data-slide-to="3" class=""></li>
-								</ol>
-								<div class="carousel-inner" role="listbox">
-									<div class="carousel-item active">
-										<img class="d-block img-fluid caroselImage" src="/assets/media/FBDownload1.jpg"  alt="Some gaming event in full swing" data-holder-rendered="true" style="width: 100%;">
-									</div>
-									<div class="carousel-item">
-										<img class="d-block img-fluid caroselImage" src="/assets/media/FBDownload2.jpg"  alt="Street Fighter Gaming" data-holder-rendered="true" style="width: 100%;">
-									</div>
+		 						<div class="col-sm-1 col-md-2 col-lg-2"></div>
+		 						<!-- 		 						<div class="col-sm-10 col-md-8 col-lg-8"> -->
 
-									<div class="carousel-item">
-										<img class="d-block img-fluid caroselImage" src="/assets/media/FBDownload3.jpg"  alt="Pizza Consumption" data-holder-rendered="true" style="width: 100%;">
-									</div>
 
-									<div class="carousel-item">
-										<img class="d-block img-fluid caroselImage" src="/assets/media/FBDownload4.jpg"  alt="900x400" data-holder-rendered="true" style="width: 100%;">
-									</div>
+<!-- 		 						<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner" role="listbox">
+    <div class="carousel-item active" id="slide1">
 
-								</div>
-								<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-									<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-									<span class="sr-only">Previous</span>
-								</a>
-								<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-									<span class="carousel-control-next-icon" aria-hidden="true"></span>
-									<span class="sr-only">Next</span>
-								</a>
-							</div>
+    </div>
+    <div class="carousel-item" id="slide2">
 
+    </div>
+    <div class="carousel-item" id="slide">
 
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div> -->
 
-						</div>
 
-						<div class="col-sm-0 col-md-1 col-lg-1"></div>
 
-					</div>
+<div class="fadein col-sm-10 col-md-4 col-lg-4">
 
+	<!-- <img class="rounded img-fluid" src="/assets/media/AstonHack2016Image1.jpg" alt="Aston Hack 2016"> -->
+	<img class="rounded img-fluid" src="/assets/media/AstonHack2016Image3.jpg" alt="Aston Hack 2016">
+		<!--  							<img class="rounded img-fluid" src="/assets/media/AstonHack2016Image4.jpg" alt="Aston Hack 2016">
+		 							<img class="rounded img-fluid" src="/assets/media/AstonHack2016Image5.jpg" alt="Aston Hack 2016">
+		 							<img class="rounded img-fluid" src="/assets/media/AstonHack2016Image6.jpg" alt="Aston Hack 2016">
+		 							<img class="rounded img-fluid" src="/assets/media/AstonHack2016Image7.jpg" alt="Aston Hack 2016">
+		 							<img class="rounded img-fluid" src="/assets/media/AstonHack2016Image8.jpg" alt="Aston Hack 2016">
+		 							<img class="rounded img-fluid" src="/assets/media/AstonHack2016Image9.jpg" alt="Aston Hack 2016">
+		 							<img class="rounded img-fluid" src="/assets/media/AstonHack2016Image10.jpg" alt="Aston Hack 2016">
+		 							<img class="rounded img-fluid" src="/assets/media/AstonHack2016Image11.jpg" alt="Aston Hack 2016">
+		 							<img class="rounded img-fluid" src="/assets/media/AstonHack2016Image12.jpg" alt="Aston Hack 2016">
+		 							<img class="rounded img-fluid" src="/assets/media/AstonHack2016Image13.jpg" alt="Aston Hack 2016">
+		 							<img class="rounded img-fluid" src="/assets/media/AstonHack2016Image14.jpg" alt="Aston Hack 2016">
+		 							<img class="rounded img-fluid" src="/assets/media/AstonHack2016Image15.jpg" alt="Aston Hack 2016"> -->
 
+		 						</div>
 
+		 						<div class="fadein hidden-sm-down col-md-4 col-lg-4">
 
+	<!-- 	 							<img class="rounded img-fluid" src="/assets/media/AstonHack2016OR.jpg" alt="Aston Hack 2016">
 
-					<!-- Add some v space -->
-					<div class="form-group standardVSpace">
-						&nbsp;
-					</div>
+		 							<img class="rounded img-fluid" src="/assets/media/AstonHack2016Image1.jpg" alt="Aston Hack 2016">
+		 							<img class="rounded img-fluid" src="/assets/media/AstonHack2016Image3.jpg" alt="Aston Hack 2016">
+		 							<img class="rounded img-fluid" src="/assets/media/AstonHack2016Image4.jpg" alt="Aston Hack 2016"> -->
+		 							<img class="rounded img-fluid" src="/assets/media/AstonHack2016Image5.jpg" alt="Aston Hack 2016">
+<!-- 		 							<img class="rounded img-fluid" src="/assets/media/AstonHack2016Image6.jpg" alt="Aston Hack 2016">
+		 							<img class="rounded img-fluid" src="/assets/media/AstonHack2016Image7.jpg" alt="Aston Hack 2016">
+		 							<img class="rounded img-fluid" src="/assets/media/AstonHack2016Image8.jpg" alt="Aston Hack 2016">
+		 							<img class="rounded img-fluid" src="/assets/media/AstonHack2016Image9.jpg" alt="Aston Hack 2016">
+		 							<img class="rounded img-fluid" src="/assets/media/AstonHack2016Image10.jpg" alt="Aston Hack 2016">
+		 							<img class="rounded img-fluid" src="/assets/media/AstonHack2016Image11.jpg" alt="Aston Hack 2016">
+		 							<img class="rounded img-fluid" src="/assets/media/AstonHack2016Image12.jpg" alt="Aston Hack 2016">
+		 							<img class="rounded img-fluid" src="/assets/media/AstonHack2016Image13.jpg" alt="Aston Hack 2016">
+		 							<img class="rounded img-fluid" src="/assets/media/AstonHack2016Image14.jpg" alt="Aston Hack 2016">
+		 							<img class="rounded img-fluid" src="/assets/media/AstonHack2016Image15.jpg" alt="Aston Hack 2016"> -->
 
+		 						</div>
 
+		 						<!-- </div> -->
 
-					<div class="row">
-						<div class="col-sm-1 col-md-2"></div>
-						<div class="col-sm-10 col-md-10">
-							<span class="display-5 font-weight-bold">What are we doing:</span>
-						</div>
+		 						<div class="col-sm-1 col-md-2 col-lg-2"></div>
 
+		 					</div>
 
-					</div><!-- EndRow -->
 
-					<!-- Add some v space -->
-					<div class="form-group ">
-						&nbsp;
-					</div>
 
+		 					<!-- Add some v space -->
+		 					<div class="form-group standardVSpace">
+		 						&nbsp;
+		 					</div>
 
 
-					<div class="row">
-						<div class="col-sm-1 col-md-1 col-lg-2"></div>
+		 					<div class="row">
+		 						<div class="col-sm-1 col-md-2"></div>
+		 						<div class="col-sm-10 col-md-9">
+		 							<h2 class="display-3 AHTitle">FAQs</h2>
 
+		 							<div class="lead AHFAQList">
+		 								<h3 class="AHTitle display-5">What is a hackathon?</h3>
+		 								<p>A hackathon is an invention marathon. Students come together to build cool software &amp; hardware hacks over 24-48 hours. It’s very beginner friendly.</p>
 
+		 								<h3 class="AHTitle display-5">How much does it cost?</h3>
+		 								<p>Nothing! Attending a hackathon is free! 😁</p>
 
-						<div class="col-sm-10 col-md-5 col-lg-4">
+		 								<h3 class="AHTitle display-5">Do I need to be a student to attend?</h3>
+		 								<p>Yes. Only students over the age of 18 who are currently enrolled at a college/university or have graduated within the past 12 months are eligible to attend as hackers.</p>
 
-							<div class="card">
-								<div class="card-block">
-									<h4 class="card-title">Twitter Feed</h4>
+		 								<h3 class="AHTitle display-5">Where/when is the event?</h3>
+		 								<p>Check in will be between 10am and 11am in the main foyer of Aston University, Aston Triangle, Birmingham, B4 7ET. Don’t worry, we’ll have signs so you don’t get lost in the labyrinth that is Aston</p>
 
-									<a class="twitter-timeline" href="https://twitter.com/AstonCSS" data-height="550" >Tweets by AstonCSS</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+		 								<h3 class="AHTitle display-5">What is Major League Hacking?</h3>
+		 								<p>Major League Hacking is the official student hackathon league in North America &amp; Europe. They work with over 200 Member Events and empower over 70,000 students every year.</p>
 
+		 								<h3 class="AHTitle display-5">Is there a code of conduct?</h3>
+		 								<p>Yes, we stick strongly to the MLH code of conduct. You can find it <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">here.</a></p>
 
-								</div>
-							</div>
+		 								<h3 class="AHTitle display-5">Can we sponsor AstonHack?</h3>
+		 								<p>Yes! We’d love for your company to sponsor, and help make this fantastic event possible! You can view our sponsorship document here. We would ask all potential sponsors to email hack [at] astoncss.co.uk and one of the team will get back to you.</p>
 
+		 							</div>
+		 							<br>
 
-						</div>
+		 							
 
+		 						</div>
 
-						<div class="col-sm-1 hidden-md-up"></div>
+		 						<div class="col-sm-1 col-md-2"></div>
+		 					</div>
 
-						<div class="hidden-md-up standardVSpace"></div>
 
-						<div class="col-sm-1 hidden-md-up"></div>
 
-						<div class="col-sm-10  col-md-5 col-lg-4">
 
-							<div class="card">
-								<div class="card-block">
-									<h4 class="card-title">FaceBook Group</h4>
 
-									<div id="fbIframe">
 
-										<iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FAstonCSS&tabs=timeline&width=440&height=500&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="340" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
 
+		 					<!-- Add some v space -->
+		 					<div class="form-group standardVSpace">
+		 						&nbsp;
+		 					</div>
 
-									</div>
-								</div>
-							</div>
-						</div>
 
 
+		 					<div class="row">
+		 						<div class="col-sm-1 col-md-2"></div>
+		 						<div class="col-sm-10 col-md-10">
+		 							<a name="oursponsors"><h2 class="display-3 AHTitle">Our Sponsors</h2></a>
+		 						</div>
 
-						<div class="col-sm-1 col-md-1 col-lg-2"></div>
 
+		 					</div><!-- EndRow -->
 
-					</div><!-- CLOSE ROW -->
 
+		 					<div class="row">
 
+		 						THe sponsors stuff will go here...
+		 					</div>
 
-					<!-- </div> -->
 
+		 					<div class="row verticalSpace"></div>
+		 					<div class="row verticalSpace"></div>
+		 					<div class="row verticalSpace"></div>
+		 					<div class="row verticalSpace"></div>
 
+		 				</div><!-- Close Info Pane -->
 
+		 			</div><!-- Close Container -->
 
+		 			<div id="pageFootDropShadowSource"></div>
 
-					<!-- Add some v space -->
-					<div class="form-group">
-						&nbsp;
-					</div>
+					<div id="pageEnd"></div>
 
-				</div><!-- Close Info Pane -->
+		 			<footer>
 
-			</div><!-- Close Container -->
+		 				<div class="row verticalSpace"></div>
 
-			<!-- Add some v space -->
-			<div class="pageStdVSpace">
-				&nbsp;
-			</div>
+		 				<div class="row text-center">
+		 					<!-- Footer Logos Row -->
+		 					<div class="col">
+		 						<!-- ACSS Logo -->
+		 						<a href="https://astoncss.com/" target="_blank" ><img id="primFooterLogo" src="/assets/media/acss-logo-web.png" class="img-fluid" alt="The Aston Computer Science Society Logo"></a>
+		 					</div>
 
+		 				</div>
 
 
-			<footer>
 
-				<div class="row">
+		 				<div class="row text-center">
+		 					<!-- Footer Logos Row -->
+		 					<div class="col"> 
+		 						<!-- Aston University Logo -->
+		 						<a href="https://www.aston.ac.uk" target="_blank" ><img id="astonULogo"  src="/assets/media/AstonLogoRFullerVersion.png" class="img-fluid secondryPartners" alt="An Imposter Posing As The Aston University Logo"></a>
+		 					</div>
 
+		 					<div class="col">
+		 						<!-- Aston Students Union Logo -->
+		 						<a href="https://www.astonsu.com/" target="_blank" ><img id="astonSULogo" src="/assets/media/AstonStudentsUnionLogo.png" class="img-fluid secondryPartners" alt="Aston Universitys Students Union"></a>
+		 					</div>
 
-					<div class="col-md-12 col-lg-5">
+		 				</div>
 
-						<div class="row">
 
-							<div class="col-sm-1"></div>
-							<div class="col-sm-4">
-								<a href="https://www.aston.ac.uk" target="_blank" ><img src="/assets/media/AstonLogoRFullerVersion.png" class="img-fluid" alt="An Imposter Posing As The Aston University Logo"></a>
-							</div>
-							<div class="col-sm-7">
+		 				<div class="row verticalSpaceMobOnly"></div>
 
-								<a data-toggle="tooltip" rel="mapTip" data-placement="top" title="Hit to see in 3D!" href="https://www.google.co.uk/maps/@52.4829266,-1.8849662,222a,20y,322.17h,71.7t/data=!3m1!1e3" target="_blank"><address>Aston Computer Science Society<br>Aston University <br>Birmingham<br>B4 7ET</address></a>
-							</div>
+		 				<div class="row text-center">
+		 					<!-- Row of footer containing the cookie Button -->
+		 					<div class="col">
+		 						<a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" ><button type="button" class="buttonSpacer btn btn-outline-secondary">Cookie Policy</button></a>
+		 						<br>
+		 					</div>
 
-						</div><!-- EndRow -->
+		 				</div>
 
-					</div>
+		 				<div class="row">
 
-					<div class="hidden-lg-up buttonSpacer">
+		 					<div class="col">
 
-					</div>
+		 						<a data-toggle="tooltip" rel="mapTip" data-placement="top" title="Hit to see in 3D!" href="https://www.google.co.uk/maps/@52.4829266,-1.8849662,222a,20y,322.17h,71.7t/data=!3m1!1e3" target="_blank"><address>Aston Computer Science Society<br>Aston University <br>Birmingham<br>B4 7ET</address></a>
+		 					</div>
 
-					<div class="col-md-11 col-lg-6">
+		 				</div><!-- EndRow -->
 
-						<div class="row">
+		 				<br>
 
-							<div class="col">
-								<button type="button" class="btn btn-outline-secondary">Link</button>
-							</div>
 
-							<div class="col">
-								<a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" ><button type="button" class="btn btn-outline-secondary">Cookie Policy</button></a>
-							</div>
 
-						</div><!-- EndRow -->
 
-					</div>
 
-					<div class="hidden-lg-up buttonSpacer"></div>
+		 			</footer>
 
-					<div class="col-sm-1 col-lg-1"></div>
 
-				</div><!-- Close Row -->
+		 		</div><!-- Close Page -->
 
-			</footer>
+		 		<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+		 		<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+		 		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+		 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 
+		 		<script src="assets/JS/js.js"></script>
 
-		</div><!-- Close Page -->
 
-		<div id="pageFloor"></div>
-
-		<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-
-		<script src="assets/JS/js.js"></script>
-
-
-	</body>
-	</html>
+		 	</body>
+		 	</html>
