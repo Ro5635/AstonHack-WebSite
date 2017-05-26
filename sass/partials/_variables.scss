@@ -1,10 +1,13 @@
 //Contains the 'global' variables used in this SASS project 
 
-$backgroundColour: #FAFFFD;// #FFFFFF;
-$HighLightColour: #FF3366;
-$Colour1:  #2EC4B6;
-$Colour2: #B3A394;
-$Colour3: #102542;
+/* HSL */
+$plainPageBackGround: hsla(0%, 0%, 100%, 1);
+$plainBackground2: hsla(207%, 95%, 8%, 1);
+$standOut1: hsla(345%, 100%, 60%, 1);
+$plainBackground1: hsla(260%, 14%, 4%, 1);
+$color5: hsla(183%, 79%, 13%, 1);
+
+
 //The colour used on the tooltips:
 $ToolTipColour: #38B499;
 
