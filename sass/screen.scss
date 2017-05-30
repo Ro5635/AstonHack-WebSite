@@ -92,16 +92,26 @@ body, html {
 
 }
 
-/*
-	Add an additional text size
-   */
-   .display-5{
-       font-size: 2.6rem;
-       font-weight: 300;
-   }
+// Add an additional text size
+.display-5{
+    font-size: 2.6rem;
+    font-weight: 300;
+}
+
+// Add an Further additional text size
+.display-6{
+    font-size: 2.2rem;
+    font-weight: 300;
+ }
+
+//  Add yet anouther additional text size
+.display-7{
+    font-size: 1.8rem;
+    font-weight: 300;
+}
 
 
-   #imageSpacer{
+ #imageSpacer{
 
     width: 100%;
     display: block;
@@ -348,7 +358,7 @@ body, html {
 
 .navbar-brand{
 
-   img{
+ img{
 
     transition: background 1.2s ease;
 
@@ -404,6 +414,59 @@ body, html {
 
 
 }
+
+
+////////////*/
+//              Google Maps Styles
+////////////*/
+
+#mapContainer{
+    height: 400px;
+    width: 75%;
+    display: inline-block;
+    box-shadow: 0 0px 20px 2px #000;
+    float: left;
+}
+
+#map {
+    height: 100%;
+    width: 100%;
+
+}
+
+//Side bar that sits to the right of the map in larger screens
+#mapAddressSideBar{
+    width: 23%;//remainder after width of map
+    height: 100%;
+    // background-color: red;
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+    float: right;
+
+    h3{
+        margin-bottom: 0.2em;
+        margin-top: 0.0em;
+    }
+
+    #transportaionIcons{
+        img{
+            max-width: 45%;    
+        }
+        
+    }
+
+}
+
+// When the map slides in and out the vertical height of the page needs to be
+//maintained; the height atribute should match the height of #mapAddressSideBar
+#mapVerticalSpaceMaintainer{
+    width: 100%;
+    height: 400px;
+    display: block;
+
+}
+
 
 
 ////////////*/

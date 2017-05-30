@@ -4,8 +4,14 @@
 		document.getElementById("contentWrapper").style.display = "none";
 		// $('#contentWrapper').css('display','none');
 
+		var mapDisplayed = 0;
+		var fullPageGMapOpened = 0; // Only open the google map in a new tab once; it gets annoying...
+		
+
 		$(document).ready(function(){ 
 
+			//Hide the map so it can be animated in
+			$('#mapContainer').hide();
 
 
 			//Enable footer address map tool tip
@@ -33,6 +39,38 @@
 			fixPageEndHeight();
 
 
+			/// Slide in the map when it is scrolled into the viewport, use inview.js to do this
+
+			$('#mapAddressSideBar').on('inview', function(event, isInView) {
+				if (isInView && !mapDisplayed) {
+   					// element is now visible in the viewport
+   					$('#mapContainer').css('display', 'inline-block');
+   					//Initilise the google map
+   					initMap();
+   					//Remove the event listener
+   					// $('mapAddressSideBar').off('inview'); //This does not seem to work...
+					mapDisplayed = !mapDisplayed; //Stop the map from being re-inited when the user scrolls in and out
+
+				} else {
+    			// element has gone out of viewport
+				}
+			});
+
+
+			///////
+
+			////////// When the map is clicked take the user to google maps
+			$('#mapContainer').click(function(){
+				if(!fullPageGMapOpened){
+					//open the maps link in a new tab
+					var win = window.open('https://www.google.co.uk/maps/place/Aston+University/@52.4869136,-1.8900871,17z/data=!4m15!1m9!4m8!1m0!1m6!1m2!1s0x4870bc9ae4f2e4b3:0x9a670ba18e08a084!2sAston+University,+Aston+Express+Way,+Birmingham+B4+7ET!2m2!1d-1.8878984!2d52.4869104!3m4!1s0x4870bc9ae4f2e4b3:0x9a670ba18e08a084!8m2!3d52.4869104!4d-1.8878984?hl=en', '_blank');
+
+					//Don't open this again
+					fullPageGMapOpened = !fullPageGMapOpened;
+				}
+				
+			});
+
 			/**
 				Parrallx like effect on the mainbuilding as the viewport is scrolled
 				*/
@@ -58,7 +96,7 @@
 			});
 
 
-			function handleMenuBar(){
+				function handleMenuBar(){
 				//Handle the menu bar
 				var origOffsetY = $('.mainNavBar').attr('data-origMenuOffsetY');
 

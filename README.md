@@ -1,6 +1,7 @@
-# ACSS Website
+# Aston Hack Website
 
-Some initial thoughts of what an ACSS website could look like.
+:rotating_light: Some ideas of what this could look like...
 
-:rotating_light:
+
+ 
 
