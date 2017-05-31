@@ -6,7 +6,7 @@
 
 		var mapDisplayed = 0;
 		var fullPageGMapOpened = 0; // Only open the google map in a new tab once; it gets annoying...
-		
+		var animateMapShaddow = 0;  // Animate the maps shaddow?
 
 		$(document).ready(function(){ 
 
@@ -40,7 +40,6 @@
 
 
 			/// Slide in the map when it is scrolled into the viewport, use inview.js to do this
-
 			$('#mapAddressSideBar').on('inview', function(event, isInView) {
 				if (isInView && !mapDisplayed) {
    					// element is now visible in the viewport
@@ -51,8 +50,14 @@
    					// $('mapAddressSideBar').off('inview'); //This does not seem to work...
 					mapDisplayed = !mapDisplayed; //Stop the map from being re-inited when the user scrolls in and out
 
+				}
+
+					animateMapShaddow = 1;
+
 				} else {
-    			// element has gone out of viewport
+    				// element has gone out of viewport
+    				animateMapShaddow = 0;
+
 				}
 			});
 
@@ -86,6 +91,11 @@
 					$("#astonmb").css("transform","translate( 0px , "  + vTransformpx + "px)");
 				}
 
+				if(animateMapShaddow){
+					animateGMapShadow();
+				
+				}
+
 
 				//Recalculate the header buttons visibility
 				reCalcHeaderButtonsState(scroll);
@@ -94,6 +104,30 @@
 				handleMenuBar();
 
 			});
+
+
+				//Animate the Google maps shadow based on the scroll position
+				function animateGMapShadow(){
+
+					var maxShadowOffSet = 50;	// The maximum shaddow offset in pixels
+
+					var verticalOffsetOnVPEnter = $('#mapContainer')[0].getBoundingClientRect().top ;
+
+					var HalfVPHeight = (jQuery(window).height() / 2);
+					var offSetFromCenter = (verticalOffsetOnVPEnter + ($('#mapContainer').height() / 2) )- HalfVPHeight;
+
+					//scale the offset
+					var scaleFactor = HalfVPHeight / maxShadowOffSet;
+					var shaddowOffset = Math.round(offSetFromCenter / scaleFactor);
+					console.log('offset S: ' + shaddowOffset);
+
+					//This now needs to happen in the HTML5 requestAnimationFrame...
+					$('#mapContainer').css('box-shadow', '0 ' + shaddowOffset + 'px 20px 2px #000');
+					// box-shadow: 0 0px 20px 2px #000; 
+
+
+
+				}
 
 
 				function handleMenuBar(){
@@ -106,20 +140,19 @@
 				}
 
 				if ($(window).scrollTop() >= origOffsetY) {
-					$('.mainNavBar').addClass('fixed-top');
-					//add padding to prevent jump with loss of nav bar
-					navBarHeight = parseInt($('.mainNavBar').css('height'));
-					$('.pageContentSection').filter(":first").css('padding-top',  navBarHeight);
+						$('.mainNavBar').addClass('fixed-top');
+						//add padding to prevent jump with loss of nav bar
+						navBarHeight = parseInt($('.mainNavBar').css('height'));
+						$('.pageContentSection').filter(":first").css('padding-top',  navBarHeight);
 
+					} else {
+						$('.mainNavBar').removeClass('fixed-top');
+						$('.mainNavBar').css('background-color', '#FFF' );
+						$('.mainNavLinks li').css('margin-right', '0vw' );
+						$('.pageContentSection').filter(":first").css('padding-top', 0)
 
-				} else {
-					$('.mainNavBar').removeClass('fixed-top');
-					$('.mainNavBar').css('background-color', '#FFF' );
-					$('.mainNavLinks li').css('margin-right', '0vw' );
-					$('.pageContentSection').filter(":first").css('padding-top', 0)
-
+					}
 				}
-			}
 
 
 			/**

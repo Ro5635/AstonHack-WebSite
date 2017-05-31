@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Untitled</title>
+
+    
+</head>
+<body>
+
+
+
+   <div id="mydiv" style="display: block;position: absolute; width: 300px; height: 150%;background-color: red;" > This is the div</div>
+   <br><br><br><br><br><br><br><br><br><br><br><br>
+   <div id="mydiv" style="display: block;position: absolute; width: 300px; height: 10%;background-color: blue; z-index: 22;" > This is the div</div>
+
+   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
+   <script>
+    var adiv = document.getElementById('mydiv')
+    var starttime;
+
+    var forward = 1;
+    var leftpos = 0;
+    var inViewportStatingX = 0;
+
+    function movediv(scroll, startScrollPoint){
+
+        var effectiveScroll = scroll - startScrollPoint;
+
+        if(leftpos > 100){
+            forward = !forward;
+
+        }else if(leftpos < 0){
+            forward = !forward;
+        
+        }
+
+        if(forward){
+            leftpos += 1;    
+        
+        }else{
+            leftpos -= 1
+        
+        }
+
+        adiv.style.top = leftpos + 'px'
+
+    }
+
+    
+    // *   Gets the scroll direction
+    // *   
+    // *   It boggles my minnd there is not an API call for this
+    
+    // function getScrollDirection(){
+
+    //     var scroll = $(window).scrollTop();
+    //     if(scroll > )
+
+    // }
+    
+
+
+// requestAnimationFrame(function(timestamp){
+
+//     //Handle the request for a new frame
+//     // starttime = timestamp || new Date().getTime() //if browser doesn't support requestAnimationFrame, generate our own timestamp using Date
+//     // moveit(timestamp, adiv, 400, 2000) // 400px over 1 second
+
+//     movediv();
+
+
+// }); // call requestAnimationFrame and pass into it animation function
+
+
+$(window).scroll(function() {
+
+    var scroll = $(window).scrollTop();
+
+    // alert("Calling");
+    requestAnimationFrame(function(timestamp){
+
+    //Handle the request for a new frame
+    starttime = timestamp || new Date().getTime() //if browser doesn't support requestAnimationFrame, generate our own timestamp using Date
+    // moveit(timestamp, adiv, 400, 2000) // 400px over 1 second
+
+    movediv(scroll, inViewportStatingX);
+    movediv(scroll, inViewportStatingX);
+    movediv(scroll, inViewportStatingX);
+
+
+
+});
+
+});
+
+
+</script>
+</body>
+</html>
