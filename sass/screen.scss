@@ -314,6 +314,7 @@ body, html {
     //Make the building unselectable so it doesnt block the buttons
     z-index: -2;
 
+     // @include transition(transform .1s linear);  //attempt to smooth animation...
 
     @include respond-to('mobile') {
         max-width: 100%;

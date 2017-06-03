@@ -2,7 +2,6 @@
 		//Hide header content to prevent jump when positioned correctly
 		//This is execute before the page is ready
 		document.getElementById("contentWrapper").style.display = "none";
-		// $('#contentWrapper').css('display','none');
 
 		var mapDisplayed = 0;
 		var fullPageGMapOpened = 0; // Only open the google map in a new tab once; it gets annoying...
@@ -41,25 +40,26 @@
 
 			/// Slide in the map when it is scrolled into the viewport, use inview.js to do this
 			$('#mapAddressSideBar').on('inview', function(event, isInView) {
-				if (isInView && !mapDisplayed) {
-   					// element is now visible in the viewport
-   					$('#mapContainer').css('display', 'inline-block');
-   					//Initilise the google map
-   					initMap();
-   					//Remove the event listener
-   					// $('mapAddressSideBar').off('inview'); //This does not seem to work...
-					mapDisplayed = !mapDisplayed; //Stop the map from being re-inited when the user scrolls in and out
-
-				}
+				if (isInView) {
+					if(!mapDisplayed){
+   						// element is now visible in the viewport
+   						$('#mapContainer').css('display', 'inline-block');
+   						//Initilise the google map
+   						initMap();
+   						//Remove the event listener
+   						// $('mapAddressSideBar').off('inview'); //This does not seem to work...
+						mapDisplayed = !mapDisplayed; //Stop the map from being re-inited when the user scrolls in and out
+					}
 
 					animateMapShaddow = 1;
 
-				} else {
+
+				}else {
     				// element has gone out of viewport
     				animateMapShaddow = 0;
 
-				}
-			});
+    			}
+    		});
 
 
 			///////
@@ -76,24 +76,21 @@
 				
 			});
 
-			/**
-				Parrallx like effect on the mainbuilding as the viewport is scrolled
-				*/
-				$(window).scroll(function() {
+			//Parrallx like effect on the mainbuilding as the viewport is scrolled
+			$(window).scroll(function() {
 
 
-					var scroll = $(window).scrollTop();
+				var scroll = $(window).scrollTop();
 
-					var vTransformpx = ( scroll * -0.25)
-
-				//Ensure that the building will not be left floating
-				if( parseInt($('#astonmb').css('bottom')) < vTransformpx ){
-					$("#astonmb").css("transform","translate( 0px , "  + vTransformpx + "px)");
-				}
+				//Update the astonMB
+				requestAnimationFrame( function(){
+					animateAstonMB(scroll);
+				});
 
 				if(animateMapShaddow){
-					animateGMapShadow();
-				
+
+					requestAnimationFrame(animateGMapShadow());
+
 				}
 
 
@@ -105,60 +102,70 @@
 
 			});
 
+			//Animates the AstonMB position based on the scrolll position
+			function animateAstonMB(scrollPos){		
 
-				//Animate the Google maps shadow based on the scroll position
-				function animateGMapShadow(){
+				var vTransformpx = ( scrollPos * -0.25)
 
-					var maxShadowOffSet = 50;	// The maximum shaddow offset in pixels
-
-					var verticalOffsetOnVPEnter = $('#mapContainer')[0].getBoundingClientRect().top ;
-
-					var HalfVPHeight = (jQuery(window).height() / 2);
-					var offSetFromCenter = (verticalOffsetOnVPEnter + ($('#mapContainer').height() / 2) )- HalfVPHeight;
-
-					//scale the offset
-					var scaleFactor = HalfVPHeight / maxShadowOffSet;
-					var shaddowOffset = Math.round(offSetFromCenter / scaleFactor);
-					console.log('offset S: ' + shaddowOffset);
-
-					//This now needs to happen in the HTML5 requestAnimationFrame...
-					$('#mapContainer').css('box-shadow', '0 ' + shaddowOffset + 'px 20px 2px #000');
-					// box-shadow: 0 0px 20px 2px #000; 
-
-
-
+				//Ensure that the building will not be left floating
+				if( parseInt($('#astonmb').css('bottom')) < vTransformpx ){
+					$("#astonmb").css("transform","translate( 0px , "  + vTransformpx + "px)");
 				}
 
+			}
 
-				function handleMenuBar(){
-				//Handle the menu bar
-				var origOffsetY = $('.mainNavBar').attr('data-origMenuOffsetY');
 
-				if($(window).scrollTop() >= (origOffsetY * 0.9)){
-					$('.mainNavBar').css('background-color', '#ecf0f1' );
-					$('.mainNavLinks li').css('margin-right', '5vw' );
+			//Animate the Google maps shadow based on the scroll position
+			function animateGMapShadow(){
+
+				var maxShadowOffSet = 20;	// The maximum shaddow offset in pixels
+
+				var verticalOffsetOnVPEnter = $('#mapContainer')[0].getBoundingClientRect().top ;
+
+				var HalfVPHeight = (jQuery(window).height() / 2);
+				var offSetFromCenter = (verticalOffsetOnVPEnter + ($('#mapContainer').height() / 2) )- HalfVPHeight;
+
+				//scale the offset
+				var scaleFactor = HalfVPHeight / maxShadowOffSet;
+				var shaddowOffset = Math.round(offSetFromCenter / scaleFactor);
+				// console.log('offset S: ' + shaddowOffset);
+
+				//This now needs to happen in the HTML5 requestAnimationFrame...
+				$('#mapContainer').css('box-shadow', '0 ' + shaddowOffset + 'px 20px 2px #000');
+				// box-shadow: 0 0px 20px 2px #000; 
+
+
+
+			}
+
+
+			function handleMenuBar(){
+			//Handle the menu bar
+			var origOffsetY = $('.mainNavBar').attr('data-origMenuOffsetY');
+
+			if($(window).scrollTop() >= (origOffsetY * 0.9)){
+				$('.mainNavBar').css('background-color', '#ecf0f1' );
+				$('.mainNavLinks li').css('margin-right', '5vw' );
+			}
+
+			if ($(window).scrollTop() >= origOffsetY) {
+				$('.mainNavBar').addClass('fixed-top');
+					//add padding to prevent jump with loss of nav bar
+					navBarHeight = parseInt($('.mainNavBar').css('height'));
+					$('.pageContentSection').filter(":first").css('padding-top',  navBarHeight);
+
+				} else {
+					$('.mainNavBar').removeClass('fixed-top');
+					$('.mainNavBar').css('background-color', '#FFF' );
+					$('.mainNavLinks li').css('margin-right', '0vw' );
+					$('.pageContentSection').filter(":first").css('padding-top', 0)
+
 				}
-
-				if ($(window).scrollTop() >= origOffsetY) {
-						$('.mainNavBar').addClass('fixed-top');
-						//add padding to prevent jump with loss of nav bar
-						navBarHeight = parseInt($('.mainNavBar').css('height'));
-						$('.pageContentSection').filter(":first").css('padding-top',  navBarHeight);
-
-					} else {
-						$('.mainNavBar').removeClass('fixed-top');
-						$('.mainNavBar').css('background-color', '#FFF' );
-						$('.mainNavLinks li').css('margin-right', '0vw' );
-						$('.pageContentSection').filter(":first").css('padding-top', 0)
-
-					}
-				}
+			}
 
 
-			/**
-				Calculates and applies the position of the header buttons
-				*/
-				function reCalcHeaderButtonPosition(scroll){
+			//Calculates and applies the position of the header buttons
+			function reCalcHeaderButtonPosition(scroll){
 
 				//Is a value for scroll passed
 				if(typeof scroll === 'undefined'){ scroll = $(window).scrollTop(); }
@@ -188,8 +195,8 @@
 				}
 
 
- 				//Has the width of the rendered content been found
- 				if(typeof $('#pageHeaderContent').attr('data-contentWidth') === 'undefined'){
+					//Has the width of the rendered content been found
+					if(typeof $('#pageHeaderContent').attr('data-contentWidth') === 'undefined'){
 
 					//Save the width of the rendered button for later use, this is not accesible when
 					//the button is hidden so must be found and recorded now
@@ -219,12 +226,12 @@
 				$('#contentWrapper').addClass('bounceIn');
 				//Show the content
 				$('#contentWrapper').css('display','block');
+
 			}
 
 			/**
 			Calculates the visibility of the header buttons and hies them when the building is set to scroll overthem
 			sets z-index initialy so they gracefuly leave the view and then is hidden. Reverse is done when scrolling back.
-
 			*/
 			function reCalcHeaderButtonsState(scroll){
 
@@ -263,57 +270,57 @@
 
 
 			/**
-				Recalcualate the positioning and apply to the aston uni image
-				*/
-				function recalcOnWindowResize() {
+			Recalcualate the positioning and apply to the aston uni image
+			*/
+			function recalcOnWindowResize() {
 
-					var headerWidth = parseInt( $("#pageHeader").css('width'));
-					var headerHeight = parseInt( $("#pageHeader").css('height'));
-					var mBImageHeight = parseInt( $("#astonmb").css('height'));
+				var headerWidth = parseInt( $("#pageHeader").css('width'));
+				var headerHeight = parseInt( $("#pageHeader").css('height'));
+				var mBImageHeight = parseInt( $("#astonmb").css('height'));
 
-					if(headerWidth > 2000){
-						var mBOffSet = -((headerHeight * 0.05)  + (mBImageHeight * 0.3));
+				if(headerWidth > 2000){
+					var mBOffSet = -((headerHeight * 0.05)  + (mBImageHeight * 0.3));
 
-					}else if(headerWidth > 1500){
-						var mBOffSet = -((headerHeight * 0.025)  + (mBImageHeight * 0.3));
+				}else if(headerWidth > 1500){
+					var mBOffSet = -((headerHeight * 0.025)  + (mBImageHeight * 0.3));
 
-					}else{
-						var mBOffSet = -(mBImageHeight * 0.3);
-						
-					}
-
-
-					$('#astonmb').css('bottom', mBOffSet);
-
-					//Fix the new height of the pageEnd
-					fixPageEndHeight();
-
-
+				}else{
+					var mBOffSet = -(mBImageHeight * 0.3);
+					
 				}
 
 
+				$('#astonmb').css('bottom', mBOffSet);
 
-				$(function () {
+				//Fix the new height of the pageEnd
+				fixPageEndHeight();
+
+
+			}
+
+
+
+			$(function () {
+				recalcOnWindowResize();
+
+
+
+				$(window).resize(function() {
 					recalcOnWindowResize();
-
-
-
-					$(window).resize(function() {
-						recalcOnWindowResize();
-						reCalcHeaderButtonPosition();
-					});
+					reCalcHeaderButtonPosition();
 				});
+			});
 
-				/*
-				//	Update the height of the pageEnd element to the height of the footer, this allows for the user
-				//	to scroll only the required height.
-				*/
-				function fixPageEndHeight(){
-					var requiredHeight = parseInt($('footer').css('height'));
-					//Apply the height to the pageEnd element 
-					$('#pageEnd').css('height', requiredHeight);
+			/*
+			//	Update the height of the pageEnd element to the height of the footer, this allows for the user
+			//	to scroll only the required height.
+			*/
+			function fixPageEndHeight(){
+				var requiredHeight = parseInt($('footer').css('height'));
+				//Apply the height to the pageEnd element 
+				$('#pageEnd').css('height', requiredHeight);
 
-				}
+			}
 
 			//?
 			document.cookie = "EssentialTimes=Tuesdays and Thursdays, 6.30 - 8.30. 1st session is Free";
