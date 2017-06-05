@@ -368,7 +368,7 @@ body, html {
 
 .navbar-brand{
 
-   img{
+ img{
 
     transition: background 1.2s ease;
 
@@ -649,6 +649,42 @@ body, html {
     display: block;
     height: 45%;
     @include dropShaddowBellow(0 40px 50px -12px);
+}
+
+
+
+
+////////////*/
+//              Sponsor Section Styles
+////////////*/
+
+
+
+//Logo place holder
+.astonTriangleLogo{
+    max-width: 45%;
+    margin-bottom: 12%;
+
+    @include respond-to('mobile') {
+        max-width: 85%;
+
+    }
+
+    @include respond-to('small') {
+        max-width: 75%;
+
+    }
+
+    @include respond-to('medium') {
+        max-width: 60%;
+
+    }
+
+    @include respond-to('large') {
+        max-width: 45%;
+
+    }
+
 }
 
 
