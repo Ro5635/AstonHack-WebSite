@@ -127,7 +127,7 @@
 		 						<div class="col-sm-10 col-md-8">
 		 							<a name="about"><h1 class="display-1 AHTitle">Aston Hack 2017</h1></a>
 
-		 							<p class="lead">
+		 							<p class="stdBodyText">
 		 								<!-- Aston Hack is happaning again!<br> -->
 		 								&nbsp;&nbsp;&nbsp;&nbsp;Were inviting student hackers to join us for a frenzied 24 hours of designing, coding and making, whether this will be your first hackathon or your 20th come join us and build something amazing!
 		 							</p>
@@ -226,8 +226,13 @@
 
 		 					<div class="row">
 		 						<div class="col-sm-1 col-md-2"></div>
-		 						<div class="col-sm-10 col-md-9">
+		 						<div class="col-sm-10 col-md-8">
 		 							<h2 class="display-3 AHTitle">Where?</h2>
+
+		 							<p class="stdBodyText">
+		 								Hosted at our universitys campus a 10 minute walk from the centre of Birmingham UK, ... 
+		 							</p>
+		 							<br>
 		 							
 
 		 						</div>
@@ -236,32 +241,36 @@
 		 					</div>
 
 
+
+		 					<div id="mapAddressSideBar">
+		 						<br>
+
+		 						<address><h3 class="display-5 text-center">Aston University </h3><h3 class="display-6 text-center">Birmingham</h3><h3 class="display-7 text-center">B4 7ET</h3></address>
+
+		 						<br>
+
+		 						<div id="transportaionIcons" class="row">
+		 							<div class="col"> <img src="/assets/media/TrainIcon.png" alt="Train Icon"> </div>
+		 							<div class="col"><img src="/assets/media/BusIcon.png" alt="Bus Icon"></div>
+		 							<div class="col"><img src="/assets/media/PlaneIcon.png" alt="Plane Icon"></div>
+		 							<div class="col"><img src="/assets/media/DockerIcon.png" alt="Docker icon"></div>
+
+		 						</div>
+
+		 						<p class="text-center">A 10 minute walk from New Street station</p>
+
+		 					</div>
+
 		 					<!-- Google Map -->
 		 					<div class="slideInLeft animated" id="mapContainer">
 		 						<div id="map"></div>
-		 					
-		 					</div>
-
-
-		 					<div id="mapAddressSideBar">
-		 					<br>
-
-		 					<address><h3 class="display-5 text-center">Aston University </h3><h3 class="display-6 text-center">Birmingham<h3><h3 class="display-7 text-center">B4 7ET</h3></address>
-
-		 					<br>
-
-		 					<div id="transportaionIcons" class="row">
-		 						<div class="col"> <img src="/assets/media/TrainIcon.png" alt="Train Icon"> </div>
-		 						<div class="col"><img src="/assets/media/BusIcon.png" alt="Bus Icon"></div>
-		 						<div class="col"><img src="/assets/media/PlaneIcon.png" alt="Plane Icon"></div>
-		 						<div class="col"><img src="/assets/media/DockerIcon.png" alt="Docker icon"></div>
 
 		 					</div>
+		 					<!-- Mobile Google map; IFrame version for easier access to personalised directions -->
 
-		 					<p class="text-center">A 10 minute walk from New Street station</p>
-
+		 					<div class="iframe-rwd">
+		 						<iframe id="googleMapMobVers" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1216.03369457963!2d-1.8878876601373722!3d52.48691366998016!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4870bc9ae4f2e4b3%3A0x9a670ba18e08a084!2sAston+University!5e0!3m2!1sen!2suk!4v1496689121598" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
 		 					</div>
-
 
 
 		 					<div id="mapVerticalSpaceMaintainer"></div>
@@ -274,7 +283,7 @@
 		 						<div class="col-sm-10 col-md-9">
 		 							<h2 class="display-3 AHTitle">FAQs</h2>
 
-		 							<div class="lead AHFAQList">
+		 							<div class="stdBodyText AHFAQList">
 		 								<h3 class="AHTitle display-5">What is a hackathon?</h3>
 		 								<p>A hackathon is an invention marathon. Students come together to build cool software &amp; hardware hacks over 24-48 hours. It’s very beginner friendly.</p>
 
@@ -284,7 +293,7 @@
 		 								<h3 class="AHTitle display-5">Do I need to be a student to attend?</h3>
 		 								<p>Yes. Only students over the age of 18 who are currently enrolled at a college/university or have graduated within the past 12 months are eligible to attend as hackers.</p>
 
-		 								<h3 class="AHTitle display-5">Where/when is the event?</h3>
+		 								<!-- <h3 class="AHTitle display-5">Where/when is the event?</h3>
 		 								<p>Check in will be between 10am and 11am in the main foyer of Aston University, Aston Triangle, Birmingham, B4 7ET. Don’t worry, we’ll have signs so you don’t get lost in the labyrinth that is Aston</p>
 
 		 								<h3 class="AHTitle display-5">What is Major League Hacking?</h3>
@@ -295,129 +304,207 @@
 
 		 								<h3 class="AHTitle display-5">Can we sponsor AstonHack?</h3>
 		 								<p>Yes! We’d love for your company to sponsor, and help make this fantastic event possible! You can view our sponsorship document here. We would ask all potential sponsors to email hack [at] astoncss.co.uk and one of the team will get back to you.</p>
+		 							-->
+		 						</div>
+		 						<br>
+
+		 						<div class="row">
+		 							<div class="col">
+
+		 								<div id="accordion" role="tablist" aria-multiselectable="true">
+		 									<div class="card">
+		 										<div class="card-header" role="tab" id="headingOne">
+		 											<h5 class="mb-0">
+		 												<h3 class="AHTitle AHAccord display-6"><a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+		 													Where/when is the event?
+		 												</a></h3>
+		 											</h5>
+		 										</div>
+
+		 										<div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+		 											<div class="card-block">
+		 												Check in will be between 10am and 11am in the main foyer of Aston University, Aston Triangle, Birmingham, B4 7ET. Don’t worry, we’ll have signs so you don’t get lost in the labyrinth that is Aston
+		 											</div>
+		 										</div>
+		 									</div>
+		 									<div class="card">
+		 										<div class="card-header" role="tab" id="headingTwo">
+		 											<h5 class="mb-0">
+		 												<h3 class="AHTitle AHAccord display-6"><a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+		 													What is Major League Hacking?
+		 												</a></h3>
+		 											</h5>
+		 										</div>
+		 										<div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+		 											<div class="card-block">
+		 												Major League Hacking is the official student hackathon league in North America &amp; Europe. They work with over 200 Member Events and empower over 70,000 students every year.
+		 											</div>
+		 										</div>
+		 									</div>
+		 								</div>
+
 
 		 							</div>
-		 							<br>
 
-		 							
+		 							<div class="col">
+		 								<div id="accordionTwo" role="tablist" aria-multiselectable="true">
+		 									<div class="card">
+		 										<div class="card-header" role="tab" id="headingThree">
+		 											<h5 class="mb-0">
+		 												<h3 class="AHTitle AHAccord display-6"><a data-toggle="collapse" data-parent="#accordionTwo" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+		 													Is there a code of conduct?
+		 												</a></h3>
+		 											</h5>
+		 										</div>
+
+		 										<div id="collapseThree" class="collapse show" role="tabpanel" aria-labelledby="headingThree">
+		 											<div class="card-block">
+		 												Yes, we stick strongly to the MLH code of conduct. You can find it <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">here.</a>
+		 											</div>
+		 										</div>
+		 									</div>
+		 									<div class="card">
+		 										<div class="card-header" role="tab" id="headingFour">
+		 											<h5 class="mb-0">
+		 												<h3 class="AHTitle AHAccord display-6"><a class="collapsed" data-toggle="collapse" data-parent="#accordionTwo" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+		 													Can we sponsor AstonHack?
+		 												</a></h3>
+		 											</h5>
+		 										</div>
+		 										<div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingFour">
+		 											<div class="card-block">
+		 												Yes! We’d love for your company to sponsor, and help make this fantastic event possible! You can view our sponsorship document here. We would ask all potential sponsors to email hack [at] astoncss.co.uk and one of the team will get back to you.
+		 											</div>
+		 										</div>
+		 									</div>
+		 								</div>
+
+		 							</div>
 
 		 						</div>
 
-		 						<div class="col-sm-1 col-md-2"></div>
+
+
+
+
+
 		 					</div>
 
-
-
-
-
-
-
-		 					<!-- Add some v space -->
-		 					<div class="form-group standardVSpace">
-		 						&nbsp;
-		 					</div>
-
-
-
-		 					<div class="row">
-		 						<div class="col-sm-1 col-md-2"></div>
-		 						<div class="col-sm-10 col-md-10">
-		 							<a name="oursponsors"><h2 class="display-3 AHTitle">Our Sponsors</h2></a>
-		 						</div>
-
-
-		 					</div><!-- EndRow -->
-
-
-		 					<div class="row">
-
-		 						THe sponsors stuff will go here...
-		 					</div>
-
-
-		 					<div class="row verticalSpace"></div>
-		 					<div class="row verticalSpace"></div>
-		 					<div class="row verticalSpace"></div>
-		 					<div class="row verticalSpace"></div>
-
-		 				</div><!-- Close Info Pane -->
-
-		 			</div><!-- Close Container -->
-
-		 			<div id="pageEnd"></div>
-
-		 			<footer>
-
-		 				<div class="row verticalSpace"></div>
-
-		 				<div class="row text-center">
-		 					<!-- Footer Logos Row -->
-		 					<div class="col">
-		 						<!-- ACSS Logo -->
-		 						<a href="https://astoncss.com/" target="_blank" ><img id="primFooterLogo" src="/assets/media/acss-logo-web.png" class="img-fluid" alt="The Aston Computer Science Society Logo"></a>
-		 					</div>
-
+		 					<div class="col-sm-1 col-md-2"></div>
 		 				</div>
 
 
 
-		 				<div class="row text-center">
-		 					<!-- Footer Logos Row -->
-		 					<div class="col"> 
-		 						<!-- Aston University Logo -->
-		 						<a href="https://www.aston.ac.uk" target="_blank" ><img id="astonULogo"  src="/assets/media/AstonLogoRFullerVersion.png" class="img-fluid secondryPartners" alt="An Imposter Posing As The Aston University Logo"></a>
-		 					</div>
 
-		 					<div class="col">
-		 						<!-- Aston Students Union Logo -->
-		 						<a href="https://www.astonsu.com/" target="_blank" ><img id="astonSULogo" src="/assets/media/AstonStudentsUnionLogo.png" class="img-fluid secondryPartners" alt="Aston Universitys Students Union"></a>
-		 					</div>
 
+
+
+		 				<!-- Add some v space -->
+		 				<div class="form-group standardVSpace">
+		 					&nbsp;
 		 				</div>
 
 
-		 				<div class="row verticalSpaceMobOnly"></div>
-
-		 				<div class="row text-center">
-		 					<!-- Row of footer containing the cookie Button -->
-		 					<div class="col">
-		 						<a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" ><button type="button" class="buttonSpacer btn btn-outline-secondary">Cookie Policy</button></a>
-		 						<br>
-		 					</div>
-
-		 				</div>
 
 		 				<div class="row">
-
-		 					<div class="col">
-
-		 						<a data-toggle="tooltip" rel="mapTip" data-placement="top" title="Hit to see in 3D!" href="https://www.google.co.uk/maps/@52.4829266,-1.8849662,222a,20y,322.17h,71.7t/data=!3m1!1e3" target="_blank"><address>Aston Computer Science Society<br>Aston University <br>Birmingham<br>B4 7ET</address></a>
+		 					<div class="col-sm-1 col-md-2"></div>
+		 					<div class="col-sm-10 col-md-10">
+		 						<a name="oursponsors"><h2 class="display-3 AHTitle">Our Sponsors</h2></a>
 		 					</div>
+
 
 		 				</div><!-- EndRow -->
 
-		 				<br>
+
+		 				<div class="row">
+
+		 					THe sponsors stuff will go here...
+		 				</div>
+
+
+		 				<div class="row verticalSpace"></div>
+		 				<div class="row verticalSpace"></div>
+		 				<div class="row verticalSpace"></div>
+		 				<div class="row verticalSpace"></div>
+
+		 			</div><!-- Close Info Pane -->
+
+		 		</div><!-- Close Container -->
+
+		 		<div id="pageEnd"></div>
+
+		 		<footer>
+
+		 			<div class="row verticalSpace"></div>
+
+		 			<div class="row text-center">
+		 				<!-- Footer Logos Row -->
+		 				<div class="col">
+		 					<!-- ACSS Logo -->
+		 					<a href="https://astoncss.com/" target="_blank" ><img id="primFooterLogo" src="/assets/media/acss-logo-web.png" class="img-fluid" alt="The Aston Computer Science Society Logo"></a>
+		 				</div>
+
+		 			</div>
+
+
+
+		 			<div class="row text-center">
+		 				<!-- Footer Logos Row -->
+		 				<div class="col"> 
+		 					<!-- Aston University Logo -->
+		 					<a href="https://www.aston.ac.uk" target="_blank" ><img id="astonULogo"  src="/assets/media/AstonLogoRFullerVersion.png" class="img-fluid secondryPartners" alt="An Imposter Posing As The Aston University Logo"></a>
+		 				</div>
+
+		 				<div class="col">
+		 					<!-- Aston Students Union Logo -->
+		 					<a href="https://www.astonsu.com/" target="_blank" ><img id="astonSULogo" src="/assets/media/AstonStudentsUnionLogo.png" class="img-fluid secondryPartners" alt="Aston Universitys Students Union"></a>
+		 				</div>
+
+		 			</div>
+
+
+		 			<div class="row verticalSpaceMobOnly"></div>
+
+		 			<div class="row text-center">
+		 				<!-- Row of footer containing the cookie Button -->
+		 				<div class="col">
+		 					<a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" ><button type="button" class="buttonSpacer btn btn-outline-secondary">Cookie Policy</button></a>
+		 					<br>
+		 				</div>
+
+		 			</div>
+
+		 			<div class="row">
+
+		 				<div class="col">
+
+		 					<a data-toggle="tooltip" rel="mapTip" data-placement="top" title="Hit to see in 3D!" href="https://www.google.co.uk/maps/@52.4829266,-1.8849662,222a,20y,322.17h,71.7t/data=!3m1!1e3" target="_blank"><address>Aston Computer Science Society<br>Aston University <br>Birmingham<br>B4 7ET</address></a>
+		 				</div>
+
+		 			</div><!-- EndRow -->
+
+		 			<br>
 
 
 
 
 
-		 			</footer>
+		 		</footer>
 
 
-		 		</div><!-- Close Page -->
+		 	</div><!-- Close Page -->
 
-		 		<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-		 		<!-- <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script> -->
-		 		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-		 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+		 	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+		 	<!-- <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script> -->
+		 	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+		 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 
-		 		<script src="assets/JS/js.js"></script>
-		 		<script src="/assets/JS/InView.js"></script>
-		 		<script src="/assets/JS/GMap.js"></script>
+		 	<script src="assets/JS/js.js"></script>
+		 	<script src="/assets/JS/InView.js"></script>
+		 	<script src="/assets/JS/GMap.js"></script>
 
 
-		 		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAaF03iK47EOLAWNlKiBXcahFnrjT-yNtM&callback=initMap"></script>
+		 	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAaF03iK47EOLAWNlKiBXcahFnrjT-yNtM&callback=initMap"></script>
 
-		 	</body>
-		 	</html>
+		 </body>
+		 </html>

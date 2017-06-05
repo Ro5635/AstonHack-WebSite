@@ -14,6 +14,9 @@ body, html {
     width: 100%;
     font-size: 10px;
 
+    //set to footer colour so any overrun with the footer is hidden
+    background-color: #343333;
+
     @include respond-to('mobile') {
         font-size: 10px;
     }
@@ -100,9 +103,9 @@ body, html {
 
 // Add an Further additional text size
 .display-6{
-    font-size: 2.2rem;
+    font-size: 2.2rem;                                      //Need to add fall back for older browsers....
     font-weight: 300;
- }
+}
 
 //  Add yet anouther additional text size
 .display-7{
@@ -110,8 +113,25 @@ body, html {
     font-weight: 300;
 }
 
+.stdBodyText{
+    font-size: 1.3rem;
 
- #imageSpacer{
+}
+
+//AH accordian Style
+.AHAccord{
+
+    margin-top: 0;
+    margin-bottom: 0;
+    
+    a{
+        //Remove link styles
+        text-decoration: none;
+        color: black;
+    }
+}
+
+#imageSpacer{
 
     width: 100%;
     display: block;
@@ -291,22 +311,9 @@ body, html {
     background-color: $plainBackground2;
     overflow: hidden;
     
-    // background-image: url('/assets/media/astonhack-logo.svg');
-
-    // background-attachment: fixed;
-
-    // background-size: 15%;
-    // background-position-x: center;
-    // background-position-y: 5%;
-    // background-repeat: no-repeat;
-
-
-
-    
-
 }
 
-
+//Styles for the aston main building image that forms the page header
 #astonmb{
 
     max-width: 100%;
@@ -316,7 +323,7 @@ body, html {
 
      // @include transition(transform .1s linear);  //attempt to smooth animation...
 
-    @include respond-to('mobile') {
+     @include respond-to('mobile') {
         max-width: 100%;
         bottom: -10%;
 
@@ -344,7 +351,9 @@ body, html {
 
 }
 
-//Navigation Bar
+////////////*/
+//              Navigation Bar
+////////////*/
 
 .mainNavBar{
 
@@ -359,7 +368,7 @@ body, html {
 
 .navbar-brand{
 
- img{
+   img{
 
     transition: background 1.2s ease;
 
@@ -423,10 +432,40 @@ body, html {
 
 #mapContainer{
     height: 400px;
-    width: 75%;
     display: inline-block;
     box-shadow: 0 0px 20px 2px #000;
     float: left;
+    width: 75%;
+    overflow: auto;
+
+    //Hide the desktop map on mobiles
+    @include respond-to('mobile') {
+        width: 100%;
+        display: none;
+    }
+
+    @include respond-to('small') {
+        width: 100%;
+        display: none;
+
+    }
+
+    @include respond-to('medium') {
+        width: 70%;
+        display: block;
+        
+        float: left;
+
+    }
+
+    @include respond-to('large') {
+        width: 75%;
+        display: block;
+        
+        float: left;
+
+    }
+
 }
 
 #map {
@@ -438,6 +477,34 @@ body, html {
 //Side bar that sits to the right of the map in larger screens
 #mapAddressSideBar{
     width: 23%;//remainder after width of map
+    overflow: auto;
+
+    @include respond-to('mobile') {
+        display: none;
+
+    }
+
+    @include respond-to('small') {
+        display: none;
+
+    }
+
+    @include respond-to('medium') {
+        width: 28%;
+        display: block; //Undo the none
+        float: right;
+
+
+    }
+
+    @include respond-to('large') {
+        width: 23%;
+        display: block; //Undo the none
+        float: right;
+
+    }
+
+
     height: 100%;
     // background-color: red;
     display: inline-block;
@@ -466,6 +533,89 @@ body, html {
     height: 400px;
     display: block;
 
+    @include respond-to('mobile') {
+        height: 0px;
+
+    }
+
+    @include respond-to('small') {
+        height: 0px;
+
+    }
+
+    @include respond-to('medium') {
+        height: 400px;
+
+    }
+
+    @include respond-to('large') {
+        height: 400px;
+
+    }
+
+}
+
+//Use the iframe google map on mobiles
+#googleMapMobVers{
+
+    @include respond-to('mobile') {
+        display: block;
+        margin: 0 auto;
+
+    }
+
+    @include respond-to('small') {
+        display: block;
+        margin: 0 auto;
+
+    }
+
+    @include respond-to('medium') {
+        display: none;
+
+    }
+
+    @include respond-to('large') {
+        display: none;
+
+    }
+}
+
+// Ifram dynamic sizing soltion from: https://stackoverflow.com/questions/12676725/responsive-iframe-google-maps-and-weird-resizing
+.iframe-rwd  {
+    position: relative;
+    padding-bottom: 65.25%;
+    padding-top: 30px;
+    height: 0;
+    overflow: hidden;
+
+    @include respond-to('mobile') {
+        display: block;
+
+    }
+
+    @include respond-to('small') {
+        display: block;
+
+    }
+
+    @include respond-to('medium') {
+        display: none;
+
+    }
+
+    @include respond-to('large') {
+        display: none;
+
+    }
+
+}
+.iframe-rwd iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 

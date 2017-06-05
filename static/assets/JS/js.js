@@ -43,7 +43,7 @@
 				if (isInView) {
 					if(!mapDisplayed){
    						// element is now visible in the viewport
-   						$('#mapContainer').css('display', 'inline-block');
+   						$('#mapContainer').show();
    						//Initilise the google map
    						initMap();
    						//Remove the event listener
@@ -89,7 +89,10 @@
 
 				if(animateMapShaddow){
 
-					requestAnimationFrame(animateGMapShadow());
+					var viewPortHeight = jQuery(window).height();
+					requestAnimationFrame( function(){
+						animateGMapShadow(viewPortHeight)
+					});
 
 				}
 
@@ -116,13 +119,13 @@
 
 
 			//Animate the Google maps shadow based on the scroll position
-			function animateGMapShadow(){
+			function animateGMapShadow(viewPortHeight){
 
 				var maxShadowOffSet = 20;	// The maximum shaddow offset in pixels
 
 				var verticalOffsetOnVPEnter = $('#mapContainer')[0].getBoundingClientRect().top ;
 
-				var HalfVPHeight = (jQuery(window).height() / 2);
+				var HalfVPHeight = (viewPortHeight / 2);
 				var offSetFromCenter = (verticalOffsetOnVPEnter + ($('#mapContainer').height() / 2) )- HalfVPHeight;
 
 				//scale the offset
