@@ -681,10 +681,32 @@ body, html {
     }
 
     @include respond-to('large') {
-        max-width: 45%;
+        max-width: 50%;
 
     }
 
+}
+
+.goldSponsorLogo{
+    transform: rotateX(5deg)  rotateY(15deg) rotateZ(0deg);
+    transition: transform 0.8s ease, margin-bottom 1s ease;
+
+}
+
+.silverSponsorLogo{
+    transform: rotateX(5deg)  rotateY(15deg) rotateZ(0deg);
+    transition: transform 0.7s ease, margin-bottom 1s ease;
+
+}
+
+.bronzeSponsorLogo{
+    transform: rotateX(5deg)  rotateY(15deg) rotateZ(0deg);
+    transition: transform 0.6s ease, margin-bottom 1s ease;
+
+}
+
+.sponsorTitle{
+    margin: 0 auto;
 }
 
 
@@ -793,7 +815,7 @@ footer{
     a address{
 		//Address at the bottom of the page
 		margin-bottom: 2%;
-		font-size: 1.2em;
+		font-size: 1em;
 		margin: 0 auto;
         text-decoration: none;
         color: white;

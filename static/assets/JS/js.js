@@ -6,6 +6,7 @@
 		var mapDisplayed = 0;
 		var fullPageGMapOpened = 0; // Only open the google map in a new tab once; it gets annoying...
 		var animateMapShaddow = 0;  // Animate the maps shaddow?
+		var animateSponsorLogos = 0; //Animate the sponsor logos?
 
 		$(document).ready(function(){ 
 
@@ -61,6 +62,20 @@
     			}
     		});
 
+    		//animate the sponsor logos when they are scrolled into the viewport
+    		$('#sponsorLogos').on('inview', function(event, isInView) {
+				if (isInView) {
+					//element is in teh viewport
+					animateSponsorLogos = 1;
+
+				}else {
+    				// element has gone out of viewport
+    				animateSponsorLogos = 0;
+
+    			}
+    		});
+    		
+
 
 			///////
 
@@ -95,6 +110,13 @@
 					});
 
 				}
+
+				if(animateSponsorLogos){
+					requestAnimationFrame(function(){
+						animateSponsorLogosOnScroll();
+					}); 	
+				}
+				
 
 
 				//Recalculate the header buttons visibility
@@ -140,6 +162,57 @@
 
 
 			}
+
+			//Animate the sponsor logos
+			function animateSponsorLogosOnScroll(){
+
+				var VPHeight = jQuery(window).height();
+
+				var logoRowYOffSet = $('#sponsorLogos')[0].getBoundingClientRect().top;
+
+				var goldVerticalOffSet = ($('#goldSponsorRow')[0].getBoundingClientRect().top - ($('#goldSponsorRow').height() / 2));
+				var silverVerticalOffSet = ($('#silverSponsorRow')[0].getBoundingClientRect().top - ($('#silverSponsorRow').height() / 2));
+				var bronzeVerticalOffSet = ($('#bronzeSponsorRow')[0].getBoundingClientRect().top - ($('#bronzeSponsorRow').height() / 2));
+
+				var goldTranslationy = goldVerticalOffSet * 0.10;
+				var silverTranslationy = silverVerticalOffSet * 0.09;
+				var bronzeTranslationy = silverVerticalOffSet * 0.09;
+				console.log("Gold Level: " + goldTranslationy + " silv level: " + silverTranslationy);
+
+				//Gold Sponsors:
+				if(goldVerticalOffSet < (VPHeight*0.65)){
+					$('.goldSponsorLogo').css('transform','scale3d(1.55,1.55,1.55) translate3d(0px, ' + goldTranslationy + 'px, 0px)');
+					$('.goldSponsorLogo').css('margin-bottom','45%');
+				}else{
+					$('.goldSponsorLogo').css('transform','translate3d(0px, ' + goldTranslationy + 'px, 0px)');
+					$('.goldSponsorLogo').css('margin-bottom','5%');
+				}
+
+				//Silver Sponsors:
+				if(silverVerticalOffSet < (VPHeight*0.62)){
+					$('.silverSponsorLogo').css('transform','scale3d(1.45,1.45,1.45) translate3d(0px, ' + silverTranslationy + 'px, 0px)');	
+					$('.silverSponsorLogo').css('margin-bottom','65%');
+
+				}else{
+					$('.silverSponsorLogo').css('transform','translate3d(0px, ' + silverTranslationy + 'px, 0px)');
+					$('.silverSponsorLogo').css('margin-bottom','0%');
+				}
+
+				//Bronze Sponsors:
+				if(silverVerticalOffSet < (VPHeight*0.30)){
+					$('.bronzeSponsorLogo').css('transform','scale3d(1.35,1.35,1.35) translate3d(0px, ' + bronzeTranslationy + 'px, 0px)');	
+					$('.bronzeSponsorLogo').css('margin-bottom','30%');
+
+				}else{
+					$('.bronzeSponsorLogo').css('transform','translate3d(0px, ' + bronzeTranslationy + 'px, 0px)');
+					$('.bronzeSponsorLogo').css('margin-bottom','0%');
+				}
+
+
+				//transform: translate3d(10px,0px,0px);
+
+			}
+			
 
 
 			function handleMenuBar(){

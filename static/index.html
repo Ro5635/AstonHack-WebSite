@@ -315,13 +315,13 @@
 		 									<div class="card">
 		 										<div class="card-header" role="tab" id="headingOne">
 		 											<h5 class="mb-0">
-		 												<h3 class="AHTitle AHAccord display-6"><a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+		 												<h3 class="AHTitle AHAccord display-6"><a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
 		 													Where/when is the event?
 		 												</a></h3>
 		 											</h5>
 		 										</div>
 
-		 										<div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+		 										<div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne">
 		 											<div class="card-block">
 		 												Check in will be between 10am and 11am in the main foyer of Aston University, Aston Triangle, Birmingham, B4 7ET. Don’t worry, we’ll have signs so you don’t get lost in the labyrinth that is Aston
 		 											</div>
@@ -351,13 +351,13 @@
 		 									<div class="card">
 		 										<div class="card-header" role="tab" id="headingThree">
 		 											<h5 class="mb-0">
-		 												<h3 class="AHTitle AHAccord display-6"><a data-toggle="collapse" data-parent="#accordionTwo" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+		 												<h3 class="AHTitle AHAccord display-6"><a class="collapsed" data-toggle="collapse" data-parent="#accordionTwo" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
 		 													Is there a code of conduct?
 		 												</a></h3>
 		 											</h5>
 		 										</div>
 
-		 										<div id="collapseThree" class="collapse show" role="tabpanel" aria-labelledby="headingThree">
+		 										<div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
 		 											<div class="card-block">
 		 												Yes, we stick strongly to the MLH code of conduct. You can find it <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">here.</a>
 		 											</div>
@@ -409,7 +409,7 @@
 
 
 		 				<!-- Master Row For Sponsor Images -->
-		 				<div class="row">
+		 				<div id="sponsorLogos" class="row">
 		 					<div class="col-sm-1 col-md-2"></div>
 		 					<div class="col-sm-10 col-md-8">
 
@@ -421,28 +421,42 @@
 
 		 						<div class="row verticalSpace"></div>
 
-		 						<div class="row">
-
-		 							<div class="col text-center"> <img class="astonTriangleLogo" src="/assets/media/AstonTriangle.svg"> </div>
-		 							<div class="col text-center"> <img class="astonTriangleLogo" src="/assets/media/AstonTriangle.svg"> </div>
-
+		 						<div class="row text-center">
+		 							<h3 class="display-4 AHTitle sponsorTitle">Gold</h3>
 		 						</div>
 
+		 						<div id="goldSponsorRow" class="row">
 
-		 						<div class="row">
+		 							
 
-		 							<div class="col text-center"> <img class="astonTriangleLogo" src="/assets/media/AstonTriangle.svg"> </div>
-		 							<div class="col text-center"> <img class="astonTriangleLogo" src="/assets/media/AstonTriangle.svg"> </div>
-		 							<div class="col text-center"> <img class="astonTriangleLogo" src="/assets/media/AstonTriangle.svg"> </div>
+		 							<div class="col text-center"> <img class="astonTriangleLogo goldSponsorLogo" src="/assets/media/AstonTriangle.svg"> </div>
+		 							<div class="col text-center"> <img class="astonTriangleLogo goldSponsorLogo" src="/assets/media/AstonTriangle.svg"> </div>
 
 		 						</div>
+		 						
+		 						<div class="row text-center">
+		 							<h3 class="display-4 AHTitle sponsorTitle">Silver</h3>
+		 						</div>
 
-		 						<div class="row">
+		 						<div id="silverSponsorRow" class="row">
 
-		 							<div class="col text-center"> <img class="astonTriangleLogo" src="/assets/media/AstonTriangle.svg"> </div>
-		 							<div class="col text-center"> <img class="astonTriangleLogo" src="/assets/media/AstonTriangle.svg"> </div>
-		 							<div class="col text-center"> <img class="astonTriangleLogo" src="/assets/media/AstonTriangle.svg"> </div>
-		 							<div class="col text-center"> <img class="astonTriangleLogo" src="/assets/media/AstonTriangle.svg"> </div>
+
+		 							<div class="col text-center"> <img class="astonTriangleLogo silverSponsorLogo" src="/assets/media/AstonTriangle.svg"> </div>
+		 							<div class="col text-center"> <img class="astonTriangleLogo silverSponsorLogo" src="/assets/media/AstonTriangle.svg"> </div>
+		 							<div class="col text-center"> <img class="astonTriangleLogo silverSponsorLogo" src="/assets/media/AstonTriangle.svg"> </div>
+
+		 						</div>
+		 						
+		 						<div class="row text-center">
+		 							<h3 class="display-4 AHTitle sponsorTitle">Bronze</h3>
+		 						</div>
+
+		 						<div id="bronzeSponsorRow" class="row">
+
+		 							<div class="col text-center"> <img class="astonTriangleLogo bronzeSponsorLogo" src="/assets/media/AstonTriangle.svg"> </div>
+		 							<div class="col text-center"> <img class="astonTriangleLogo bronzeSponsorLogo" src="/assets/media/AstonTriangle.svg"> </div>
+		 							<div class="col text-center"> <img class="astonTriangleLogo bronzeSponsorLogo" src="/assets/media/AstonTriangle.svg"> </div>
+		 							<div class="col text-center"> <img class="astonTriangleLogo bronzeSponsorLogo" src="/assets/media/AstonTriangle.svg"> </div>
 
 		 						</div>
 
@@ -451,7 +465,8 @@
 		 					<div class="col-sm-1 col-md-2"></div>
 		 					</div>
 		 					<!-- Close Master Row -->
-
+		 					<div class="row verticalSpace"></div>
+		 					<div class="row verticalSpace"></div>
 		 					<div class="row verticalSpace"></div>
 		 					<div class="row verticalSpace"></div>
 
