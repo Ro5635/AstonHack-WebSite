@@ -1,7 +1,7 @@
 		
 		//Hide header content to prevent jump when positioned correctly
 		//This is execute before the page is ready
-		document.getElementById("contentWrapper").style.display = "none";
+		// document.getElementById("contentWrapper").style.display = "none";
 
 		var mapDisplayed = 0;
 		var fullPageGMapOpened = 0; // Only open the google map in a new tab once; it gets annoying...
@@ -17,10 +17,9 @@
 			//Enable footer address map tool tip
 			$('a[rel="mapTip"]').tooltip();
 
+			reCalcHeaderButtonPosition();
+
 			$('#astonmb').removeClass('animated');
-
-
-			reCalcHeaderButtonPosition()
 
 
 			//Calculate the initial Positioning
@@ -64,7 +63,7 @@
 
     		//animate the sponsor logos when they are scrolled into the viewport
     		$('#sponsorLogos').on('inview', function(event, isInView) {
-				if (isInView) {
+    			if (isInView) {
 					//element is in teh viewport
 					animateSponsorLogos = 1;
 
@@ -177,35 +176,35 @@
 				var goldTranslationy = goldVerticalOffSet * 0.10;
 				var silverTranslationy = silverVerticalOffSet * 0.09;
 				var bronzeTranslationy = silverVerticalOffSet * 0.09;
-				console.log("Gold Level: " + goldTranslationy + " silv level: " + silverTranslationy);
+				// console.log("Gold Level: " + goldTranslationy + " silv level: " + silverTranslationy);
 
 				//Gold Sponsors:
-				if(goldVerticalOffSet < (VPHeight*0.65)){
+				if(goldVerticalOffSet < (VPHeight*0.70)){
 					$('.goldSponsorLogo').css('transform','scale3d(1.55,1.55,1.55) translate3d(0px, ' + goldTranslationy + 'px, 0px)');
-					$('.goldSponsorLogo').css('margin-bottom','45%');
+					// $('.goldSponsorLogo').css('margin-bottom','45%');
 				}else{
 					$('.goldSponsorLogo').css('transform','translate3d(0px, ' + goldTranslationy + 'px, 0px)');
-					$('.goldSponsorLogo').css('margin-bottom','5%');
+					// $('.goldSponsorLogo').css('margin-bottom','5%');
 				}
 
 				//Silver Sponsors:
 				if(silverVerticalOffSet < (VPHeight*0.62)){
 					$('.silverSponsorLogo').css('transform','scale3d(1.45,1.45,1.45) translate3d(0px, ' + silverTranslationy + 'px, 0px)');	
-					$('.silverSponsorLogo').css('margin-bottom','65%');
+					// $('.silverSponsorLogo').css('margin-bottom','65%');
 
 				}else{
 					$('.silverSponsorLogo').css('transform','translate3d(0px, ' + silverTranslationy + 'px, 0px)');
-					$('.silverSponsorLogo').css('margin-bottom','0%');
+					// $('.silverSponsorLogo').css('margin-bottom','0%');
 				}
 
 				//Bronze Sponsors:
 				if(silverVerticalOffSet < (VPHeight*0.30)){
 					$('.bronzeSponsorLogo').css('transform','scale3d(1.35,1.35,1.35) translate3d(0px, ' + bronzeTranslationy + 'px, 0px)');	
-					$('.bronzeSponsorLogo').css('margin-bottom','30%');
+					// $('.bronzeSponsorLogo').css('margin-top','30%');
 
 				}else{
 					$('.bronzeSponsorLogo').css('transform','translate3d(0px, ' + bronzeTranslationy + 'px, 0px)');
-					$('.bronzeSponsorLogo').css('margin-bottom','0%');
+					// $('.bronzeSponsorLogo').css('margin-top','0%');
 				}
 
 
@@ -350,9 +349,31 @@
 			*/
 			function recalcOnWindowResize() {
 
-				var headerWidth = parseInt( $("#pageHeader").css('width'));
-				var headerHeight = parseInt( $("#pageHeader").css('height'));
+				var headerWidth = window.innerWidth || document.body.clientWidth;
+				var headerHeight =  window.innerHeight || document.body.clientHeight;//parseInt( $("#pageHeader").css('height'));
 				var mBImageHeight = parseInt( $("#astonmb").css('height'));
+
+				if(mBImageHeight < 10){
+					//There seems to be occerances where the image has not yet loaded yet, this means it has no height. Maths is a bit difficult without the
+					//height value; so set a call back for when the image is actualy loaded.
+
+					var mainBuildImage = document.querySelector('#astonmb')
+
+					function mBLoadedReRun() {
+						recalcOnWindowResize();
+						console.log("Race condition bypassed; really need a long term solution to this...");
+					}
+
+					if(mainBuildImage.complete) {
+						mBLoadedReRun();
+
+					} else{
+						mainBuildImage.addEventListener('load', mBLoadedReRun)
+
+					}
+
+
+				}
 
 				if(headerWidth > 2000){
 					var mBOffSet = -((headerHeight * 0.05)  + (mBImageHeight * 0.3));
@@ -362,11 +383,11 @@
 
 				}else{
 					var mBOffSet = -(mBImageHeight * 0.3);
-					
+
 				}
 
-
 				$('#astonmb').css('bottom', mBOffSet);
+				console.log("recalcOnResize, mBOffSet: " + mBOffSet);
 
 				//Fix the new height of the pageEnd
 				fixPageEndHeight();
@@ -401,9 +422,12 @@
 			//?
 			document.cookie = "EssentialTimes=Tuesdays and Thursdays, 6.30 - 8.30. 1st session is Free";
 
+			//Right at the end do this again; solves some wierd race condition that occers sometimes. Quite what causes it is still under investigation...
+		//	recalcOnWindowResize();
 
 
-		}); 
+
+	}); 
 
 
 
