@@ -91,8 +91,55 @@
 
     			}
     		});
+
+    		/////// Handle the updating of the sections of the nav bar
+    		
+    		$('#sponsorLogos').on('inview', function(event, isInView) {
+				if (isInView) {
+					//Set the sponsor section to active and all outhers to inactive
+					if( !( $('#sponsorLink').hasClass('active') )){
+						
+						$(".mainNavLinks>li.active").removeClass("active");
+						$('#sponsorLink').addClass('active');
+					}
+
+
+				}else {
+
+    			}
+    		});
+
+
+    		$('#scheduleSegment').on('inview', function(event, isInView) {
+				if (isInView) {
+					//Set the sponsor section to active and all outhers to inactive
+					if( !( $('#schedLink').hasClass('active') )){
+						
+						$(".mainNavLinks>li.active").removeClass("active");
+						$('#schedLink').addClass('active');
+					}
+
+
+				}else {
+
+    			}
+    		});
     		
 
+    		$('#aboutSegment').on('inview', function(event, isInView) {
+				if (isInView) {
+					//Set the sponsor section to active and all outhers to inactive
+					if( !( $('#aboutLink').hasClass('active') )){
+						
+						$(".mainNavLinks>li.active").removeClass("active");
+						$('#aboutLink').addClass('active');
+					}
+
+
+				}else {
+
+    			}
+    		});
 
 			///////
 
@@ -358,7 +405,7 @@
 					$('#pageHeaderContent').show();
 					//addition of the AH logo to this
 					$('#astonHackHeaderLogo').show();
-										
+
 					//Move to correct position
 					reCalcHeaderButtonPosition();
 
