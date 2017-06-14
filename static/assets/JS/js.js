@@ -8,6 +8,17 @@
 		var animateMapShaddow = 0;  // Animate the maps shaddow?
 		var animateSponsorLogos = 0; //Animate the sponsor logos?
 
+		//Current menu section tracker
+		aboutSectionCurrent = 0;
+		sponsorSectionCurrent = 0;
+		scheduleSectionCurrent = 0;
+
+		// my.namespace.menuSections = {
+		// 	ABOUT : 0,
+		// 	SPONSOR : 1,
+		// 	SCHEDULE : 2
+		// }
+
 		$(document).ready(function(){ 
 
 			//Hide the map so it can be animated in
@@ -64,8 +75,15 @@
     		//animate the sponsor logos when they are scrolled into the viewport
     		$('#sponsorLogos').on('inview', function(event, isInView) {
     			if (isInView) {
-					//element is in teh viewport
+					//element is in the viewport
 					animateSponsorLogos = 1;
+
+					// if(!sponsorSectionCurrent){
+					// 	setSectionCurrent(my.namespace.SPONSOR);
+					// 	sponsorSectionCurrent = 1;
+					// }
+
+
 
 				}else {
     				// element has gone out of viewport
@@ -331,11 +349,16 @@
 					//hide header buttons
 					$('#pageHeaderButtons').hide();
 					$('#pageHeaderContent').hide();
+					//Addition of the AH logo to the hide
+					$('#astonHackHeaderLogo').hide();
 
 				}else if(scroll < pageHeaderHeight && !buttonsVisible){
 					//show header buttons
 					$('#pageHeaderButtons').show();
 					$('#pageHeaderContent').show();
+					//addition of the AH logo to this
+					$('#astonHackHeaderLogo').show();
+										
 					//Move to correct position
 					reCalcHeaderButtonPosition();
 
@@ -387,7 +410,7 @@
 				}
 
 				$('#astonmb').css('bottom', mBOffSet);
-				console.log("recalcOnResize, mBOffSet: " + mBOffSet);
+				//console.log("recalcOnResize, mBOffSet: " + mBOffSet);
 
 				//Fix the new height of the pageEnd
 				fixPageEndHeight();
@@ -418,6 +441,37 @@
 				$('#pageEnd').css('height', requiredHeight);
 
 			}
+
+			// /**
+			// *	Sets the menu bars current section to the passed section
+			// */
+			// function setSectionCurrent( menuSection){
+
+			// 	switch(menuSection){
+			// 		case my.namespace.menuSections.ABOUT :
+			// 			aboutSectionCurrent = 1;
+			// 			sponsorSectionCurrent = 0;
+			// 			scheduleSectionCurrent = 0;
+
+					
+			// 		break;
+			// 		case my.namespace.menuSections.SPONSOR :
+			// 			aboutSectionCurrent = 0;
+			// 			sponsorSectionCurrent = 1;
+			// 			scheduleSectionCurrent = 0;
+					
+			// 		break;
+			// 		case my.namespace.menuSections.SCHEDULE :
+			// 			aboutSectionCurrent = 0;
+			// 			sponsorSectionCurrent = 0;
+			// 			scheduleSectionCurrent = 1;
+
+			// 		break;
+
+			// 	}
+				
+
+			// }
 
 			//?
 			document.cookie = "EssentialTimes=Tuesdays and Thursdays, 6.30 - 8.30. 1st session is Free";

@@ -195,11 +195,11 @@ body, html {
             }
 
             @include respond-to('small') {
-                width: 30%;
+                width: 25%;
             }
 
             @include respond-to('medium') {
-                width: 25%;
+                width: 22%;
             }
 
             @include respond-to('large') {
@@ -372,7 +372,7 @@ body, html {
 
 .navbar-brand{
 
- img{
+   img{
 
     transition: background 1.2s ease;
 
@@ -449,8 +449,10 @@ body, html {
     }
 
     @include respond-to('small') {
-        width: 100%;
-        display: none;
+        width: 70%;
+        display: block;
+        
+        float: left;
 
     }
 
@@ -489,7 +491,9 @@ body, html {
     }
 
     @include respond-to('small') {
-        display: none;
+        width: 28%;
+        display: block; //Undo the none
+        float: right;
 
     }
 
@@ -523,7 +527,31 @@ body, html {
 
     #transportaionIcons{
         img{
-            max-width: 45%;    
+            max-width: 45%;  
+
+            @include respond-to('mobile') {
+                max-width: 45%;  
+
+            }
+
+            @include respond-to('small') {
+                max-width: 70%;  
+
+            }
+
+            @include respond-to('medium') {
+                max-width: 50%;  
+
+            }
+
+            @include respond-to('large') {
+                max-width: 45%;  
+
+            }
+
+
+
+
         }
         
     }
@@ -543,7 +571,7 @@ body, html {
     }
 
     @include respond-to('small') {
-        height: 0px;
+        height: 400px;
 
     }
 
@@ -569,8 +597,7 @@ body, html {
     }
 
     @include respond-to('small') {
-        display: block;
-        margin: 0 auto;
+        display: none;
 
     }
 
@@ -599,7 +626,7 @@ body, html {
     }
 
     @include respond-to('small') {
-        display: block;
+        display: none;
 
     }
 
@@ -839,6 +866,10 @@ footer{
 
         }
 
+    }
+
+    a {
+        color: white;
     }
 
     a address{
