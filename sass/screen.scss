@@ -195,7 +195,7 @@ body, html {
             }
 
             @include respond-to('small') {
-                width: 25%;
+                width: 22%;
             }
 
             @include respond-to('medium') {
@@ -242,8 +242,8 @@ body, html {
         }
 
         @include respond-to('small') {
-            margin-bottom: 5%;
-            margin-top: 5%;
+            margin-bottom: 4%;
+            margin-top: 4%;
         }
 
         @include respond-to('medium') {
@@ -296,7 +296,7 @@ body, html {
     @include respond-to('small') {
         height: 100%;
         height: 100vh;      
-        background-size: 30%;
+        background-size: 28%;
     }
 
     @include respond-to('medium') {
@@ -334,8 +334,8 @@ body, html {
     }
 
     @include respond-to('small') {
-        bottom: -15%;      
-        max-width: 100%;
+        bottom: -25%;      
+        max-width: 95%;
     }
 
     @include respond-to('medium') {
@@ -411,11 +411,15 @@ body, html {
         transition: margin 1.2s ease;
         margin-right: 3%;
         margin-right: 5vw;
+       
     }
 
 }
 
-
+//Make the transition between active and inactive smoother
+.nav-link{
+    @include transition(color 1s ease);
+}
 
 //Set the colour and z-index for the content sections of the main page
 .pageContentSection{

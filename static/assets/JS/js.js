@@ -1,4 +1,3 @@
-		
 		//Hide header content to prevent jump when positioned correctly
 		//This is execute before the page is ready
 		// document.getElementById("contentWrapper").style.display = "none";
@@ -13,13 +12,10 @@
 		sponsorSectionCurrent = 0;
 		scheduleSectionCurrent = 0;
 
-		// my.namespace.menuSections = {
-		// 	ABOUT : 0,
-		// 	SPONSOR : 1,
-		// 	SCHEDULE : 2
-		// }
+		//is there sufficient v soace for all of the controls
+		GLOBALInsufficientVPHeight = 0;
 
-		$(document).ready(function(){ 
+		$(document).ready(function(){
 
 			//Hide the map so it can be animated in
 			$('#mapContainer').hide();
@@ -78,12 +74,6 @@
 					//element is in the viewport
 					animateSponsorLogos = 1;
 
-					// if(!sponsorSectionCurrent){
-					// 	setSectionCurrent(my.namespace.SPONSOR);
-					// 	sponsorSectionCurrent = 1;
-					// }
-
-
 
 				}else {
     				// element has gone out of viewport
@@ -95,7 +85,7 @@
     		/////// Handle the updating of the sections of the nav bar
     		
     		$('#sponsorLogos').on('inview', function(event, isInView) {
-				if (isInView) {
+    			if (isInView) {
 					//Set the sponsor section to active and all outhers to inactive
 					if( !( $('#sponsorLink').hasClass('active') )){
 						
@@ -106,12 +96,12 @@
 
 				}else {
 
-    			}
-    		});
+				}
+			});
 
 
     		$('#scheduleSegment').on('inview', function(event, isInView) {
-				if (isInView) {
+    			if (isInView) {
 					//Set the sponsor section to active and all outhers to inactive
 					if( !( $('#schedLink').hasClass('active') )){
 						
@@ -122,12 +112,12 @@
 
 				}else {
 
-    			}
-    		});
+				}
+			});
     		
 
     		$('#aboutSegment').on('inview', function(event, isInView) {
-				if (isInView) {
+    			if (isInView) {
 					//Set the sponsor section to active and all outhers to inactive
 					if( !( $('#aboutLink').hasClass('active') )){
 						
@@ -138,8 +128,8 @@
 
 				}else {
 
-    			}
-    		});
+				}
+			});
 
 			///////
 
@@ -303,6 +293,13 @@
 				}
 			}
 
+			function reCalcMenuBar(){
+				//Save the menu bar offset in to datatag for later referance
+				var menu = $('.mainNavBar');
+				var origOffsetY = menu.offset().top;
+				$('.mainNavBar').attr('data-origMenuOffsetY', origOffsetY);
+			}
+
 
 			//Calculates and applies the position of the header buttons
 			function reCalcHeaderButtonPosition(scroll){
@@ -347,12 +344,12 @@
 
 
 				var headerButtonsHeight = parseInt($('#pageHeaderContent').attr('data-contentHeight'));
-				var headerButtonsWidth = $('#pageHeaderButtons').attr('data-registrationButtWidth')
+				//var headerButtonsWidth = $('#pageHeaderButtons').attr('data-registrationButtWidth')
 				var headerButtonsCentre = (headerWidth / 2 ) - (headerButtonsWidth / 2);
-				var headerContentWidth = $('#pageHeaderContent').attr('data-contentWidth');
+				//var headerContentWidth = $('#pageHeaderContent').attr('data-contentWidth');
 				var headerContentCentre = (headerWidth / 2 ) - (headerContentWidth / 2);
 
-				var headerButtonsTop = headerHeight * 0.40;
+				var headerButtonsTop = headerHeight * 0.38;
 				var headerContentTop = headerButtonsTop + headerButtonsHeight + (headerHeight * 0.04) ;								//THIS ALL NEEDS REFACTORING...
 
 				// $('#pageHeaderButtons').css('left', headerButtonsCentre + 'px' );
@@ -383,7 +380,13 @@
 				var hideHeaderButtScrollPos = pageHeaderHeight * 0.16; // (pageHeaderHeight - requiredClerance) - mbHidePoint;
 
 				var buttonsVisible = $('#pageHeaderButtons').is(":visible");
-				
+
+				// var headerWidth = window.innerWidth || document.body.clientWidth;
+				// var headerHeight =  window.innerHeight || document.body.clientHeight;
+
+				// var screenRatio = headerWidth / headerHeight;
+
+				//Arrange the layers as necasary
 				if(scroll > hideHeaderButtScrollPos){
 					//show
 					$('#astonmb').css('z-index', 3);
@@ -392,24 +395,64 @@
 					$('#astonmb').css('z-index', -1);
 				}
 
+				//Do the buttons need to be hidden?
 				if(scroll > pageHeaderHeight && buttonsVisible){
 					//hide header buttons
-					$('#pageHeaderButtons').hide();
-					$('#pageHeaderContent').hide();
-					//Addition of the AH logo to the hide
-					$('#astonHackHeaderLogo').hide();
+					hideHeaderElements();
 
 				}else if(scroll < pageHeaderHeight && !buttonsVisible){
+					
+					//show header buttons
+					showHeaderElements(GLOBALInsufficientVPHeight);
+					
+					//Move to correct position
+					reCalcHeaderButtonPosition();
+					
+
+				}
+
+			}
+
+			function hideHeaderElements(){
+
+				//hide header buttons
+				$('#pageHeaderButtons').hide();
+				//hide the header content
+				$('#pageHeaderContent').hide();
+
+				//Addition of the AH logo to the hide
+				$('#astonHackHeaderLogo').hide();
+
+			}
+
+			//Hide the elements that are not to be shown when V space is limited in the header
+			function hideinsufficientVPHeightElements(){
+				//hide header buttons
+				$('#pageHeaderButtons').hide();
+				//hide the header content
+				$('#pageHeaderContent').hide();
+
+			}
+
+			function showHeaderElements(insufficientVertHeight){
+
+				if(insufficientVertHeight){
+
+					//The AH logo to this
+					$('#astonHackHeaderLogo').show();
+
+				}else{
+
 					//show header buttons
 					$('#pageHeaderButtons').show();
+					//show the header content
 					$('#pageHeaderContent').show();
 					//addition of the AH logo to this
 					$('#astonHackHeaderLogo').show();
 
-					//Move to correct position
-					reCalcHeaderButtonPosition();
-
 				}
+
+
 
 			}
 
@@ -417,10 +460,10 @@
 			/**
 			Recalcualate the positioning and apply to the aston uni image
 			*/
-			function recalcOnWindowResize() {
+			function reCalcAstonMBPos() {
 
 				var headerWidth = window.innerWidth || document.body.clientWidth;
-				var headerHeight =  window.innerHeight || document.body.clientHeight;//parseInt( $("#pageHeader").css('height'));
+				var headerHeight =  window.innerHeight || document.body.clientHeight;
 				var mBImageHeight = parseInt( $("#astonmb").css('height'));
 
 				if(mBImageHeight < 10){
@@ -430,7 +473,7 @@
 					var mainBuildImage = document.querySelector('#astonmb')
 
 					function mBLoadedReRun() {
-						recalcOnWindowResize();
+						reCalcAstonMBPos();
 						console.log("Race condition bypassed; really need a long term solution to this...");
 					}
 
@@ -445,38 +488,52 @@
 
 				}
 
-				if(headerWidth > 2000){
-					var mBOffSet = -((headerHeight * 0.05)  + (mBImageHeight * 0.3));
 
-				}else if(headerWidth > 1500){
-					var mBOffSet = -((headerHeight * 0.025)  + (mBImageHeight * 0.3));
+				//handle the small V height screens
 
-				}else{
-					var mBOffSet = -(mBImageHeight * 0.3);
+				mBOffSet = mBImageHeight - (headerHeight * 2/3);
 
+				if(mBOffSet < (mBImageHeight * 0.3)){
+					mBOffSet = 	(mBImageHeight * 0.3);
 				}
 
-				$('#astonmb').css('bottom', mBOffSet);
-				//console.log("recalcOnResize, mBOffSet: " + mBOffSet);
-
-				//Fix the new height of the pageEnd
-				fixPageEndHeight();
-
+				$('#astonmb').css('bottom', -mBOffSet);
 
 			}
 
 
+			function handleSmallVHeightScreens(){
 
-			$(function () {
-				recalcOnWindowResize();
+				buttonOffset = $('#pageHeaderButtons')[0].getBoundingClientRect().top;
+				logoHeight = $('#astonHackHeaderLogo').height();
 
+				if(buttonOffset < logoHeight){
+					//Hide header elements there is not enough space
+					hideinsufficientVPHeightElements();
+					GLOBALInsufficientVPHeight = 1;
 
+				}else{
+					//there is sufficent V height for all of the elements
+					GLOBALInsufficientVPHeight = 0;
+					//Running showHeaderElements() is technicaly a bad idea but one notch of scroll will fix any issues
+					showHeaderElements(GLOBALInsufficientVPHeight);
 
-				$(window).resize(function() {
-					recalcOnWindowResize();
-					reCalcHeaderButtonPosition();
-				});
-			});
+				}
+			}
+
+			//Calls all of the functions required to handle changes in the screen size
+			function handleScreenSizeChange(){
+
+				reCalcAstonMBPos();
+				showHeaderElements(false);
+				handleSmallVHeightScreens();
+				reCalcHeaderButtonPosition();
+				//Ensure the update value is correct for the menu
+				reCalcMenuBar();
+				//Fix the new height of the pageEnd
+				fixPageEndHeight();
+
+			}
 
 			/*
 			//	Update the height of the pageEnd element to the height of the footer, this allows for the user
@@ -489,46 +546,32 @@
 
 			}
 
-			// /**
-			// *	Sets the menu bars current section to the passed section
-			// */
-			// function setSectionCurrent( menuSection){
 
-			// 	switch(menuSection){
-			// 		case my.namespace.menuSections.ABOUT :
-			// 			aboutSectionCurrent = 1;
-			// 			sponsorSectionCurrent = 0;
-			// 			scheduleSectionCurrent = 0;
+			$(function () {
+				handleScreenSizeChange();
 
-					
-			// 		break;
-			// 		case my.namespace.menuSections.SPONSOR :
-			// 			aboutSectionCurrent = 0;
-			// 			sponsorSectionCurrent = 1;
-			// 			scheduleSectionCurrent = 0;
-					
-			// 		break;
-			// 		case my.namespace.menuSections.SCHEDULE :
-			// 			aboutSectionCurrent = 0;
-			// 			sponsorSectionCurrent = 0;
-			// 			scheduleSectionCurrent = 1;
+				$(window).resize(function() {
 
-			// 		break;
+					// //TMP
+					// var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+					// var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
 
-			// 	}
-				
+					// console.log('RATIO x/y: ' + w/h);
+					// // console.log('RATIO y/x: ' + h/w);
 
-			// }
+					// //END TMP
+					handleScreenSizeChange();
+
+
+				});
+			});
+
 
 			//?
 			document.cookie = "EssentialTimes=Tuesdays and Thursdays, 6.30 - 8.30. 1st session is Free";
 
-			//Right at the end do this again; solves some wierd race condition that occers sometimes. Quite what causes it is still under investigation...
-		//	recalcOnWindowResize();
 
-
-
-	}); 
+		}); 
 
 
 
