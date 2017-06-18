@@ -381,6 +381,8 @@
 
 				var buttonsVisible = $('#pageHeaderButtons').is(":visible");
 
+				var headerLogoVisible = $('#astonHackHeaderLogo').is(":visible");
+
 				// var headerWidth = window.innerWidth || document.body.clientWidth;
 				// var headerHeight =  window.innerHeight || document.body.clientHeight;
 
@@ -396,7 +398,7 @@
 				}
 
 				//Do the buttons need to be hidden?
-				if(scroll > pageHeaderHeight && buttonsVisible){
+				if(scroll > pageHeaderHeight && (buttonsVisible || headerLogoVisible)){
 					//hide header buttons
 					hideHeaderElements();
 
