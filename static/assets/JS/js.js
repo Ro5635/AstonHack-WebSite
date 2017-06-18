@@ -33,8 +33,8 @@
 			reCalcHeaderButtonsState();
 
 			//Save the menu bar offset in to datatag for later referance
-			var menu = $('.mainNavBar');
-			var origOffsetY = menu.offset().top;
+			var origOffsetY = $("#pageHeader").height();
+
 			$('.mainNavBar').attr('data-origMenuOffsetY', origOffsetY);
 			
 			//Show the header elements, correct poitioning is now done
@@ -505,7 +505,7 @@
 			function handleSmallVHeightScreens(){
 
 				buttonOffset = $('#pageHeaderButtons')[0].getBoundingClientRect().top;
-				logoHeight = $('#astonHackHeaderLogo').height();
+				logoHeight = $('#astonHackHeaderLogo').height() + 15;
 
 				if(buttonOffset < logoHeight){
 					//Hide header elements there is not enough space
@@ -517,6 +517,7 @@
 					GLOBALInsufficientVPHeight = 0;
 					//Running showHeaderElements() is technicaly a bad idea but one notch of scroll will fix any issues
 					showHeaderElements(GLOBALInsufficientVPHeight);
+					reCalcHeaderButtonsState();
 
 				}
 			}
@@ -526,8 +527,9 @@
 
 				reCalcAstonMBPos();
 				showHeaderElements(false);
-				handleSmallVHeightScreens();
 				reCalcHeaderButtonPosition();
+				reCalcHeaderButtonsState();
+				handleSmallVHeightScreens();
 				//Ensure the update value is correct for the menu
 				reCalcMenuBar();
 				//Fix the new height of the pageEnd
@@ -551,7 +553,6 @@
 				handleScreenSizeChange();
 
 				$(window).resize(function() {
-
 					// //TMP
 					// var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 					// var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);

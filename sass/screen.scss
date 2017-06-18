@@ -143,11 +143,21 @@ body, html {
     }
 }
 
+.AHLink{
+    color: #014c8c;
+}
+
 #imageSpacer{
 
     width: 100%;
     display: block;
 
+}
+
+.flexBotCenter{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 
@@ -365,6 +375,17 @@ body, html {
 }
 
 ////////////*/
+//              MailChimp
+///////////*/
+#mc_embed_signup{
+    background:#fff;
+    clear:left;
+    font:14px Helvetica,Arial,sans-serif;
+    width:100%;
+}
+
+
+////////////*/
 //              Navigation Bar
 ////////////*/
 
@@ -381,7 +402,7 @@ body, html {
 
 .navbar-brand{
 
-   img{
+ img{
 
     transition: background 1.2s ease;
 
@@ -420,7 +441,7 @@ body, html {
         transition: margin 1.2s ease;
         margin-right: 3%;
         margin-right: 5vw;
-       
+
     }
 
 }
@@ -439,6 +460,30 @@ body, html {
     // Add the drop shadow that falls over the footer
     @include dropShaddowBellow(0 0px 50px 20px);
 
+
+}
+
+.SMLogoLink{
+    max-width: 75%;
+    
+    @include respond-to('mobile') {
+        max-width: 75%;
+    }
+
+    @include respond-to('small') {
+        max-width: 65%;
+
+    }
+
+    @include respond-to('medium') {
+        max-width: 55%;
+
+    }
+
+    @include respond-to('large') {
+        max-width: 45%;
+
+    }
 
 }
 
