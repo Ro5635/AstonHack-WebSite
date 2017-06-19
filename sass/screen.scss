@@ -50,7 +50,9 @@ body, html {
 
 	display: inline-block;
 
-
+    //Internet Explorer Fix
+    width: 100%;
+    
     @include dropShaddowBellow(0 40px 50px -12px);
 
 }
@@ -942,3 +944,4 @@ footer{
     }
 
 }
+
