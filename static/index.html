@@ -58,7 +58,7 @@
 		 					<div id="contentWrapper">
 		 						<div id="pageHeaderButtons">
 
-		 							<button type="button" class="open-MCpopup btn btn-secondary btn-lg" data-toggle="modal" data-target="#mailChimpSignUp">Register For Updates</button>
+		 							<button type="button" class="openMCSignUp btn btn-secondary btn-lg">Register For Updates</button>
 
 		 						</div>
 
@@ -131,7 +131,7 @@
 		 								&nbsp;&nbsp;&nbsp;&nbsp;We are inviting student hackers to join us for a frenzied 24 hours of designing, coding and making. Whether this will be your first hackathon or your 20th come join us and build something amazing!
 		 							</p>
 		 							<br>
-		 							<div class="text-center"><button type="button" class="open-MCpopup btn btn-secondary btn-lg" data-toggle="modal" data-target="#mailChimpSignUp">Register For Updates</button></div>
+		 							<div class="text-center"><button type="button" class="openMCSignUp btn btn-secondary btn-lg">Register For Updates</button></div>
 		 							<br><br>
 		 							
 
@@ -400,7 +400,7 @@
 		 								</div>
 
 		 								<div class="col-sm-1"></div>
-									<!-- Close Inner Row -->
+		 								<!-- Close Inner Row -->
 		 							</div>
 
 
@@ -611,49 +611,30 @@
 		 		<script src="assets/JS/js.js"></script>
 		 		<script src="/assets/JS/InView.js"></script>
 		 		<script src="/assets/JS/GMap.js"></script>
-		 	<!--<script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/signup-forms/popup/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script>
-		 	<script type="text/javascript" src="/assets/JS/mailChimpOnClick.js"></script>-->
-
 
 		 	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAaF03iK47EOLAWNlKiBXcahFnrjT-yNtM&callback=initMap"></script>
 		 	<script async defer src="/assets/JS/HotJar.js"></script>
 
-		 	<!-- Modal Mailing List Sign Up -->
-		 	<div class="modal fade" id="mailChimpSignUp" tabindex="-1" role="dialog" aria-labelledby="mailChimpSignUpLabel" aria-hidden="true">
+		 	<!-- General Notification Model -->
+		 	<div class="modal fade" id="generalModel" tabindex="-1" role="dialog" aria-labelledby="generalModelTitle" aria-hidden="true">
 		 		<div class="modal-dialog" role="document">
 		 			<div class="modal-content">
-		 				<div class="modal-header">
-		 					<h5 class="modal-title" id="mailChimpSignUpLabel">Mailing List Sign Up</h5>
+		 				<div class="modal-header" id="generalModelHeader">
+		 				<h5 class="modal-title" id="generalModelTitle"></h5>
 		 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 		 						<span aria-hidden="true">&times;</span>
 		 					</button>
 		 				</div>
-		 				<div class="modal-body">
-		 					<!-- Begin MailChimp Signup Form -->
-		 					<link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
-
-		 					<div id="mc_embed_signup">
-		 						<form action="//astonhack.us16.list-manage.com/subscribe/post?u=18b58febfa384b200eac98c58&amp;id=6967a3252d" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-		 							<div id="mc_embed_signup_scroll">
-		 								<label for="mce-EMAIL">Subscribe for updates</label>
-		 								<input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
-		 								<!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-		 								<div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_18b58febfa384b200eac98c58_6967a3252d" tabindex="-1" value=""></div>
-		 								<div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
-		 							</div>
-		 						</form>
-		 					</div>
-
-		 					<!--End mc_embed_signup-->
-
-
-		 				</div>
+		 				<!-- The content for the model should be dilvered by JS -->
+		 				<div class="modal-body" id="generalModelBody"></div>
 		 				<div class="modal-footer">
-
+		 					<div id="generalModelAdditionalButtons"></div>
+		 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 		 				</div>
 		 			</div>
 		 		</div>
 		 	</div>
+		 	<!-- End General Notification Model -->
 
 		 </body>
 		 </html>

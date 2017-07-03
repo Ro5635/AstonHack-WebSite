@@ -3,7 +3,7 @@
 		// document.getElementById("contentWrapper").style.display = "none";
 
 		var mapDisplayed = 0;
-		var fullPageGMapOpened = 0; // Only open the google map in a new tab once; it gets annoying...
+		var fullScreenMapAsked = 0; // Only open the google map in a new tab once; it gets annoying...
 		var animateMapShaddow = 0;  // Animate the maps shaddow?
 		var animateSponsorLogos = 0; //Animate the sponsor logos?
 
@@ -133,17 +133,37 @@
 
 			///////
 
-			////////// When the map is clicked take the user to google maps
+			////////// When the map is clicked ask the user if they want to be taken to google maps
 			$('#mapContainer').click(function(){
-				if(!fullPageGMapOpened){
-					//open the maps link in a new tab
-					var win = window.open('https://www.google.co.uk/maps/place/Aston+University/@52.4869136,-1.8900871,17z/data=!4m15!1m9!4m8!1m0!1m6!1m2!1s0x4870bc9ae4f2e4b3:0x9a670ba18e08a084!2sAston+University,+Aston+Express+Way,+Birmingham+B4+7ET!2m2!1d-1.8878984!2d52.4869104!3m4!1s0x4870bc9ae4f2e4b3:0x9a670ba18e08a084!8m2!3d52.4869104!4d-1.8878984?hl=en', '_blank');
+				if(!fullScreenMapAsked){
+					//ask the user if they want to view in google maps
+					$('#generalModelBody').html('<p>Do you want to open the map full screen in google maps?</p>');
+					$('#generalModelAdditionalButtons').html('<button id="btnOpenGMapsFull" type="button" class="btn btn-secondary" data-dismiss="modal">Go Full Screen</button>');
+					$('#generalModel').modal('show')
 
-					//Don't open this again
-					fullPageGMapOpened = !fullPageGMapOpened;
+					//Don't ask this again
+					fullScreenMapAsked = !fullScreenMapAsked;
 				}
 				
 			});
+
+			//Open the general model configured to handle a mailing list sign up
+			$('.openMCSignUp').click(function(){
+				$('#generalModelBody').html('<link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css"><div id="mc_embed_signup"><form action="//astonhack.us16.list-manage.com/subscribe/post?u=18b58febfa384b200eac98c58&amp;id=6967a3252d" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate><div id="mc_embed_signup_scroll"><label for="mce-EMAIL">Subscribe for updates</label><input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required><!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups--><div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_18b58febfa384b200eac98c58_6967a3252d" tabindex="-1" value=""></div><div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div></div></form></div>');
+				//Remove any additionl buttons
+				$('#generalModelAdditionalButtons').html('');
+				$('#generalModel').modal('show')
+
+			});
+
+
+			//Handle the button press on the "Open full screen map?" model
+			$('#generalModelAdditionalButtons').on('click', '#btnOpenGMapsFull', function() {
+				//open the maps link in a new tab
+				var win = window.open('https://www.google.co.uk/maps/place/Aston+University/@52.4869136,-1.8900871,17z/data=!4m15!1m9!4m8!1m0!1m6!1m2!1s0x4870bc9ae4f2e4b3:0x9a670ba18e08a084!2sAston+University,+Aston+Express+Way,+Birmingham+B4+7ET!2m2!1d-1.8878984!2d52.4869104!3m4!1s0x4870bc9ae4f2e4b3:0x9a670ba18e08a084!8m2!3d52.4869104!4d-1.8878984?hl=en', '_blank');
+
+			});
+
 
 			//Parrallx like effect on the mainbuilding as the viewport is scrolled
 			$(window).scroll(function() {

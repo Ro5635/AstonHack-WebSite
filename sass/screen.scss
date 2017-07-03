@@ -826,6 +826,19 @@ body, html {
     color: #cd7f32;
 }
 
+
+////////////*/
+//              General Model Styles
+////////////*/
+//This is the model that is filled with the required content by JS and diplayed as required
+
+#generalModelHeader{
+    background-image: url("/assets/media/AstonHackPresentationGeneralModelHeader.jpg");
+    background-size: cover;
+    padding-top: 10%;
+
+}
+
 ////////////*/
 //              Footer Styles
 ////////////*/
