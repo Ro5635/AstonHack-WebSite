@@ -346,25 +346,30 @@ body, html {
     left: 49%;
     z-index: -5;
     display: block;
+    visibility: visible;
 
     //Don't bother telling the user to scroll on a mobile device
     @include respond-to('mobile') {
         display: none;
+        visibility: hidden;
     }
 
     @include respond-to('small') {
         display: block;
+        visibility: visible;
     
     }
 
     @include respond-to('medium') {
         display: block;
+        visibility: visible;
 
     }
 
     @include respond-to('large') {
         display: block;
-        
+        visibility: visible;
+
     }
   
 }
