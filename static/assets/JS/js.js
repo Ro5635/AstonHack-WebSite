@@ -6,6 +6,7 @@
 		var fullScreenMapAsked = 0; // Only open the google map in a new tab once; it gets annoying...
 		var animateMapShaddow = 0;  // Animate the maps shaddow?
 		var animateSponsorLogos = 0; //Animate the sponsor logos?
+		var scrollDownArrowRotating = 1 //Is the scroll down arrow animating?
 
 		//Current menu section tracker
 		aboutSectionCurrent = 0;
@@ -191,6 +192,16 @@
 					requestAnimationFrame(function(){
 						animateSponsorLogosOnScroll();
 					}); 	
+				}
+
+				if(scrollDownArrowRotating){
+					//Now the user has scrolled stop the arrow rotating, its to much of a performance drain!
+					//And safari wierdness happens when a lower layer is being animated 
+					$('#scrollDownReminderArrow').removeClass('rotateAroundY');
+					
+					//The animation is now stopped
+					scrollDownArrowRotating = 0;
+
 				}
 				
 
