@@ -135,9 +135,11 @@
 
 			////////// When the map is clicked ask the user if they want to be taken to google maps
 			$('#mapContainer').click(function(){
+				//Allow the map to be controlled again:
+				$('#map').css("pointer-events", "auto");
 				if(!fullScreenMapAsked){
 					//ask the user if they want to view in google maps
-					$('#generalModelBody').html('<p>Do you want to open the map full screen in google maps?</p>');
+					$('#generalModelBody').html('<p>Do you want to open the map full screen in Google maps?</p>');
 					$('#generalModelAdditionalButtons').html('<button id="btnOpenGMapsFull" type="button" class="btn btn-secondary" data-dismiss="modal">Go Full Screen</button>');
 					$('#generalModel').modal('show')
 
@@ -444,6 +446,8 @@
 
 				//Addition of the AH logo to the hide
 				$('#astonHackHeaderLogo').hide();
+				//Hide the scroll down reminder arrow
+				$('#scrollDownReminderArrow').hide();
 
 			}
 
@@ -453,6 +457,8 @@
 				$('#pageHeaderButtons').hide();
 				//hide the header content
 				$('#pageHeaderContent').hide();
+				//Hide the scroll down reminder arrow
+				$('#scrollDownReminderArrow').hide();
 
 			}
 
@@ -471,6 +477,8 @@
 					$('#pageHeaderContent').show();
 					//addition of the AH logo to this
 					$('#astonHackHeaderLogo').show();
+					//Also show the scroll down arrow
+					$('#scrollDownReminderArrow').show();
 
 				}
 

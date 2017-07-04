@@ -338,6 +338,32 @@ body, html {
     
 }
 
+//Styles for the scroll down indecator arrow:
+#scrollDownReminderArrow{     
+    width: 25px;//force 1:1 size
+    position: fixed;
+    top: 60%;
+    left: 50%;
+    z-index: -5;
+  
+}
+
+.rotateAroundY{
+    -webkit-animation: rotation 4.5s infinite linear;
+    animation: rotation 4.5s infinite linear;
+}
+
+@-webkit-keyframes rotation {
+        from {
+                -webkit-transform: rotateY(0deg);
+        }
+        to {
+                -webkit-transform: rotateY(359deg);
+        }
+}
+
+
+
 //Styles for the aston main building image that forms the page header
 #astonmb{
 
@@ -537,6 +563,10 @@ body, html {
 #map {
     height: 100%;
     width: 100%;
+
+    //Disable the scroll
+    pointer-events: none;
+    
 
 }
 
