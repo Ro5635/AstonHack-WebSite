@@ -338,6 +338,40 @@ body, html {
     
 }
 
+
+//MLH trust badge:
+#mlh-trust-badge{
+    display:block;
+    max-width:100px;
+    min-width:60px;
+    position:fixed;
+    right:50px;
+    top:0;
+    width:10%;
+
+    //Nudge it a bit more to the right on mobile to clear the logo
+    @include respond-to('mobile') {
+        right:30px;
+    }
+
+    @include respond-to('small') {
+        right:50px;
+        
+    }
+
+    @include respond-to('medium') {
+        right:50px;
+
+    }
+
+    @include respond-to('large') {
+        right:50px;
+
+    }
+
+}
+
+
 //Styles for the scroll down indecator arrow:
 #scrollDownReminderArrow{     
     width: 25px;//force 1:1 size
