@@ -356,7 +356,7 @@ body, html {
 
     @include respond-to('small') {
         right:50px;
-        
+
     }
 
     @include respond-to('medium') {
@@ -408,9 +408,11 @@ body, html {
   
 }
 
-.rotateAroundY{
-    -webkit-animation: rotation 4.5s infinite linear;
+//Rotate the element around the Y axes.
+.rotateAroundY{    
     animation: rotation 4.5s infinite linear;
+    -webkit-animation: rotation 4.5s infinite linear;
+
 }
 
 @-webkit-keyframes rotation {
@@ -868,12 +870,43 @@ body, html {
 
 }
 
+//majesticLogo, each logo has its own class for tinkering with the sizings
+//adapted because its the only logo on the line!
+.majesticLogo{
+    max-width: 25%;
+    margin-bottom: 6%;
+
+    @include respond-to('mobile') {
+        max-width: 30%;
+        margin-bottom: 6%;
+
+    }
+
+    @include respond-to('small') {
+        max-width: 25%;
+        margin-bottom: 5%;
+
+    }
+
+    @include respond-to('medium') {
+        max-width: 22%;
+        margin-bottom: 4%;
+
+    }
+
+    @include respond-to('large') {
+        max-width: 17%;
+        margin-bottom: 2%;
+
+    }
+}
+
 
 //Rotate seems to cause element to literaly disaper off the face of the earth in safari...
 .goldSponsorLogo{
     // transform: rotateY(15deg) rotateZ(0deg);
     @include transition(transform 0.6s linear, margin-bottom 1s linear);
-    // margin-bottom: 50%;
+    // margin-bottom: 1%;  //Give a bit more seperation to the gold logos
 
 }
 
@@ -891,7 +924,7 @@ body, html {
 
 
 #goldSponsorRow{
-    margin-bottom: 5%;
+    margin-bottom: 13%;
 }
 
 #silverSponsorRow{
@@ -948,25 +981,25 @@ footer{
 
     #primFooterLogo{
 
-        max-width: 45%;
+        max-width: 40%;
 
         @include respond-to('mobile') {
-            max-width: 45%;
+            max-width: 35%;
 
         }
 
         @include respond-to('small') {
-            max-width: 40%;
+            max-width: 35%;
 
         }
 
         @include respond-to('medium') {
-            max-width: 30%;
+            max-width: 25%;
 
         }
 
         @include respond-to('large') {
-            max-width: 20%;
+            max-width: 17%;
 
         }
     }

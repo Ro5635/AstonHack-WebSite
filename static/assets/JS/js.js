@@ -42,8 +42,53 @@
 			$('#pageHeaderButtons').show();
 			$('#pageHeaderContent').show();
 
+			//Handle The Footer Images and the footer height
+			var footerImages = document.getElementsByClassName('footerImage');//$('.footerImage');
+			var countOfLoadedImages = 0;
 
-			fixPageEndHeight();
+			//for each of the images in the array if it is loaded iterate up the loaded images count, outherwise add a call back on load 
+			for(var i = 0; i < footerImages.length; i++){
+				var image = footerImages[i];
+
+				//Has the image finished loading?
+				if(image.complete){
+					//The image is in place, does not need a call back to recalc footer height when it loads
+					countOfLoadedImages++;
+
+				}else{
+					//The image has not finished loading, add call backs to the image to prompt recalc of footer height on load
+					image.addEventListener('load', fixPageEndHeight());
+					//catch load error
+					image.addEventListener('error', function() {
+						//If the image fails to load still run the footer height calculator
+						fixPageEndHeight();
+					});
+
+					// console.log('CallBack for image load added on: ' + image.src)
+
+				}
+
+			}
+
+			//Update the page footer height if there were loaded images
+			if(countOfLoadedImages > 0){
+				fixPageEndHeight();	
+			}
+
+
+  			//Causes double running but catches issues, revisit this...
+			handleScreenSizeChange();
+
+			//Call the resize handler on screen resize
+			$(window).resize(function() {
+				handleScreenSizeChange();
+
+			});
+			
+
+			///////////////////////
+			// FUNCTIONS
+			///////////////////////
 
 
 			/// Slide in the map when it is scrolled into the viewport, use inview.js to do this
@@ -261,9 +306,13 @@
 				var silverVerticalOffSet = ($('#silverSponsorRow')[0].getBoundingClientRect().top - ($('#silverSponsorRow').height() / 2));
 				var bronzeVerticalOffSet = ($('#bronzeSponsorRow')[0].getBoundingClientRect().top - ($('#bronzeSponsorRow').height() / 2));
 
-				var goldTranslationy = goldVerticalOffSet * 0.10;
-				var silverTranslationy = silverVerticalOffSet * 0.09;
-				var bronzeTranslationy = silverVerticalOffSet * 0.09;
+				//Centre the Y movement around the colour title
+				var yOffSet = 0.03 * VPHeight;
+
+				//Remove the Y offset from the fractional Y displacement to move centre of movement up.
+				var goldTranslationy = (goldVerticalOffSet * 0.10) - yOffSet;
+				var silverTranslationy = (silverVerticalOffSet * 0.09) - yOffSet;
+				var bronzeTranslationy = (silverVerticalOffSet * 0.09) - yOffSet;
 				// console.log("Gold Level: " + goldTranslationy + " silv level: " + silverTranslationy);
 
 				//Gold Sponsors:
@@ -448,48 +497,31 @@
 
 			}
 
+
+			//hide all of the header elements, this is so they do not interfer when offscreen.
 			function hideHeaderElements(){
-
-				//hide header buttons
-				$('#pageHeaderButtons').hide();
-				//hide the header content
-				$('#pageHeaderContent').hide();
-
-				//Addition of the AH logo to the hide
-				$('#astonHackHeaderLogo').hide();
-				//Hide the scroll down reminder arrow
-				$('#scrollDownReminderArrow').hide();
+				//Hide all header elements
+				$('.hideableHeaderElement').hide();
 
 			}
 
-			//Hide the elements that are not to be shown when V space is limited in the header
+			//Hide the elements that are not to be shown when vertical space is limited in the header
 			function hideinsufficientVPHeightElements(){
-				//hide header buttons
-				$('#pageHeaderButtons').hide();
-				//hide the header content
-				$('#pageHeaderContent').hide();
-				//Hide the scroll down reminder arrow
-				$('#scrollDownReminderArrow').hide();
+				$('.largerScreenHeaderElements').hide()
 
 			}
 
+			//Show the header elements
 			function showHeaderElements(insufficientVertHeight){
 
 				if(insufficientVertHeight){
-
-					//The AH logo to this
-					$('#astonHackHeaderLogo').show();
+					//There is not enough screen height to show more than the basic elements
+					$('.smallScreenOnlyHeaderElements').show();
 
 				}else{
+					//There is enough vertical screen height to show everything
+					$('.hideableHeaderElement').show();
 
-					//show header buttons
-					$('#pageHeaderButtons').show();
-					//show the header content
-					$('#pageHeaderContent').show();
-					//addition of the AH logo to this
-					$('#astonHackHeaderLogo').show();
-					//Also show the scroll down arrow
-					$('#scrollDownReminderArrow').show();
 
 				}
 
@@ -578,36 +610,61 @@
 
 			}
 
+
+			
 			/*
 			//	Update the height of the pageEnd element to the height of the footer, this allows for the user
 			//	to scroll only the required height.
-			*/
+			//	This should only be ran when all of the images in the footer have been loaded, this is best achived by
+			//	running each time an image is finished. just in case all of the images are never fully aquired.
+			*/	 
 			function fixPageEndHeight(){
 				var requiredHeight = parseInt($('footer').css('height'));
 				//Apply the height to the pageEnd element 
 				$('#pageEnd').css('height', requiredHeight);
-
 			}
 
 
-			$(function () {
-				handleScreenSizeChange();
 
-				$(window).resize(function() {
-					// //TMP
-					// var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-					// var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+			//////////////////////////////////
+			//Smooth Scroll solution sourced from: https://css-tricks.com/snippets/jquery/smooth-scrolling/
 
-					// console.log('RATIO x/y: ' + w/h);
-					// // console.log('RATIO y/x: ' + h/w);
+			// Select all links with hashes
+			$('a[href*="#"]')
+  			// Remove links that don't actually link to anything
+  			.not('[href="#"]')
+  			.not('[href="#0"]')
+  			.click(function(event) {
+			    // On-page links
+			    if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') 
+			    	&& 
+			    	location.hostname == this.hostname
+			    	){
+      				// Figure out element to scroll to
+      			var target = $(this.hash);
+      			target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+      				// Does a scroll target exist?
+      				if (target.length) {
+	        			// Only prevent default if animation is actually gonna happen
+	        			event.preventDefault();
+	        			$('html, body').animate({
+	        				scrollTop: target.offset().top
+	        			}, 1000, function() {
+		          			// Callback after animation
+		          			// Must change focus!
+		          			var $target = $(target);
+		          			$target.focus();
+		          			if ($target.is(":focus")) { // Checking if the target was focused
+		          				return false;
+		          			} else {
+		            			return true;
+		            		};
+		            	});
+	        		}
+	        	}
+	        });
 
-					// //END TMP
-					handleScreenSizeChange();
-
-
-				});
-			});
-
+  			/////////////////////////////// End Smooth Scroll Solution
 
 			//?
 			document.cookie = "EssentialTimes=Tuesdays and Thursdays, 6.30 - 8.30. 1st session is Free";
@@ -619,4 +676,3 @@
 
 
 
-		
