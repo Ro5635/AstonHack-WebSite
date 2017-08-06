@@ -177,6 +177,18 @@
 				}
 			});
 
+			//Quick and dirty bug fix, I need to go to bed. Will refactor.			
+    		$('#pageEnd').on('inview', function(event, isInView) {
+    			if (isInView) {
+    				//Re-run the height calculator
+    				fixPageEndHeight();
+
+				}else {
+
+				}
+			});
+
+
 			///////
 
 			////////// When the map is clicked ask the user if they want to be taken to google maps
@@ -634,6 +646,7 @@
   			// Remove links that don't actually link to anything
   			.not('[href="#"]')
   			.not('[href="#0"]')
+  			.not('.accordianNoLink')
   			.click(function(event) {
 			    // On-page links
 			    if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') 
