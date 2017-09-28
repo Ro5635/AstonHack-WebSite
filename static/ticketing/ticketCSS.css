@@ -1,0 +1,42 @@
+		
+		#ticket{
+			display: none;
+		}
+
+		.ticketBackGround{
+			background-color: #e8e8e8;
+
+		}
+
+		#googleAntiRobot{
+			display: none;
+
+		}
+		.defaultHidden{
+			display: none;
+		}
+
+		.buttonRow{
+			width: 100%;
+			text-align: center;
+
+		}
+
+		.centerButton{
+			margin: 0 auto;
+		}
+
+		.centContentContainer{
+			align-items: center; 
+			display: flex; 
+			justify-content: center;
+			margin-top: 10px; 
+			margin-top: 5vh;
+		}
+
+		.pageFill{
+			height: 300px;
+			height: 30vw;
+			width: 100%;
+
+		}

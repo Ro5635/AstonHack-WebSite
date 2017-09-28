@@ -7,7 +7,7 @@ var server = app.listen(8085, function () {
 })
 
 const io = require('socket.io')(server);
-const cors = require('cors')
+const cors = require('cors');
 
 
 app.use(function (req, res, next) {
