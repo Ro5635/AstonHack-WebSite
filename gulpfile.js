@@ -17,6 +17,8 @@ const concat = require('gulp-concat');
 const rename = require('gulp-rename');
 const compass = require('gulp-compass');
 const sass = require('gulp-ruby-sass');
+const imagemin = require('gulp-imagemin');
+const uglify = require('gulp-uglify');
 
 const sassOptions = {
 	errLogToConsole: true,
@@ -28,7 +30,7 @@ const autoprefixerOptions = {
 };
 
 // Select all js files in directory or descendant directory's 
-const jsFiles = 'javascripts/**/*.js';
+const jsFiles = 'Scripts/Base/**/*.js';
 const jsDest = 'static/assets/JS';
 
 //SASS Directory
@@ -92,6 +94,9 @@ gulp.task('compileTicketing', function(){
 * Compile SASS
 *
 * SASS is compiled and compressed and placed in the CSS directory in the static site
+* This is not currently working, this is something to do with Compass, however for now
+* I am going to continue to use ruby Compass to compile the SASS; this is due to time 
+* constraints.
 */
 gulp.task('sass', function(){
 	return gulp.src(sassSource)
@@ -109,13 +114,24 @@ gulp.task('sass', function(){
 /**
 * Compile Javascripts
 *
-* Could add babel here...
+* Conjoin the base scripts , minify and transfer to the static directorys.
 */
 gulp.task('scripts', function(){
 	return gulp.src(jsFiles)
 	.pipe(concat('scripts.js'))
 	.pipe(gulp.dest(jsDest))
+	.pipe(uglify())
 	.pipe(rename('scripts.min.js'))
 	.pipe(gulp.dest(jsDest))
 
 });
+
+/**
+* Minify all of the images in the source Directory and move them over to the static assets folder
+*
+*/
+gulp.task('images', () =>
+    gulp.src('sourceMedia/**/*')
+        .pipe(imagemin())
+        .pipe(gulp.dest('static/assets/media/'))
+);
