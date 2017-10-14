@@ -5,6 +5,9 @@
 @import "partials/base";
 @import "compass/css3";
 
+// Put the ticketing page styles into the main css
+@import "partials/ticketingPage";
+
 body, html {
 
     font-family: 'Lato', sans-serif;

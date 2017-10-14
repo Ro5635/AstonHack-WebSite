@@ -4,6 +4,12 @@
 
 2017 AstonHack website, HTML files and media assets are in the static directory, this is the directory that is synced with the Web Server.
 
+## Building
+
+Gulp is utilised to build the static files and compile the sass, the partial pages that form the pages within the project are stored in the partialPages folder.
+
+!! ISSUE !! : The gulp build of SASS falls over, as a workaround I have been using compass directly to compile the SASS files.
+
 ## Production Environment
 
 The current production environment has the static file on a AWS S3 bucket that is served to the Internet through AWS CloudFront. CloudFront operates as the
@@ -14,7 +20,7 @@ DNS Routing is handled from CloudFlare.
 
 ## Ticketing System
 
-	The ticketing for the event is completed through MYMLH, this has been selected over EventBrite that has been used in the past, this was in part due to its integration with MLH.
+The ticketing for the event is completed through MYMLH, this has been selected over EventBrite that has been used in the past, this was in part due to its integration with MLH. The back end for the ticketing system is contained within its own repository.
 
 
 ## Notification System
