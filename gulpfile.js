@@ -64,6 +64,7 @@ gulp.task('runTasks', ['compileIndex','compileTicketing', 'scripts'], function()
 gulp.task('compileIndex', function() {
 	return gulp.src([
 		'partialPages/header.html',
+		'partialPages/endHeader.html',
 		'partialPages/pageNavigation.html',
 		'homePage.html', 
 		'partialPages/footer.html'
@@ -81,6 +82,8 @@ gulp.task('compileIndex', function() {
 gulp.task('compileTicketing', function(){
 	return gulp.src([
 		'partialPages/header.html',
+		'partialPages/TicketingHeadExtensions.html',
+		'partialPages/endHeader.html',
 		'partialPages/pageNavigation.html',
 		'ticketingPage.html', 
 		'partialPages/footer.html'
