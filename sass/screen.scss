@@ -542,6 +542,8 @@ body, html {
 //Make the transition between active and inactive smoother
 .nav-link{
     @include transition(color 1s ease);
+    // Remove the padding from around the link
+    padding: 0;
 }
 
 //Set the colour and z-index for the content sections of the main page
@@ -913,6 +915,11 @@ body, html {
 
 }
 
+.goldHardwareSponsorLogo{
+    @include transition(transform 0.6s linear, margin-bottom 1s linear);
+
+}
+
 .silverSponsorLogo{
     // transform: rotateY(15deg) rotateZ(0deg);
     @include transition(transform 0.5s linear, margin-bottom 1s linear); 
@@ -922,6 +929,7 @@ body, html {
 .bronzeSponsorLogo{
     // transform: rotateY(15deg) rotateZ(0deg);
     @include transition(transform 0.4s linear, margin-bottom 1s linear);
+    max-width: 50px;
 
 }
 
@@ -930,7 +938,13 @@ body, html {
 }
 
 #goldSponsorRow{
+    padding-top: 4%;
     margin-bottom: 13%;
+}
+
+#goldHardwareSponsorRow{
+    padding-top: 5%;
+    margin-bottom: 10%;
 }
 
 #silverSponsorRow{

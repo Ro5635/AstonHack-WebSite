@@ -27,5 +27,9 @@
     "gulp-rename": "^1.2.2",
     "gulp-ruby-sass": "^2.1.1",
     "gulp-sass": "^3.1.0"
+  },
+  "dependencies": {
+    "gulp-imagemin": "^3.4.0",
+    "gulp-uglify": "^3.0.0"
   }
 }
