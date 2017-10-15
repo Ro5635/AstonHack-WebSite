@@ -33,6 +33,9 @@ const autoprefixerOptions = {
 const jsFiles = 'Scripts/Base/**/*.js';
 const jsDest = 'static/assets/JS';
 
+const jsNotificationFiles = 'Scripts/Notifications/**/*.js';
+const jsNotificationDest = 'static/assets/JS';
+
 //SASS Directory
 const sassSource = 'sass/**/*.scss';
 const sassDest = 'static/assets/stylesheets/';
@@ -67,6 +70,7 @@ gulp.task('compileIndex', function() {
 		'partialPages/endHeader.html',
 		'partialPages/pageNavigation.html',
 		'homePage.html', 
+		'partialPages/notificationScriptExtensions.html',
 		'partialPages/footer.html'
 		])
 	.pipe(concat('index.html'))
@@ -115,7 +119,7 @@ gulp.task('sass', function(){
 });
 
 /**
-* Compile Javascripts
+* Compile Base Javascripts
 *
 * Conjoin the base scripts , minify and transfer to the static directorys.
 */
@@ -126,6 +130,22 @@ gulp.task('scripts', function(){
 	.pipe(uglify())
 	.pipe(rename('scripts.min.js'))
 	.pipe(gulp.dest(jsDest))
+
+});
+
+
+/**
+* Compile Notification Javascripts
+*
+* Conjoin the Notification scripts , minify and transfer to the static directorys.
+*/
+gulp.task('notificationScripts', function(){
+	return gulp.src(jsNotificationFiles)
+	.pipe(concat('notificationHandler.js'))
+	.pipe(gulp.dest(jsNotificationDest))
+	.pipe(uglify())
+	.pipe(rename('notificationHandler.min.js'))
+	.pipe(gulp.dest(jsNotificationDest))
 
 });
 

@@ -13,7 +13,7 @@ const cors = require('cors');
 app.use(function (req, res, next) {
 
 	// Set the CORS headers
-	res.setHeader('Access-Control-Allow-Origin', 'http://172.17.0.5');
+	res.setHeader('Access-Control-Allow-Origin', '*');
 	res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
 	res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
 	// Allow transmission of cookies
@@ -32,7 +32,11 @@ app.get('/', function (req, res) {
 })
 
 app.get('/msg/:msg', function (req, res) {
-	io.emit('notification', req.params.msg);
+	
+	//  build the payload
+	const payload = {'icon' : 'http://127.0.0.1:8080/assets/media/logos/codewizards_logo.png', title: 'This is the title', weblink: 'https://www.google.com', body: req.params.msg};
+
+	io.emit('notification', payload);
 	res.send('SENT: ' + req.params.msg + ' and: ' + io.engine.clientsCount);
 	// console.log('SENT: ' + req.params.msg);
 

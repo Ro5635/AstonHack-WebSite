@@ -212,13 +212,25 @@ $(document).ready(function(){
 		
 	});
 
-
 	//Handle the button press on the "Open full screen map?" model
 	$('#generalModelAdditionalButtons').on('click', '#btnOpenGMapsFull', function() {
 		//open the maps link in a new tab
 		var win = window.open('https://www.google.co.uk/maps/place/Aston+University/@52.4869136,-1.8900871,17z/data=!4m15!1m9!4m8!1m0!1m6!1m2!1s0x4870bc9ae4f2e4b3:0x9a670ba18e08a084!2sAston+University,+Aston+Express+Way,+Birmingham+B4+7ET!2m2!1d-1.8878984!2d52.4869104!3m4!1s0x4870bc9ae4f2e4b3:0x9a670ba18e08a084!8m2!3d52.4869104!4d-1.8878984?hl=en', '_blank');
 
 	});
+
+	function configureGeneralModel(theBody,theIcon,theTitle, weblink){
+		$('#generalModelBody').html('<p>' + theBody +'</p>');
+		$('#generalModelTitle').html(theTitle);
+		if(weblink){
+			$('#generalModelAdditionalButtons').html('<a href="' + weblink + '" target="_blank"><button type="button" class="btn btn-secondary" data-dismiss="modal">More Info</button></a>');
+			
+		}else{
+			$('#generalModelAdditionalButtons').html('');
+		}
+
+		$('#generalModel').modal('show')
+	}
 
 
 	//Parallax like effect on the main building as the viewport is scrolled
@@ -692,9 +704,6 @@ $(document).ready(function(){
 
 
 }); 
-
-
-
 
 
 
