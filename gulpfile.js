@@ -36,6 +36,9 @@ const jsDest = 'static/assets/JS';
 const jsNotificationFiles = 'Scripts/Notifications/**/*.js';
 const jsNotificationDest = 'static/assets/JS';
 
+const jsTicketingFiles = 'Scripts/Ticketing/**/*.js';
+const jsTicketingDest = 'static/assets/JS';
+
 //SASS Directory
 const sassSource = 'sass/**/*.scss';
 const sassDest = 'static/assets/stylesheets/';
@@ -90,7 +93,7 @@ gulp.task('compileTicketing', function(){
 		'partialPages/endHeader.html',
 		'partialPages/pageNavigation.html',
 		'ticketingPage.html', 
-		'partialPages/footer.html'
+		'partialPages/footerTicketing.html'
 		])
 	.pipe(concat('index.html'))
 	.pipe(gulp.dest('./static/ticketing/'))
@@ -148,6 +151,24 @@ gulp.task('notificationScripts', function(){
 	.pipe(gulp.dest(jsNotificationDest))
 
 });
+
+
+/**
+* Compile Ticketing Javascripts
+*
+* Conjoin the ticketing scripts , minify and transfer to the static directorys.
+*/
+gulp.task('ticketingScripts', function(){
+	return gulp.src(jsTicketingFiles)
+	.pipe(concat('ticketingHandler.js'))
+	.pipe(gulp.dest(jsTicketingDest))
+	.pipe(uglify())
+	.pipe(rename('ticketingHandler.min.js'))
+	.pipe(gulp.dest(jsTicketingDest))
+
+});
+
+
 
 /**
 * Minify all of the images in the source Directory and move them over to the static assets folder

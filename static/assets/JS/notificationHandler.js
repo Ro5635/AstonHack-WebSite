@@ -24,10 +24,15 @@ else if (Notification.permission !== "denied") {
 
 // Handle the notification websocket
 
-var socket = io('http://localhost:8085');
+var socket = io('http://127.0.0.1:8085');
 
 var userNotification = new userNotification();
 
+/**
+* Handle WebSocket
+*
+* On recipet of a notification display it to the user
+*/
 socket.on('notification', function(data){
 	userNotification.spawnNotification(data['body'], data['icon'], data['title'], data['weblink']);
 

@@ -1,0 +1,37 @@
+	Login Portal:
+
+	Take the users name and then allow them to be registered
+		-> Log the time that the person arrived
+
+	Allow for a note of any additional requirements that need to be follwed up later
+
+	Allow for a text message to be sent out to all of the people who have not arrived informing them of who to contact for late registration.
+
+	Link all of the data together in a way that the MLH IDs can be linked with there arrival time, this will probably consist of dumping the data for each user by calling the MyMLH API and appending the 
+	local records to the data set.
+
+	Users that are registering people must sign in to the system.
+
+	{Extend}
+
+	There is a capacity to clear the registration of a person...
+
+
+
+	DesignWise:
+
+	Large Login Screen that purely requires the pasting of the JWT, this can be saved to the browsers cache and then loaded from there each time reducing the need for the user to need some login details after then have been logged into the system; means that the password cannot leak. The system will just be calling the API with the JWT and will operate as a sort of single page application depending on if I use angular to do this or not.
+
+	
+	API Design
+
+	/user/Search?name=likeName
+	/user/register?userID=#####?notes=""
+
+	/stats/registrationStats
+		returns registered; toArrive; schoolBreakDown
+
+
+	This could be from a separate node system or from the existing service; Will make it as part of the existing project. This will mean that the newsletter endpoints will need protecting in someway. This will likely be a JWT.
+
+
