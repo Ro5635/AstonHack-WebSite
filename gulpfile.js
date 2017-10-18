@@ -73,7 +73,7 @@ gulp.task('compileIndex', function() {
 		'partialPages/endHeader.html',
 		'partialPages/pageNavigation.html',
 		'homePage.html', 
-		'partialPages/notificationScriptExtensions.html',
+		// 'partialPages/notificationScriptExtensions.html',
 		'partialPages/footer.html'
 		])
 	.pipe(concat('index.html'))
