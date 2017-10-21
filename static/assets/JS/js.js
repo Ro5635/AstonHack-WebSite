@@ -329,7 +329,7 @@
 
 				//Gold Sponsors:
 				if(goldVerticalOffSet < (VPHeight*0.70)){
-					$('.goldSponsorLogo').css('transform','scale3d(1.55,1.55,1.55) translate3d(0px, ' + goldTranslationy + 'px, 0px)');
+					$('.goldSponsorLogo').css('transform','scale3d(1.45,1.45,1.45) translate3d(0px, ' + goldTranslationy + 'px, 0px)');
 					// $('.goldSponsorLogo').css('margin-bottom','45%');
 				}else{
 					$('.goldSponsorLogo').css('transform','translate3d(0px, ' + goldTranslationy + 'px, 0px)');
@@ -338,7 +338,7 @@
 
 				//Silver Sponsors:
 				if(silverVerticalOffSet < (VPHeight*0.62)){
-					$('.silverSponsorLogo').css('transform','scale3d(1.45,1.45,1.45) translate3d(0px, ' + silverTranslationy + 'px, 0px)');	
+					$('.silverSponsorLogo').css('transform','scale3d(1.25,1.25,1.25) translate3d(0px, ' + silverTranslationy + 'px, 0px)');	
 					// $('.silverSponsorLogo').css('margin-bottom','65%');
 
 				}else{
@@ -364,27 +364,31 @@
 
 
 			function handleMenuBar(){
-			//Handle the menu bar
-			var origOffsetY = $('.mainNavBar').attr('data-origMenuOffsetY');
 
-			if($(window).scrollTop() >= (origOffsetY * 0.9)){
-				$('.mainNavBar').css('background-color', '#ecf0f1' );
-				$('.mainNavLinks li').css('margin-right', '5vw' );
-			}
+				var expandedColour  = '#ecf0f1';//'rgb(52, 51, 51)';
+				var minimisedColour = '#FFF';
 
-			if ($(window).scrollTop() >= origOffsetY) {
-				$('.mainNavBar').addClass('fixed-top');
-					//add padding to prevent jump with loss of nav bar
-					navBarHeight = parseInt($('.mainNavBar').css('height'));
-					$('.pageContentSection').filter(":first").css('padding-top',  navBarHeight);
+				//Handle the menu bar
+				var origOffsetY = $('.mainNavBar').attr('data-origMenuOffsetY');
 
-				} else {
-					$('.mainNavBar').removeClass('fixed-top');
-					$('.mainNavBar').css('background-color', '#FFF' );
-					$('.mainNavLinks li').css('margin-right', '0vw' );
-					$('.pageContentSection').filter(":first").css('padding-top', 0)
-
+				if($(window).scrollTop() >= (origOffsetY * 0.9)){
+					$('.mainNavBar').css('background-color', expandedColour );
+					$('.mainNavLinks li').css('margin-right', '5vw' );
 				}
+
+				if ($(window).scrollTop() >= origOffsetY) {
+					$('.mainNavBar').addClass('fixed-top');
+						//add padding to prevent jump with loss of nav bar
+						navBarHeight = parseInt($('.mainNavBar').css('height'));
+						$('.pageContentSection').filter(":first").css('padding-top',  navBarHeight);
+
+					} else {
+						$('.mainNavBar').removeClass('fixed-top');
+						$('.mainNavBar').css('background-color', minimisedColour );
+						$('.mainNavLinks li').css('margin-right', '0vw' );
+						$('.pageContentSection').filter(":first").css('padding-top', 0)
+
+					}
 			}
 
 			function reCalcMenuBar(){
@@ -656,7 +660,7 @@
 	        			// Only prevent default if animation is actually gonna happen
 	        			event.preventDefault();
 	        			$('html, body').animate({
-	        				scrollTop: target.offset().top
+	        				scrollTop: (target.offset().top - 50)
 	        			}, 1000, function() {
 		          			// Callback after animation
 		          			// Must change focus!

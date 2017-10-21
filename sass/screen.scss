@@ -5,6 +5,9 @@
 @import "partials/base";
 @import "compass/css3";
 
+// Put the ticketing page styles into the main css
+@import "partials/ticketingPage";
+
 body, html {
 
     font-family: 'Lato', sans-serif;
@@ -482,7 +485,7 @@ body, html {
 .mainNavBar{
 
     transition: background 1.2s ease;
-    box-shadow: 0px 5px 20px 8px #000;
+    box-shadow: 0px 5px 20px 8px rgba(0, 0, 0, 0.31);
     z-index: 5;
     background-color: #FFF;//#ecf0f1;//$standOut1;
 
@@ -539,6 +542,8 @@ body, html {
 //Make the transition between active and inactive smoother
 .nav-link{
     @include transition(color 1s ease);
+    // Remove the padding from around the link
+    padding: 0;
 }
 
 //Set the colour and z-index for the content sections of the main page
@@ -910,21 +915,39 @@ body, html {
 
 }
 
+.goldHardwareSponsorLogo{
+    @include transition(transform 0.6s linear, margin-bottom 1s linear);
+    max-width: 50%;
+
+
+}
+
 .silverSponsorLogo{
     // transform: rotateY(15deg) rotateZ(0deg);
     @include transition(transform 0.5s linear, margin-bottom 1s linear); 
+    padding-top: 2%;
     // margin-bottom: 50%;
 }
 
 .bronzeSponsorLogo{
     // transform: rotateY(15deg) rotateZ(0deg);
     @include transition(transform 0.4s linear, margin-bottom 1s linear);
+    max-width: 50px;
 
 }
 
+.sponsorsRowWidth{
+    width: 100%;
+}
 
 #goldSponsorRow{
+    padding-top: 4%;
     margin-bottom: 13%;
+}
+
+#goldHardwareSponsorRow{
+    padding-top: 5%;
+    margin-bottom: 10%;
 }
 
 #silverSponsorRow{

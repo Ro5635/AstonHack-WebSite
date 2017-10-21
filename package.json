@@ -1,0 +1,35 @@
+{
+  "name": "astonhacksite",
+  "version": "1.0.0",
+  "description": "Astonhack 2017 site",
+  "main": "static/",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ro5635/AstonHack2017WebSite.git"
+  },
+  "keywords": [
+    "astonhack"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ro5635/AstonHack2017WebSite/issues"
+  },
+  "homepage": "https://github.com/Ro5635/AstonHack2017WebSite#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-compass": "^2.1.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-ruby-sass": "^2.1.1",
+    "gulp-sass": "^3.1.0"
+  },
+  "dependencies": {
+    "gulp-imagemin": "^3.4.0",
+    "gulp-uglify": "^3.0.0"
+  }
+}
