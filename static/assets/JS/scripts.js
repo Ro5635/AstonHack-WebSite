@@ -1,3 +1,9 @@
+// InView.js
+// Provides interface to call when a div is in the viewport...
+// By: https://github.com/protonet/jquery.inview
+
+!function(a){"function"==typeof define&&define.amd?define(["jquery"],a):"object"==typeof exports?module.exports=a(require("jquery")):a(jQuery)}(function(a){function i(){var b,c,d={height:f.innerHeight,width:f.innerWidth};return d.height||(b=e.compatMode,(b||!a.support.boxModel)&&(c="CSS1Compat"===b?g:e.body,d={height:c.clientHeight,width:c.clientWidth})),d}function j(){return{top:f.pageYOffset||g.scrollTop||e.body.scrollTop,left:f.pageXOffset||g.scrollLeft||e.body.scrollLeft}}function k(){if(b.length){var e=0,f=a.map(b,function(a){var b=a.data.selector,c=a.$element;return b?c.find(b):c});for(c=c||i(),d=d||j();e<b.length;e++)if(a.contains(g,f[e][0])){var h=a(f[e]),k={height:h[0].offsetHeight,width:h[0].offsetWidth},l=h.offset(),m=h.data("inview");if(!d||!c)return;l.top+k.height>d.top&&l.top<d.top+c.height&&l.left+k.width>d.left&&l.left<d.left+c.width?m||h.data("inview",!0).trigger("inview",[!0]):m&&h.data("inview",!1).trigger("inview",[!1])}}}var c,d,h,b=[],e=document,f=window,g=e.documentElement;a.event.special.inview={add:function(c){b.push({data:c,$element:a(this),element:this}),!h&&b.length&&(h=setInterval(k,250))},remove:function(a){for(var c=0;c<b.length;c++){var d=b[c];if(d.element===this&&d.data.guid===a.guid){b.splice(c,1);break}}b.length||(clearInterval(h),h=null)}},a(f).on("scroll resize scrollstop",function(){c=d=null}),!g.addEventListener&&g.attachEvent&&g.attachEvent("onfocusin",function(){d=null})});
+
 /*
 *
 * These are the base scripts for the astonhack site
@@ -9,7 +15,7 @@ var mapDisplayed = 0;
 var fullScreenMapAsked = 0; // Only open the google map in a new tab once; it gets annoying...
 var animateMapShaddow = 0;  // Animate the maps shaddow?
 var animateSponsorLogos = 0; //Animate the sponsor logos?
-var scrollDownArrowRotating = 1 //Is the scroll down arrow animating?
+var scrollDownArrowRotating = 1; //Is the scroll down arrow animating?
 
 //Current menu section tracker
 aboutSectionCurrent = 0;
@@ -18,6 +24,81 @@ scheduleSectionCurrent = 0;
 
 //is there sufficient v space for all of the controls
 GLOBALInsufficientVPHeight = 0;
+
+var images = [
+    {
+        left: {src: "assets/media/2017Photos/AstonHack201701.JPG", width: 35},
+        right: {src: "assets/media/2017Photos/AstonHack201702.JPG", width: 65}
+    },
+    {
+        left: {src: "assets/media/2017Photos/AstonHack201704.JPG", width: 40},
+        right: {src: "assets/media/2017Photos/AstonHack201703.JPG", width: 60}
+    },
+    {
+        left: {src: "assets/media/2017Photos/AstonHack201705.JPG", width: 20},
+        right: {src: "assets/media/2017Photos/AstonHack201706.JPG", width: 80}
+    },
+    {
+        left: {src: "assets/media/2017Photos/AstonHack201714.JPG", width: 35},
+        right: {src: "assets/media/2017Photos/AstonHack201713.JPG", width: 65}
+    },
+    {
+        left: {src: "assets/media/2017Photos/AstonHack201707.JPG", width: 80},
+        right: {src: "assets/media/2017Photos/AstonHack201708.JPG", width: 20}
+    },
+    {
+        left: {src: "assets/media/2017Photos/AstonHack201709.JPG", width: 35},
+        right: {src: "assets/media/2017Photos/AstonHack201715.JPG", width: 65}
+    },
+    {
+        left: {src: "assets/media/2017Photos/AstonHack201712.JPG", width: 35},
+        right: {src: "assets/media/2017Photos/AstonHack201711.JPG", width: 65}
+    },
+];
+
+
+
+function imageFadeSwitcher(imageID, newSrc, animation) {
+
+    var element = document.getElementById(imageID);
+
+    element.classList.remove("animated");
+    element.classList.remove("slideInRight");
+    element.classList.remove("slideInLeft");
+
+    // Start Fadeout
+    element.classList.add("opacityZero");
+
+
+
+    setTimeout(function () {
+
+        switch (animation) {
+            case 'left':
+                element.classList.add("slideInLeft");
+                break;
+
+            case 'right':
+                element.classList.add("slideInRight");
+                break;
+
+        }
+
+
+        element.src = '';
+        element.src = newSrc;
+
+        setTimeout(function(){
+            element.classList.remove("opacityZero");
+            element.classList.add("animated");
+
+
+        }, 150);
+
+
+    }, 600);
+}
+
 
 $(document).ready(function(){
 
@@ -89,12 +170,51 @@ $(document).ready(function(){
 		handleScreenSizeChange();
 
 	});
+
+
+    var imageIndex = 1;
+	var preLoadedImages = [];
+	var cycledAtLeastOnce = false;
+
+    setInterval(function () {
+
+        imageFadeSwitcher("lefthandImage", images[imageIndex].left.src, 'left');
+        imageFadeSwitcher("righthandImage", images[imageIndex].right.src, 'right');
+
+
+        // Pre load the next Image
+		if (!cycledAtLeastOnce) {
+			console.log('Preloading initi');
+			console.log(images[imageIndex].left.src);
+			preload(images[imageIndex].left.src, images[imageIndex].right.src);
+
+		}
+
+        imageIndex++;
+
+        if (imageIndex >= images.length) {
+
+			// Final images load
+			// preload(images[imageIndex].left.src, images[imageIndex].right.src);
+
+            imageIndex = 0;
+            cycledAtLeastOnce = true;
+        }
+
+
+    }, 3500);
 	
 
 	///////////////////////
 	// FUNCTIONS
 	///////////////////////
 
+    function preload() {
+        for (var i = 0; i < arguments.length; i++) {
+            preLoadedImages[i] = new Image();
+            preLoadedImages[i].src = preload.arguments[i];
+        }
+    }
 
 	/// Slide in the map when it is scrolled into the viewport, use inview.js to do this
 	$('#mapAddressSideBar').on('inview', function(event, isInView) {
@@ -110,7 +230,6 @@ $(document).ready(function(){
 			}
 
 			animateMapShaddow = 1;
-
 
 		}else {
 			// element has gone out of viewport
@@ -368,7 +487,7 @@ $(document).ready(function(){
 		}
 
 		//Bronze Sponsors:
-		if(bronzeVerticalOffSet < (VPHeight*0.30)){
+		if(bronzeVerticalOffSet < (VPHeight*0.60)){
 			$('.bronzeSponsorLogo').css('transform','scale3d(1.35,1.35,1.35) translate3d(0px, ' + bronzeTranslationy + 'px, 0px)');	
 
 
@@ -706,9 +825,3 @@ $(document).ready(function(){
 }); 
 
 
-
-// InView.js
-// Provides interface to call when a div is in the viewport...
-// By: https://github.com/protonet/jquery.inview
-
-!function(a){"function"==typeof define&&define.amd?define(["jquery"],a):"object"==typeof exports?module.exports=a(require("jquery")):a(jQuery)}(function(a){function i(){var b,c,d={height:f.innerHeight,width:f.innerWidth};return d.height||(b=e.compatMode,(b||!a.support.boxModel)&&(c="CSS1Compat"===b?g:e.body,d={height:c.clientHeight,width:c.clientWidth})),d}function j(){return{top:f.pageYOffset||g.scrollTop||e.body.scrollTop,left:f.pageXOffset||g.scrollLeft||e.body.scrollLeft}}function k(){if(b.length){var e=0,f=a.map(b,function(a){var b=a.data.selector,c=a.$element;return b?c.find(b):c});for(c=c||i(),d=d||j();e<b.length;e++)if(a.contains(g,f[e][0])){var h=a(f[e]),k={height:h[0].offsetHeight,width:h[0].offsetWidth},l=h.offset(),m=h.data("inview");if(!d||!c)return;l.top+k.height>d.top&&l.top<d.top+c.height&&l.left+k.width>d.left&&l.left<d.left+c.width?m||h.data("inview",!0).trigger("inview",[!0]):m&&h.data("inview",!1).trigger("inview",[!1])}}}var c,d,h,b=[],e=document,f=window,g=e.documentElement;a.event.special.inview={add:function(c){b.push({data:c,$element:a(this),element:this}),!h&&b.length&&(h=setInterval(k,250))},remove:function(a){for(var c=0;c<b.length;c++){var d=b[c];if(d.element===this&&d.data.guid===a.guid){b.splice(c,1);break}}b.length||(clearInterval(h),h=null)}},a(f).on("scroll resize scrollstop",function(){c=d=null}),!g.addEventListener&&g.attachEvent&&g.attachEvent("onfocusin",function(){d=null})});

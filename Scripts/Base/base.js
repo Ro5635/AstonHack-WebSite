@@ -9,7 +9,7 @@ var mapDisplayed = 0;
 var fullScreenMapAsked = 0; // Only open the google map in a new tab once; it gets annoying...
 var animateMapShaddow = 0;  // Animate the maps shaddow?
 var animateSponsorLogos = 0; //Animate the sponsor logos?
-var scrollDownArrowRotating = 1 //Is the scroll down arrow animating?
+var scrollDownArrowRotating = 1; //Is the scroll down arrow animating?
 
 //Current menu section tracker
 aboutSectionCurrent = 0;
@@ -18,6 +18,81 @@ scheduleSectionCurrent = 0;
 
 //is there sufficient v space for all of the controls
 GLOBALInsufficientVPHeight = 0;
+
+var images = [
+    {
+        left: {src: "assets/media/2017Photos/AstonHack201701.JPG", width: 35},
+        right: {src: "assets/media/2017Photos/AstonHack201702.JPG", width: 65}
+    },
+    {
+        left: {src: "assets/media/2017Photos/AstonHack201704.JPG", width: 40},
+        right: {src: "assets/media/2017Photos/AstonHack201703.JPG", width: 60}
+    },
+    {
+        left: {src: "assets/media/2017Photos/AstonHack201705.JPG", width: 20},
+        right: {src: "assets/media/2017Photos/AstonHack201706.JPG", width: 80}
+    },
+    {
+        left: {src: "assets/media/2017Photos/AstonHack201714.JPG", width: 35},
+        right: {src: "assets/media/2017Photos/AstonHack201713.JPG", width: 65}
+    },
+    {
+        left: {src: "assets/media/2017Photos/AstonHack201707.JPG", width: 80},
+        right: {src: "assets/media/2017Photos/AstonHack201708.JPG", width: 20}
+    },
+    {
+        left: {src: "assets/media/2017Photos/AstonHack201709.JPG", width: 35},
+        right: {src: "assets/media/2017Photos/AstonHack201715.JPG", width: 65}
+    },
+    {
+        left: {src: "assets/media/2017Photos/AstonHack201712.JPG", width: 35},
+        right: {src: "assets/media/2017Photos/AstonHack201711.JPG", width: 65}
+    },
+];
+
+
+
+function imageFadeSwitcher(imageID, newSrc, animation) {
+
+    var element = document.getElementById(imageID);
+
+    element.classList.remove("animated");
+    element.classList.remove("slideInRight");
+    element.classList.remove("slideInLeft");
+
+    // Start Fadeout
+    element.classList.add("opacityZero");
+
+
+
+    setTimeout(function () {
+
+        switch (animation) {
+            case 'left':
+                element.classList.add("slideInLeft");
+                break;
+
+            case 'right':
+                element.classList.add("slideInRight");
+                break;
+
+        }
+
+
+        element.src = '';
+        element.src = newSrc;
+
+        setTimeout(function(){
+            element.classList.remove("opacityZero");
+            element.classList.add("animated");
+
+
+        }, 150);
+
+
+    }, 600);
+}
+
 
 $(document).ready(function(){
 
@@ -89,12 +164,51 @@ $(document).ready(function(){
 		handleScreenSizeChange();
 
 	});
+
+
+    var imageIndex = 1;
+	var preLoadedImages = [];
+	var cycledAtLeastOnce = false;
+
+    setInterval(function () {
+
+        imageFadeSwitcher("lefthandImage", images[imageIndex].left.src, 'left');
+        imageFadeSwitcher("righthandImage", images[imageIndex].right.src, 'right');
+
+
+        // Pre load the next Image
+		if (!cycledAtLeastOnce) {
+			console.log('Preloading initi');
+			console.log(images[imageIndex].left.src);
+			preload(images[imageIndex].left.src, images[imageIndex].right.src);
+
+		}
+
+        imageIndex++;
+
+        if (imageIndex >= images.length) {
+
+			// Final images load
+			// preload(images[imageIndex].left.src, images[imageIndex].right.src);
+
+            imageIndex = 0;
+            cycledAtLeastOnce = true;
+        }
+
+
+    }, 3500);
 	
 
 	///////////////////////
 	// FUNCTIONS
 	///////////////////////
 
+    function preload() {
+        for (var i = 0; i < arguments.length; i++) {
+            preLoadedImages[i] = new Image();
+            preLoadedImages[i].src = preload.arguments[i];
+        }
+    }
 
 	/// Slide in the map when it is scrolled into the viewport, use inview.js to do this
 	$('#mapAddressSideBar').on('inview', function(event, isInView) {
@@ -110,7 +224,6 @@ $(document).ready(function(){
 			}
 
 			animateMapShaddow = 1;
-
 
 		}else {
 			// element has gone out of viewport
@@ -368,7 +481,7 @@ $(document).ready(function(){
 		}
 
 		//Bronze Sponsors:
-		if(bronzeVerticalOffSet < (VPHeight*0.30)){
+		if(bronzeVerticalOffSet < (VPHeight*0.60)){
 			$('.bronzeSponsorLogo').css('transform','scale3d(1.35,1.35,1.35) translate3d(0px, ' + bronzeTranslationy + 'px, 0px)');	
 
 

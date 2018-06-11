@@ -30,6 +30,7 @@
   },
   "dependencies": {
     "gulp-imagemin": "^3.4.0",
-    "gulp-uglify": "^3.0.0"
+    "gulp-uglify": "^3.0.0",
+    "jpegtran-bin": "^3.2.0"
   }
 }

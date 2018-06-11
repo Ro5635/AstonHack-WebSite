@@ -467,6 +467,104 @@ body, html {
 
 }
 
+//////////////////
+/// Image Fade
+///
+//////////////////
+
+.imagesFaderHolderContainer{
+    // Disable the horizontal scroll bar
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.imagesFaderHolder {
+  width: 60%;
+  margin: auto;
+  text-align: center;
+  display: flex;
+  transition-duration: 1s;
+  height: 32rem;
+
+  @include respond-to('mobile') {
+    height: 20rem;
+
+  }
+
+  @include respond-to('small') {
+    height: 20rem;
+
+  }
+
+  @include respond-to('medium') {
+    height: 25rem;
+
+  }
+
+  @include respond-to('large') {
+    height: 35rem;
+
+  }
+
+}
+
+.columnCenterFlex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.imageColumn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.leftImage {
+    //width: 35%;
+    padding-right: 2%;
+}
+
+.rightImage {
+    //width: 65%;
+    flex-direction: column;
+    //height: 250px;
+
+
+}
+
+.rightImage img {
+    max-width: 100%;
+}
+
+.leftImage img {
+    max-width: 100%;
+}
+
+.fadeoutCSS {
+    -webkit-transition: opacity 0.5s ease-in-out;
+    -moz-transition: opacity 0.5s ease-in-out;
+    -o-transition: opacity 0.5s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
+
+    //transition:  1.2s ease;
+
+}
+
+.opacityZero {
+    opacity: 0;
+}
+
+
+
+
+
+
+
+
 ////////////*/
 //              MailChimp
 ///////////*/
@@ -932,7 +1030,7 @@ body, html {
 .bronzeSponsorLogo{
     // transform: rotateY(15deg) rotateZ(0deg);
     @include transition(transform 0.4s linear, margin-bottom 1s linear);
-    max-width: 50px;
+    max-width: 70%;
 
 }
 
@@ -955,6 +1053,7 @@ body, html {
 }
 
 #bronzeSponsorRow{
+    margin-top: 8%;
     margin-bottom: 5%;
 }
 
