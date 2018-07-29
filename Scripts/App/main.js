@@ -454,7 +454,7 @@ $(document).ready(function(){
 		var shaddowOffset = Math.round(offSetFromCenter / scaleFactor);
 
 		// This now needs to happen in the HTML5 requestAnimationFrame...
-		$('#mapContainer').css('box-shadow', '0 ' + shaddowOffset + 'px 20px 2px #000');
+		$('#mapContainer').css('box-shadow', '0 ' + shaddowOffset + 'px 20px 2px rgba(0,0,0,0.31)');
 		// box-shadow: 0 0px 20px 2px #000; 
 
 
