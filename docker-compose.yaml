@@ -1,0 +1,18 @@
+# Aston Hack 
+# 
+# 
+
+version: '3.3'
+
+services:
+   compileService:
+     image: ro5635/astonhacksitebuildenv
+     volumes:
+       - ./:/codeSource
+
+   webServer:
+     ports: 
+       - "85:80"
+     image: nginx
+     volumes:
+        - ./static:/usr/share/nginx/html:ro

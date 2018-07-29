@@ -4,6 +4,7 @@
 @import "partials/mixins";
 @import "partials/base";
 @import "compass/css3";
+@import "partials/swiper.min";
 
 // Put the ticketing page styles into the main css
 @import "partials/ticketingPage";
@@ -394,7 +395,7 @@ body, html {
     @include respond-to('small') {
         display: block;
         visibility: visible;
-    
+
     }
 
     @include respond-to('medium') {
@@ -408,7 +409,7 @@ body, html {
         visibility: visible;
 
     }
-  
+
 }
 
 //Rotate the element around the Y axes.
@@ -419,12 +420,12 @@ body, html {
 }
 
 @-webkit-keyframes rotation {
-        from {
-                -webkit-transform: rotateY(0deg);
-        }
-        to {
-                -webkit-transform: rotateY(359deg);
-        }
+    from {
+        -webkit-transform: rotateY(0deg);
+    }
+    to {
+        -webkit-transform: rotateY(359deg);
+    }
 }
 
 
@@ -437,9 +438,9 @@ body, html {
     //Make the building unselectable so it doesnt block the buttons
     z-index: -2;
 
-     // @include transition(transform .1s linear);  //attempt to smooth animation...
+    // @include transition(transform .1s linear);  //attempt to smooth animation...
 
-     @include respond-to('mobile') {
+    @include respond-to('mobile') {
         max-width: 100%;
         bottom: -10%;
 
@@ -472,6 +473,16 @@ body, html {
 ///
 //////////////////
 
+.swiper-container {
+    width: 90%;
+    height: 60%;
+
+    img {
+        max-width: 100%;
+    }
+}
+
+
 .imagesFaderHolderContainer{
     // Disable the horizontal scroll bar
     overflow-x: hidden;
@@ -489,22 +500,22 @@ body, html {
   @include respond-to('mobile') {
     height: 20rem;
 
-  }
+}
 
-  @include respond-to('small') {
+@include respond-to('small') {
     height: 20rem;
 
-  }
+}
 
-  @include respond-to('medium') {
+@include respond-to('medium') {
     height: 25rem;
 
-  }
+}
 
-  @include respond-to('large') {
+@include respond-to('large') {
     height: 35rem;
 
-  }
+}
 
 }
 
@@ -559,6 +570,53 @@ body, html {
 }
 
 
+/* Utility*/
+
+.hideOnMobile {
+    @include respond-to('mobile') {
+        display: none;
+
+    }
+
+    @include respond-to('small') {
+        display: block;
+
+    }
+
+    @include respond-to('medium') {
+        display: block;
+
+    }
+
+    @include respond-to('large') {
+        display: block;
+
+    }
+
+}
+
+.showOnlyOnMobile {
+    @include respond-to('mobile') {
+        display: block;
+
+    }
+
+    @include respond-to('small') {
+        display: none;
+
+    }
+
+    @include respond-to('medium') {
+        display: none;
+
+    }
+
+    @include respond-to('large') {
+        display: none;
+
+    }
+
+}
 
 
 
@@ -593,7 +651,7 @@ body, html {
 
 .navbar-brand{
 
- img{
+   img{
 
     transition: background 1.2s ease;
 
@@ -1191,15 +1249,14 @@ footer{
     }
 
     a address{
-		//Address at the bottom of the page
-		margin-bottom: 2%;
-		font-size: 1em;
-		margin: 0 auto;
-        text-decoration: none;
-        color: white;
+      //Address at the bottom of the page
+      margin-bottom: 2%;
+      font-size: 1em;
+      margin: 0 auto;
+      text-decoration: none;
+      color: white;
 
 
-    }
+  }
 
 }
-

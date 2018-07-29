@@ -166,19 +166,36 @@ $(document).ready(function(){
 	});
 
 
+	/**
+	* isElementDisplayNone
+	*
+	* Returns boolean as to if the passed element is set to display none
+	*/
+	function isElementDisplayNone(targetElement) {
+		var elementCurrentStyles = window.getComputedStyle(targetElement);
+    	var elementCurrentDisplayValue = elementCurrentStyles.getPropertyValue("display");
+
+    	return (elementCurrentDisplayValue === 'none');
+
+	}
+
     var imageIndex = 1;
 	var preLoadedImages = [];
 	var cycledAtLeastOnce = false;
+	var desktopImageSlider = document.getElementById("desktopImageSlider");
 
     setInterval(function () {
 
+    	// If the desktop slider is not visible do not update it
+    	if(isElementDisplayNone(desktopImageSlider)) return;
+    	
         imageFadeSwitcher("lefthandImage", images[imageIndex].left.src, 'left');
         imageFadeSwitcher("righthandImage", images[imageIndex].right.src, 'right');
 
 
         // Pre load the next Image
 		if (!cycledAtLeastOnce) {
-			console.log('Preloading initi');
+			console.log('Preloading init');
 			console.log(images[imageIndex].left.src);
 			preload(images[imageIndex].left.src, images[imageIndex].right.src);
 
@@ -197,6 +214,21 @@ $(document).ready(function(){
 
 
     }, 3500);
+
+    // Mobile Image slider
+    var mySwiper = new Swiper('.swiper-container', {
+    // Optional parameters
+    direction: 'horizontal',
+    loop: true,
+
+    pagination: {
+    	el: '.swiper-pagination',
+    },
+
+    autoplay: {
+    delay: 2200,
+  	}
+	})
 	
 
 	///////////////////////

@@ -30,7 +30,8 @@ const autoprefixerOptions = {
 };
 
 // Select all js files in directory or descendant directory's 
-const jsFiles = 'Scripts/Base/**/*.js';
+const jsLibFiles = 'Scripts/Base/**/*.js';
+const jsAppFiles = 'Scripts/App/**/*.js';
 const jsDest = 'static/assets/JS';
 
 const jsNotificationFiles = 'Scripts/Notifications/**/*.js';
@@ -127,7 +128,7 @@ gulp.task('sass', function(){
 * Conjoin the base scripts , minify and transfer to the static directorys.
 */
 gulp.task('scripts', function(){
-	return gulp.src(jsFiles)
+	return gulp.src([jsLibFiles, jsAppFiles])
 	.pipe(concat('scripts.js'))
 	.pipe(gulp.dest(jsDest))
 	.pipe(uglify())
