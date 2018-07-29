@@ -4,6 +4,7 @@
 @import "partials/mixins";
 @import "partials/base";
 @import "compass/css3";
+@import "partials/animate.min";
 @import "partials/swiper.min";
 
 // Put the ticketing page styles into the main css
@@ -746,7 +747,7 @@ body, html {
 #mapContainer{
     height: 400px;
     display: inline-block;
-    box-shadow: 0 0px 20px 2px #000;
+    box-shadow: 0 0px 20px 2px rgba(0,0,0,0.31);
     float: left;
     width: 75%;
     overflow: auto;

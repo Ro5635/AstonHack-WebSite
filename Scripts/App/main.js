@@ -93,6 +93,19 @@ function imageFadeSwitcher(imageID, newSrc, animation) {
     }, 600);
 }
 
+/**
+* isElementDisplayNone
+*
+* Returns boolean as to if the passed element is set to display none
+*/
+function isElementDisplayNone(targetElement) {
+	var elementCurrentStyles = window.getComputedStyle(targetElement);
+	var elementCurrentDisplayValue = elementCurrentStyles.getPropertyValue("display");
+
+	return (elementCurrentDisplayValue === 'none');
+
+}
+
 
 $(document).ready(function(){
 
@@ -166,18 +179,7 @@ $(document).ready(function(){
 	});
 
 
-	/**
-	* isElementDisplayNone
-	*
-	* Returns boolean as to if the passed element is set to display none
-	*/
-	function isElementDisplayNone(targetElement) {
-		var elementCurrentStyles = window.getComputedStyle(targetElement);
-    	var elementCurrentDisplayValue = elementCurrentStyles.getPropertyValue("display");
 
-    	return (elementCurrentDisplayValue === 'none');
-
-	}
 
     var imageIndex = 1;
 	var preLoadedImages = [];
@@ -215,20 +217,24 @@ $(document).ready(function(){
 
     }, 3500);
 
-    // Mobile Image slider
-    var mySwiper = new Swiper('.swiper-container', {
-    // Optional parameters
-    direction: 'horizontal',
-    loop: true,
+    // Mobile Image slider, only init on mobile
+	if(isElementDisplayNone(desktopImageSlider)) {
 
-    pagination: {
-    	el: '.swiper-pagination',
-    },
+	    var mySwiper = new Swiper('.swiper-container', {
+	    // Optional parameters
+	    direction: 'horizontal',
+	    loop: true,
 
-    autoplay: {
-    delay: 2200,
-  	}
-	})
+	    pagination: {
+	    	el: '.swiper-pagination',
+	    },
+
+	    autoplay: {
+	    delay: 2200,
+	  	}
+		});
+	}
+
 	
 
 	///////////////////////
