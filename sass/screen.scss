@@ -4,6 +4,8 @@
 @import "partials/mixins";
 @import "partials/base";
 @import "compass/css3";
+@import "partials/animate.min";
+@import "partials/swiper.min";
 
 // Put the ticketing page styles into the main css
 @import "partials/ticketingPage";
@@ -394,7 +396,7 @@ body, html {
     @include respond-to('small') {
         display: block;
         visibility: visible;
-    
+
     }
 
     @include respond-to('medium') {
@@ -408,7 +410,7 @@ body, html {
         visibility: visible;
 
     }
-  
+
 }
 
 //Rotate the element around the Y axes.
@@ -419,12 +421,12 @@ body, html {
 }
 
 @-webkit-keyframes rotation {
-        from {
-                -webkit-transform: rotateY(0deg);
-        }
-        to {
-                -webkit-transform: rotateY(359deg);
-        }
+    from {
+        -webkit-transform: rotateY(0deg);
+    }
+    to {
+        -webkit-transform: rotateY(359deg);
+    }
 }
 
 
@@ -437,9 +439,9 @@ body, html {
     //Make the building unselectable so it doesnt block the buttons
     z-index: -2;
 
-     // @include transition(transform .1s linear);  //attempt to smooth animation...
+    // @include transition(transform .1s linear);  //attempt to smooth animation...
 
-     @include respond-to('mobile') {
+    @include respond-to('mobile') {
         max-width: 100%;
         bottom: -10%;
 
@@ -466,6 +468,161 @@ body, html {
 
 
 }
+
+//////////////////
+/// Image Fade
+///
+//////////////////
+
+.swiper-container {
+    width: 90%;
+    height: 60%;
+
+    img {
+        max-width: 100%;
+    }
+}
+
+
+.imagesFaderHolderContainer{
+    // Disable the horizontal scroll bar
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.imagesFaderHolder {
+  width: 60%;
+  margin: auto;
+  text-align: center;
+  display: flex;
+  transition-duration: 1s;
+  height: 32rem;
+
+  @include respond-to('mobile') {
+    height: 20rem;
+
+}
+
+@include respond-to('small') {
+    height: 20rem;
+
+}
+
+@include respond-to('medium') {
+    height: 25rem;
+
+}
+
+@include respond-to('large') {
+    height: 35rem;
+
+}
+
+}
+
+.columnCenterFlex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.imageColumn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.leftImage {
+    //width: 35%;
+    padding-right: 2%;
+}
+
+.rightImage {
+    //width: 65%;
+    flex-direction: column;
+    //height: 250px;
+
+
+}
+
+.rightImage img {
+    max-width: 100%;
+}
+
+.leftImage img {
+    max-width: 100%;
+}
+
+.fadeoutCSS {
+    -webkit-transition: opacity 0.5s ease-in-out;
+    -moz-transition: opacity 0.5s ease-in-out;
+    -o-transition: opacity 0.5s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
+
+    //transition:  1.2s ease;
+
+}
+
+.opacityZero {
+    opacity: 0;
+}
+
+
+/* Utility*/
+
+.hideOnMobile {
+    @include respond-to('mobile') {
+        display: none;
+
+    }
+
+    @include respond-to('small') {
+        display: block;
+
+    }
+
+    @include respond-to('medium') {
+        display: block;
+
+    }
+
+    @include respond-to('large') {
+        display: block;
+
+    }
+
+}
+
+.showOnlyOnMobile {
+    @include respond-to('mobile') {
+        display: block;
+
+    }
+
+    @include respond-to('small') {
+        display: none;
+
+    }
+
+    @include respond-to('medium') {
+        display: none;
+
+    }
+
+    @include respond-to('large') {
+        display: none;
+
+    }
+
+}
+
+
+
+
+
 
 ////////////*/
 //              MailChimp
@@ -495,7 +652,7 @@ body, html {
 
 .navbar-brand{
 
- img{
+   img{
 
     transition: background 1.2s ease;
 
@@ -590,7 +747,7 @@ body, html {
 #mapContainer{
     height: 400px;
     display: inline-block;
-    box-shadow: 0 0px 20px 2px #000;
+    box-shadow: 0 0px 20px 2px rgba(0,0,0,0.31);
     float: left;
     width: 75%;
     overflow: auto;
@@ -932,7 +1089,7 @@ body, html {
 .bronzeSponsorLogo{
     // transform: rotateY(15deg) rotateZ(0deg);
     @include transition(transform 0.4s linear, margin-bottom 1s linear);
-    max-width: 50px;
+    max-width: 70%;
 
 }
 
@@ -955,6 +1112,7 @@ body, html {
 }
 
 #bronzeSponsorRow{
+    margin-top: 8%;
     margin-bottom: 5%;
 }
 
@@ -1092,15 +1250,14 @@ footer{
     }
 
     a address{
-		//Address at the bottom of the page
-		margin-bottom: 2%;
-		font-size: 1em;
-		margin: 0 auto;
-        text-decoration: none;
-        color: white;
+      //Address at the bottom of the page
+      margin-bottom: 2%;
+      font-size: 1em;
+      margin: 0 auto;
+      text-decoration: none;
+      color: white;
 
 
-    }
+  }
 
 }
-

@@ -30,7 +30,11 @@ const autoprefixerOptions = {
 };
 
 // Select all js files in directory or descendant directory's 
-const jsFiles = 'Scripts/Base/**/*.js';
+const jsLibFiles = 'Scripts/Base/**/*.js';
+const jsAppFiles = 'Scripts/App/**/*.js';
+const jsJQuery = 'Scripts/JQuery/**/*.js';
+const jsBootstrap = 'Scripts/Bootstrap/**/*.js';
+const jsBootstrapExtras = 'Scripts/BootstrapExtras/**/*.js';
 const jsDest = 'static/assets/JS';
 
 const jsNotificationFiles = 'Scripts/Notifications/**/*.js';
@@ -57,7 +61,7 @@ const sassDest = 'static/assets/stylesheets/';
 * COMPASS, THIS IS BUILT WITH COMPASS SEPERATLY. THIS IS AN ISSUE UNDER ACTIVE
 * DEVELOPEMENT
 */
-gulp.task('runTasks', ['compileIndex','compileTicketing', 'scripts'], function(){
+gulp.task('runTasks', ['compileIndex', 'scripts'], function(){
 
 });
 
@@ -81,24 +85,24 @@ gulp.task('compileIndex', function() {
 });
 
 
-/**
-* Compile the ticketing page
-*
-* Outputed to the ticketing directory
-*/ 
-gulp.task('compileTicketing', function(){
-	return gulp.src([
-		'partialPages/header.html',
-		'partialPages/TicketingHeadExtensions.html',
-		'partialPages/endHeader.html',
-		'partialPages/pageNavigation.html',
-		'ticketingPage.html', 
-		'partialPages/footerTicketing.html'
-		])
-	.pipe(concat('index.html'))
-	.pipe(gulp.dest('./static/ticketing/'))
+// /**
+// * Compile the ticketing page
+// *
+// * Outputed to the ticketing directory
+// */ 
+// gulp.task('compileTicketing', function(){
+// 	return gulp.src([
+// 		'partialPages/header.html',
+// 		'partialPages/TicketingHeadExtensions.html',
+// 		'partialPages/endHeader.html',
+// 		'partialPages/pageNavigation.html',
+// 		'ticketingPage.html', 
+// 		'partialPages/footerTicketing.html'
+// 		])
+// 	.pipe(concat('index.html'))
+// 	.pipe(gulp.dest('./static/ticketing/'))
 
-});
+// });
 
 /**
 * Compile SASS
@@ -127,7 +131,7 @@ gulp.task('sass', function(){
 * Conjoin the base scripts , minify and transfer to the static directorys.
 */
 gulp.task('scripts', function(){
-	return gulp.src(jsFiles)
+	return gulp.src([jsJQuery, jsBootstrapExtras, jsBootstrap, jsLibFiles, jsAppFiles])
 	.pipe(concat('scripts.js'))
 	.pipe(gulp.dest(jsDest))
 	.pipe(uglify())
@@ -153,20 +157,20 @@ gulp.task('notificationScripts', function(){
 });
 
 
-/**
-* Compile Ticketing Javascripts
-*
-* Conjoin the ticketing scripts , minify and transfer to the static directorys.
-*/
-gulp.task('ticketingScripts', function(){
-	return gulp.src(jsTicketingFiles)
-	.pipe(concat('ticketingHandler.js'))
-	.pipe(gulp.dest(jsTicketingDest))
-	.pipe(uglify())
-	.pipe(rename('ticketingHandler.min.js'))
-	.pipe(gulp.dest(jsTicketingDest))
+// /**
+// * Compile Ticketing Javascripts
+// *
+// * Conjoin the ticketing scripts , minify and transfer to the static directorys.
+// */
+// gulp.task('ticketingScripts', function(){
+// 	return gulp.src(jsTicketingFiles)
+// 	.pipe(concat('ticketingHandler.js'))
+// 	.pipe(gulp.dest(jsTicketingDest))
+// 	.pipe(uglify())
+// 	.pipe(rename('ticketingHandler.min.js'))
+// 	.pipe(gulp.dest(jsTicketingDest))
 
-});
+// });
 
 
 
