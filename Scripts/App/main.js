@@ -405,13 +405,6 @@ $(document).ready(function(){
 
 		}
 
-		// SHould the logos be animated?
-		if(animateSponsorLogos){
-			requestAnimationFrame(function(){
-				animateSponsorLogosOnScroll();
-			}); 	
-		}
-
 		if(scrollDownArrowRotating){
 			//Now the user has scrolled stop the arrow rotating, its to much of a performance drain!
 			//And safari wierdness happens when a lower layer is being animated 
@@ -465,72 +458,7 @@ $(document).ready(function(){
 
 
 
-	}
-
-	//Animate the sponsor logos
-	function animateSponsorLogosOnScroll(){
-
-		var VPHeight = jQuery(window).height();
-
-		var logoRowYOffSet = $('#sponsorLogos')[0].getBoundingClientRect().top;
-
-		var goldVerticalOffSet = ($('#goldSponsorRow')[0].getBoundingClientRect().top - ($('#goldSponsorRow').height() / 2));
-		var goldHardwareVerticalOffSet = ($('#goldHardwareSponsorRow')[0].getBoundingClientRect().top - ($('#goldHardwareSponsorRow').height() / 2));
-		var silverVerticalOffSet = ($('#silverSponsorRow')[0].getBoundingClientRect().top - ($('#silverSponsorRow').height() / 2));
-		var bronzeVerticalOffSet = ($('#bronzeSponsorRow')[0].getBoundingClientRect().top - ($('#bronzeSponsorRow').height() / 2));
-
-		// Center the Y movement around the color title
-		var yOffSet = 0.03 * VPHeight;
-
-		//Remove the Y offset from the fractional Y displacement to move center of movement up.
-		var goldTranslationy = (goldVerticalOffSet * 0.10) - yOffSet;
-		var goldHardwareTranslationy = (goldHardwareVerticalOffSet * 0.10) - yOffSet;
-		var silverTranslationy = (silverVerticalOffSet * 0.09) - yOffSet;
-		var bronzeTranslationy = (silverVerticalOffSet * 0.09) - yOffSet;
-		// console.log("Gold Level: " + goldTranslationy + " silver level: " + silverTranslationy);
-
-		//Gold Sponsors:
-		if(goldVerticalOffSet < (VPHeight*0.70)){
-			$('.goldSponsorLogo').css('transform','scale3d(1.4,1.4,1.4) translate3d(0px, ' + goldTranslationy + 'px, 0px)');
-			// $('.goldSponsorLogo').css('margin-bottom','45%');
-		}else{
-			$('.goldSponsorLogo').css('transform','translate3d(0px, ' + goldTranslationy + 'px, 0px)');
-			// $('.goldSponsorLogo').css('margin-bottom','5%');
-		}
-
-		// Gold Hardware Sponsors
-		if(goldHardwareVerticalOffSet < (VPHeight*0.70)){
-			$('.goldHardwareSponsorLogo').css('transform','scale3d(1.15,1.15,1.15) translate3d(0px, ' + goldHardwareTranslationy + 'px, 0px)');
-
-
-		}else{
-			$('.goldHardwareSponsorLogo').css('transform','translate3d(0px, ' + goldHardwareTranslationy + 'px, 0px)');
-
-		}
-
-		//Silver Sponsors:
-		if(silverVerticalOffSet < (VPHeight*0.62)){
-			$('.silverSponsorLogo').css('transform','scale3d(1.2,1.2,1.2) translate3d(0px, ' + silverTranslationy + 'px, 0px)');	
-
-
-		}else{
-			$('.silverSponsorLogo').css('transform','translate3d(0px, ' + silverTranslationy + 'px, 0px)');
-
-		}
-
-		//Bronze Sponsors:
-		if(bronzeVerticalOffSet < (VPHeight*0.60)){
-			$('.bronzeSponsorLogo').css('transform','scale3d(1.35,1.35,1.35) translate3d(0px, ' + bronzeTranslationy + 'px, 0px)');	
-
-
-		}else{
-			$('.bronzeSponsorLogo').css('transform','translate3d(0px, ' + bronzeTranslationy + 'px, 0px)');
-
-		}
-
-
-	}
-	
+	}	
 
 
 	function handleMenuBar(){
