@@ -7,6 +7,7 @@ version: '3.3'
 services:
    compileService:
      image: ro5635/astonhacksitebuildenv
+     tty: true
      volumes:
        - ./:/codeSource
 
