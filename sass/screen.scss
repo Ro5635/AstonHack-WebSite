@@ -901,7 +901,7 @@ body, html {
 
 }
 
-//Use the iframe google map on mobiles
+//Use the Iframe google map on mobiles
 #googleMapMobVers{
 
     @include respond-to('mobile') {
@@ -926,7 +926,7 @@ body, html {
     }
 }
 
-// Ifram dynamic sizing soltion from: https://stackoverflow.com/questions/12676725/responsive-iframe-google-maps-and-weird-resizing
+// Iframe dynamic sizing soltion from: https://stackoverflow.com/questions/12676725/responsive-iframe-google-maps-and-weird-resizing
 .iframe-rwd  {
     position: relative;
     padding-bottom: 65.25%;
@@ -988,7 +988,7 @@ body, html {
 
 
 
-//Add a short wxtension onto the page to give the drop shaddow effect 
+//Add a short extension onto the page to give the drop shaddow effect 
 #pageEnd{
 
     display: block;
@@ -1108,6 +1108,7 @@ body, html {
 }
 
 #silverSponsorRow{
+    margin-top: 5%;
     margin-bottom: 5%;
 }
 
@@ -1163,6 +1164,7 @@ footer{
     #primFooterLogo{
 
         max-width: 40%;
+        margin-bottom: 2%;
 
         @include respond-to('mobile') {
             max-width: 35%;
@@ -1185,30 +1187,8 @@ footer{
         }
     }
 
-    #astonULogo{
-        //Nudge the Aston uni logo down a bit so it lines up better with the wierd SU logo
-        margin-top: 5%;
-
-        @include respond-to('mobile') {
-            margin-top: 5%;
-
-        }
-
-        @include respond-to('small') {
-            margin-top: 5%;
-
-        }
-
-        @include respond-to('medium') {
-            margin-top: 5%;
-
-        }
-
-        @include respond-to('large') {
-            margin-top: 3%;
-
-        }
-
+    .footerSecondryLogosRow {
+        margin-bottom: 2%;
     }
 
 
