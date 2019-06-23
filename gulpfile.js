@@ -40,9 +40,6 @@ const jsDest = 'static/assets/JS';
 const jsNotificationFiles = 'Scripts/Notifications/**/*.js';
 const jsNotificationDest = 'static/assets/JS';
 
-const jsTicketingFiles = 'Scripts/Ticketing/**/*.js';
-const jsTicketingDest = 'static/assets/JS';
-
 //SASS Directory
 const sassSource = 'sass/**/*.scss';
 const sassDest = 'static/assets/stylesheets/';
@@ -85,46 +82,6 @@ gulp.task('compileIndex', function() {
 });
 
 
-// /**
-// * Compile the ticketing page
-// *
-// * Outputed to the ticketing directory
-// */ 
-// gulp.task('compileTicketing', function(){
-// 	return gulp.src([
-// 		'partialPages/header.html',
-// 		'partialPages/TicketingHeadExtensions.html',
-// 		'partialPages/endHeader.html',
-// 		'partialPages/pageNavigation.html',
-// 		'ticketingPage.html', 
-// 		'partialPages/footerTicketing.html'
-// 		])
-// 	.pipe(concat('index.html'))
-// 	.pipe(gulp.dest('./static/ticketing/'))
-
-// });
-
-/**
-* Compile SASS
-*
-* SASS is compiled and compressed and placed in the CSS directory in the static site
-* This is not currently working, this is something to do with Compass, however for now
-* I am going to continue to use ruby Compass to compile the SASS; this is due to time 
-* constraints.
-*/
-gulp.task('sass', function(){
-	return gulp.src(sassSource)
-	.pipe(compass({
-			config_file: 'config.rb',
-			css: sassDest,
-			sass: sassSource
-		}))
-	// .pipe(sass(sassOptions))
-	.pipe(autoprefixer())
-	.pipe(gulp.dest(sassDest))
-
-});
-
 /**
 * Compile Base Javascripts
 *
@@ -155,23 +112,6 @@ gulp.task('notificationScripts', function(){
 	.pipe(gulp.dest(jsNotificationDest))
 
 });
-
-
-// /**
-// * Compile Ticketing Javascripts
-// *
-// * Conjoin the ticketing scripts , minify and transfer to the static directorys.
-// */
-// gulp.task('ticketingScripts', function(){
-// 	return gulp.src(jsTicketingFiles)
-// 	.pipe(concat('ticketingHandler.js'))
-// 	.pipe(gulp.dest(jsTicketingDest))
-// 	.pipe(uglify())
-// 	.pipe(rename('ticketingHandler.min.js'))
-// 	.pipe(gulp.dest(jsTicketingDest))
-
-// });
-
 
 
 /**

@@ -25,20 +25,20 @@ var images = [
         right: {src: "assets/media/2017Photos/AstonHack201702.JPG", width: 65}
     },
     {
-        left: {src: "assets/media/2017Photos/AstonHack201704.JPG", width: 40},
-        right: {src: "assets/media/2017Photos/AstonHack201703.JPG", width: 60}
-    },
-    {
-        left: {src: "assets/media/2017Photos/AstonHack201705.JPG", width: 20},
-        right: {src: "assets/media/2017Photos/AstonHack201706.JPG", width: 80}
+        left: {src: "assets/media/2018Photos/mlhStand.png", width: 20},
+        right: {src: "assets/media/2018Photos/2018EventPhoto1.png", width: 80}
     },
     {
         left: {src: "assets/media/2017Photos/AstonHack201714.JPG", width: 35},
-        right: {src: "assets/media/2017Photos/AstonHack201713.JPG", width: 65}
+        right: {src: "assets/media/2018Photos/robotRace.png", width: 65}
     },
     {
-        left: {src: "assets/media/2017Photos/AstonHack201707.JPG", width: 80},
-        right: {src: "assets/media/2017Photos/AstonHack201708.JPG", width: 20}
+        left: {src: "assets/media/2018Photos/prizeGiving.png", width: 80},
+        right: {src: "assets/media/2018Photos/hackspace.png", width: 20}
+    },
+    {
+        left: {src: "assets/media/2017Photos/AstonHack201704.JPG", width: 40},
+        right: {src: "assets/media/2017Photos/AstonHack201703.JPG", width: 60}
     },
     {
         left: {src: "assets/media/2017Photos/AstonHack201709.JPG", width: 35},
